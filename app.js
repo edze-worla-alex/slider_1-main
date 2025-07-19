@@ -56,6 +56,17 @@ thumbnailItemsDom.forEach((thumbnail, index) => {
         SliderDom.appendChild(SliderItemsDom[index-1]);
         thumbnailBorderDom.appendChild(thumbnailItemsDom[index-1]);
         carouselDom.classList.add('prev');
+
+        clearTimeout(runTimeOut);
+    runTimeOut = setTimeout(() => {
+        carouselDom.classList.remove('next');
+        carouselDom.classList.remove('prev');
+    }, timeRunning);
+
+    clearTimeout(runNextAuto);
+    runNextAuto = setTimeout(() => {
+        next.click();
+    }, timeAutoNext)
     })
 })
 
