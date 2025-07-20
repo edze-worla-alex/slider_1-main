@@ -244,7 +244,7 @@ header{
 
 .carousel.next .time,
 .carousel.prev .time{
-    animation: runningTime 2s linear 1 forwards;
+    animation: runningTime 4s linear 1 forwards;
 }
 @keyframes runningTime{
     from{ width: 0%}
