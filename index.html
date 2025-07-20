@@ -1310,9 +1310,7 @@ data-tilt data-tilt-axis="x"
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      AOS.init({once: true, duration: 3000 });  
-    });
+      AOS.init({once: true,startEvent: 'DOMContentLoaded', duration: 3000 });  
   </script>
 </body>
 </html>
