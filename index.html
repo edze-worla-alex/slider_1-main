@@ -7,23 +7,29 @@
   <link rel="shortcut icon" href="favicon.png"/>
 
   <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="prose max-w-none relative w-screen overflow-x-hidden">
-  <header class="text-center py-4 flex items-center justify-center container relative mx-auto">
-    <nav class="text-lg font-semibold flex flex-col md:flex-row items-center justify-between w-full">
-      <a class="mt-4 bg-white rounded-2xl md:shrink-0" href="index.html"><img alt="fresients" loading="lazy" width="158" height="36" src="fresient-logo.png"></a>
-      <ul class="hidden md:inline-flex mt-4">
+<body class="prose max-w-none relative w-full overflow-x-hidden">
+  <header 
+  x-data="{ scrolled: false }" 
+  x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 10)" 
+  :class="scrolled ? 'bg-black/90 backdrop-blur-md shadow-md ml-0 w-full pr-4 pl-4 pb-4' : 'bg-transparent container '"
+  class="text-center py-2 pb-4 flex items-center justify-center  relative sticky top-0 mx-auto z-[2000] transition-all duration-300 ease-in-out text-white"
+  >
+    <nav class="text-lg font-semibold flex items-center justify-between w-full">
+      <a class="mt-4 bg-white rounded-2xl w-[80px] md:w-[158px] md:shrink-0" href="index.html"><img alt="fresients" loading="lazy" width="158" height="36" src="fresient-logo.png"></a>
+      <ul class="hidden md:flex space-x-6 mt-4">
 
-      <a href="#">Home</a>
-      <a href="#">Newsletters</a>
-      <a href="#">Podcasts</a>
-      <a href="#">Videos</a>
-      <a href="#">Academy</a>
-      <a href="#">Blogs</a>
-      <a href="#">Events</a>
-      <a href="#">Tools</a>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Newsletters</a></li>
+      <li><a href="#">Podcasts</a></li>
+      <li><a href="#">Videos</a></li>
+      <li><a href="#">Academy</a></li>
+      <li><a href="#">Blogs</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Tools</a></li>
       </ul>
 
       <!-- Buttons -->
@@ -48,7 +54,7 @@
         <video muted loop autoplay>
           <source src="videos/video1.mp4" type="video/mp4">
         </video>
-        <div class="absolute inset-0 bg-black opacity-50 w-screen h-screen pointer-events-none ">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm w-full h-screen pointer-events-none ">
           
         </div>
         <div class="content">
@@ -72,7 +78,7 @@
         <video muted loop autoplay>
             <source src="videos/video2.mp4" type="video/mp4">
           </video>
-          <div class="absolute inset-0 bg-black opacity-50 w-screen h-screen pointer-events-none ">
+          <div class="absolute inset-0 bg-black/50 backdrop-blur-sm w-full h-screen pointer-events-none ">
           
           </div>
         <div class="content">
@@ -95,7 +101,7 @@
         <video muted loop autoplay>
             <source src="videos/video3.mp4" type="video/mp4">
           </video>
-          <div class="absolute inset-0 bg-black opacity-50 w-screen h-screen pointer-events-none ">
+          <div class="absolute inset-0 bg-black/50 backdrop-blur-sm w-full h-screen pointer-events-none ">
           
           </div>
         <div class="content">
@@ -118,7 +124,7 @@
         <video muted loop autoplay>
           <source src="videos/video4.mp4" type="video/mp4">
         </video>
-        <div class="absolute inset-0 bg-black opacity-50 w-screen h-screen pointer-events-none ">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm w-full h-screen pointer-events-none ">
           
         </div>
         <div class="content">
@@ -141,7 +147,7 @@
         <video muted loop autoplay>
           <source src="videos/video5.mp4" type="video/mp4">
         </video>
-        <div class="absolute inset-0 bg-black opacity-50 w-screen h-screen pointer-events-none ">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm w-full h-screen pointer-events-none ">
           
         </div>
         <div class="content">
@@ -164,7 +170,7 @@
         <video muted loop autoplay>
           <source src="videos/video6.mp4" type="video/mp4">
         </video>
-        <div class="absolute inset-0 bg-black opacity-50 w-screen h-screen pointer-events-none ">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm w-full h-screen pointer-events-none ">
           
         </div>
         <div class="content">
