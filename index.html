@@ -9,8 +9,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+  <link rel="stylesheet" href="style.css">
+    
 </head>
 <body x-data="{ openLogin: false,openRegister: false,openSearch: false }" class="prose max-w-none relative w-screen overflow-x-hidden">
   <header 
@@ -244,35 +246,35 @@
 
     <!-- list thumbnail -->
     <div class="thumbnail hidden md:grid grid-cols-3 mr-0 absolute bottom-10 right-10 rtl">
-      <div class="item">
+      <div class="item" data-tilt >
         <img src="image/slider1.jpg">
         <div class="content">
           <div class="title">Future of AI</div>
           <div class="description">Forecasting innovation</div>
         </div>
       </div>
-      <div class="item">
+      <div class="item" data-tilt>
         <img src="image/slider2.jpg">
         <div class="content">
           <div class="title">Startup Radar</div>
           <div class="description">Weekly growth stories</div>
         </div>
       </div>
-      <div class="item">
+      <div class="item" data-tilt>
         <img src="image/slider3.jpg">
         <div class="content">
           <div class="title">AI Predictions</div>
           <div class="description">Make data work</div>
         </div>
       </div>
-      <div class="item">
+      <div class="item" data-tilt>
         <img src="image/slider4.jpg">
         <div class="content">
           <div class="title">Dev Toolbox</div>
           <div class="description">Power your project</div>
         </div>
       </div>
-      <div class="item">
+      <div class="item" data-tilt>
         <img src="image/slider5.jpg">
         <div class="content">
           <div class="title">AI Academy</div>
@@ -280,7 +282,7 @@
         </div>
       </div>
 
-      <div class="item">
+      <div class="item" data-tilt>
         <img src="image/slider6.jpg">
         <div class="content">
           <div class="title">AI Academy</div>
@@ -304,7 +306,10 @@
 <section class="bg-gray-950 text-white px-4 py-12 relative grid grid-cols-1 md:grid-cols-2 gap-1 overflow-x-hidden">
   <!-- Supported Platforms and Partners -->
 
-  <div class="w-full m-1 md:m-4 z-10">
+  <div class="w-full m-1 md:m-4 z-10" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
     <div class="font-bold text-4xl"><i class="fas fa-layer-group text-green-400 mr-2"></i>Supported Platforms</div>
     <ul class="mt-4 gap-4 grid grid-cols-4 md:grid-cols-8">
       <li>
@@ -353,7 +358,10 @@
   <!-- Stats Overcards -->
   <div class="w-full mt-10 ml-0 md:-ml-4 md:mt-0 grid grid-cols-1 sm:grid-cols-3 gap-4 px-4 z-10">
     <!-- Card 1 -->
-    <div class="bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-700">
+    <div class="bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-700" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
       <div class="text-4xl mb-2">
         <i class="fas fa-newspaper text-purple-400"></i>
       </div>
@@ -362,7 +370,10 @@
     </div>
 
     <!-- Card 2 -->
-    <div class="bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-700">
+    <div class="bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-700" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
       <div class="text-4xl mb-2">
         <i class="fas fa-chart-line text-green-400"></i>
       </div>
@@ -371,7 +382,10 @@
     </div>
 
     <!-- Card 3 -->
-    <div class="bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-700">
+    <div class="bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-700" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
       <div class="text-4xl mb-2">
         <i class="fas fa-users text-yellow-300"></i>
       </div>
@@ -392,7 +406,10 @@
   <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 relative">
     
     <!-- Newsletter 1 -->
-    <div class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-indigo-400 border-t-8">
+    <div class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-indigo-400 border-t-8" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
       <i class="fas fa-thumbtack text-indigo-400 text-2xl absolute top-4 right-4 rotate-45"></i>
       <div class="flex items-center mb-4 text-indigo-400">
         <i class="fas fa-robot text-2xl me-3"></i>
@@ -407,7 +424,10 @@
     </div>
 
     <!-- Newsletter 2 -->
-    <div class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-orange-400 border-t-8">
+    <div class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-orange-400 border-t-8" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
       <i class="fas fa-thumbtack text-orange-400 text-2xl absolute top-4 right-4 rotate-45"></i>
       <div class="flex items-center mb-4 text-orange-400">
         <i class="fas fa-lightbulb text-2xl me-3"></i>
@@ -422,7 +442,10 @@
     </div>
 
     <!-- Newsletter 3 -->
-    <div class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-pink-400 border-t-8">
+    <div class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-pink-400 border-t-8" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
       <i class="fas fa-thumbtack text-pink-400 text-2xl absolute top-4 right-4 rotate-45"></i>
       <div class="flex items-center mb-4 text-pink-400">
         <i class="fas fa-brain text-2xl me-3"></i>
@@ -437,7 +460,10 @@
     </div>
 
     <!-- Newsletter 4 -->
-    <div class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-green-400 border-t-8">
+    <div class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-green-400 border-t-8" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
       <i class="fas fa-thumbtack text-green-400 text-2xl absolute top-4 right-4 rotate-45"></i>
       <div class="flex items-center mb-4 text-green-400">
         <i class="fas fa-globe-africa text-2xl me-3"></i>
@@ -452,7 +478,10 @@
     </div>
 
     <!-- Newsletter 5 -->
-    <div class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-purple-400 border-t-8">
+    <div class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-purple-400 border-t-8" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
       <i class="fas fa-thumbtack text-purple-400 text-2xl absolute top-4 right-4 rotate-45"></i>
       <div class="flex items-center mb-4 text-purple-400">
         <i class="fas fa-dna text-2xl me-3"></i>
@@ -467,7 +496,10 @@
     </div>
 
     <!-- Newsletter 6 -->
-    <div class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-red-400 border-t-8">
+    <div class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-red-400 border-t-8" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
       <i class="fas fa-thumbtack text-red-400 text-2xl absolute top-4 right-4 rotate-45"></i>
       <div class="flex items-center mb-4 text-red-400">
         <i class="fas fa-chart-line text-2xl me-3"></i>
@@ -489,16 +521,19 @@
  <!-- Featured Podcasts -->
  <section class="bg-gray-950 text-white py-10 px-4 sm:px-6 lg:px-12 overflow-x-hidden relative w-screen">
   <h2 class="text-4xl font-extrabold text-center mb-14 tracking-tight z-10 relative">🎧 Featured Podcasts on Fresients</h2>
- <div class="absolute z-1 left-0 -top-2 hidden sm:block">
+ <div class="absolute z-1 left-0 -top-2 hidden sm:block" data-aos="zoom-in" >
   <img src="image/enhancements/lady_listening_to_podcast2.png"/>
  </div>
- <div class="absolute z-1 right-0 -top-2">
+ <div class="absolute z-1 right-0 -top-2" data-aos="zoom-in" >
   <img src="image/enhancements/lady_podcast_listening.png"/>
  </div>
   <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 container mx-auto z-10">
 
     <!-- Podcast 1 -->
-    <div class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative">
+    <div class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
       <div class="relative">
         <img src="https://images.unsplash.com/photo-1677212004257-103cfa6b59d0?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Podcast Cover" class="w-full h-48 object-cover">
         <a href="#" class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
@@ -519,7 +554,10 @@
     </div>
 
     <!-- Podcast 2 -->
-    <div class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative">
+    <div class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
       <div class="relative">
         <img src="https://plus.unsplash.com/premium_photo-1700740342769-17e817ad6400?q=80&w=774&auto=format&fit=crop" alt="Podcast Cover" class="w-full h-48 object-cover">
         <a href="#" class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
@@ -540,7 +578,10 @@
     </div>
 
     <!-- Podcast 3 -->
-    <div class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative">
+    <div class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
       <div class="relative">
         <img src="https://images.unsplash.com/photo-1553484771-0a615f264d58?q=80&w=870&auto=format&fit=crop" alt="Podcast Cover" class="w-full h-48 object-cover">
         <a href="#" class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
@@ -561,7 +602,10 @@
     </div>
 
     <!-- Podcast 4 -->
-    <div class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative">
+    <div class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
       <div class="relative">
         <img src="https://plus.unsplash.com/premium_photo-1684522167826-a473e63337b1?q=80&w=1032&auto=format&fit=crop" alt="Podcast Cover" class="w-full h-48 object-cover">
         <a href="#" class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
@@ -602,7 +646,10 @@
   
     <div class="grid md:grid-cols-2 gap-6 ">
       <!-- Video Card 1 -->
-      <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg">
+      <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
         <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/Qh7Dqzm8f7Y?rel=0" title="YouTube video player" allowfullscreen></iframe>
         <div class="md:w-1/2 space-y-2">
           <div class="flex items-center gap-2 text-sm text-indigo-400">
@@ -619,7 +666,10 @@
       </div>
   
       <!-- Video Card 2 -->
-      <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg">
+      <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
         <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/1Q8fG0TtVAY?rel=0" title="YouTube video player" allowfullscreen></iframe>
         <div class="md:w-1/2 space-y-2">
           <div class="flex items-center gap-2 text-sm text-purple-400">
@@ -636,7 +686,10 @@
       </div>
   
       <!-- Video Card 3 -->
-      <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg">
+      <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
         <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/Opnb2r-J0dM?rel=0" title="YouTube video player" allowfullscreen></iframe>
         <div class="md:w-1/2 space-y-2">
           <div class="flex items-center gap-2 text-sm text-rose-400">
@@ -653,7 +706,10 @@
       </div>
 
       <!-- Card 4 -->
-      <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg">
+      <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
       <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/f7SIwZJwmzE?rel=0" title="YouTube video player" allowfullscreen></iframe>
       <div class="md:w-1/2 space-y-2">
         <div class="flex items-center gap-2 text-sm text-rose-400">
@@ -690,7 +746,10 @@
   
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Course 1 -->
-        <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-yellow-500/20 transition">
+        <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-yellow-500/20 transition" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
           <img src="https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=850&auto=format&fit=crop" alt="AI Mastery" class="w-full h-40 object-cover">
           <div class="p-5">
             <h3 class="text-xl font-semibold mb-2">
@@ -705,7 +764,10 @@
         </div>
   
         <!-- Course 2 -->
-        <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-purple-500/20 transition">
+        <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-purple-500/20 transition" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
           <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=870&auto=format&fit=crop" alt="Startup Launchpad" class="w-full h-40 object-cover">
           <div class="p-5">
             <h3 class="text-xl font-semibold mb-2">
@@ -720,7 +782,10 @@
         </div>
   
         <!-- Course 3 -->
-        <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-green-500/20 transition">
+        <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-green-500/20 transition" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
           <img src="https://images.unsplash.com/photo-1584291527908-033f4d6542c8?q=80&w=725&auto=format&fit=crop" alt="Data Analytics Pro" class="w-full h-40 object-cover">
           <div class="p-5">
             <h3 class="text-xl font-semibold mb-2">
@@ -735,7 +800,10 @@
         </div>
   
         <!-- Course 4 -->
-        <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-blue-500/20 transition">
+        <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-blue-500/20 transition" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
           <img src="https://plus.unsplash.com/premium_photo-1661782505582-07ea68e3e760?q=80&w=869&auto=format&fit=crop" alt="Web for Founders" class="w-full h-40 object-cover">
           <div class="p-5">
             <h3 class="text-xl font-semibold mb-2">
@@ -768,7 +836,10 @@
     </h2>
     <div class="flex flex-col md:flex-row justify-center gap-8 px-4 container mx-auto">
       <!-- Card 1 -->
-      <div class="relative w-72 h-72 rounded-full overflow-hidden shadow-lg group">
+      <div class="relative w-72 h-72 rounded-full overflow-hidden shadow-lg group" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
         <img src="https://hightechcampus.com/storage/1963/20210922_High_Tech_Campus_009_2207.jpg" alt="Event 1" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-white text-center p-6 transition-opacity duration-300 group-hover:bg-opacity-80">
           <i class="fas fa-robot text-4xl mb-2 text-yellow-400"></i>
@@ -780,7 +851,10 @@
       </div>
   
       <!-- Card 2 -->
-      <div class="relative w-72 h-72 rounded-full overflow-hidden shadow-lg group">
+      <div class="relative w-72 h-72 rounded-full overflow-hidden shadow-lg group" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
         <img src="https://axiscolleges.org/wp-content/uploads/2023/04/Axis-Startup-Launchpad.webp" alt="Event 2" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-white text-center p-6 transition-opacity duration-300 group-hover:bg-opacity-80">
           <i class="fas fa-rocket text-4xl mb-2 text-green-400"></i>
@@ -792,7 +866,10 @@
       </div>
   
       <!-- Card 3 -->
-      <div class="relative w-72 h-72 rounded-full overflow-hidden shadow-lg group">
+      <div class="relative w-72 h-72 rounded-full overflow-hidden shadow-lg group" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
         <img src="https://technical.ly/wp-content/uploads/2024/06/zipcodewilmington-computer.jpg" alt="Event 3" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-white text-center p-6 transition-opacity duration-300 group-hover:bg-opacity-80">
           <i class="fas fa-code text-4xl mb-2 text-purple-400"></i>
@@ -814,7 +891,10 @@
   
       <div class="grid md:grid-cols-3 gap-8">
         <!-- Blog Card -->
-        <div class="relative group rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500">
+        <div class="relative group rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
           <img src="https://imageio.forbes.com/specials-images/imageserve/65e4a4f2ce50e2747a4c8503/The-Future-Of-Generative-AI--6-Predictions-Everyone-Should-Know-About/960x0.jpg?format=jpg&width=960" alt="Blog Image" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
           <div class="absolute inset-0 bg-black/50"></div>
   
@@ -834,7 +914,10 @@
         </div>
   
         <!-- Blog Card 2 -->
-        <div class="relative group rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500">
+        <div class="relative group rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
           <img src="https://aicontentblog.com/wp-content/uploads/2025/03/Top-10-AI-Tools-for-Customer-Service-Revolutionizing-Support-with-Technology.png" alt="Blog Image" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
           <div class="absolute inset-0 bg-black/50"></div>
   
@@ -854,7 +937,10 @@
         </div>
   
         <!-- Blog Card 3 -->
-        <div class="relative group rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500">
+        <div class="relative group rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500" data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x">
           <img src="https://tateeda.com/wp-content/uploads/2024/01/How_to_Integrate_AI_in_Healthcare_Solutions_Examples__Services-3.jpg" alt="Blog Image" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
           <div class="absolute inset-0 bg-black/50"></div>
   
@@ -883,12 +969,17 @@ x-show="openLogin"
 class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-[250]"
 x-transition
 style="display: none"
+data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x"
 >
 <!-- Modal -->
 <div 
   @click.away="openLogin = false"
   class="bg-gray-900 text-white rounded-xl shadow-xl w-full max-w-md p-6 space-y-6 border border-gray-700 relative"
   x-transition
+  
 >
   <!-- Close Button -->
   <button @click="openLogin = false" class="absolute top-3 right-3 text-gray-400 hover:text-white">
@@ -951,7 +1042,12 @@ style="display: none"
   @keydown.escape.window="openRegister = false"
   @click.away="openRegister = false"
   class="fixed inset-0 bg-black/60 z-[250] flex items-center justify-center"
-  style="display: none">
+  style="display: none"
+  data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x"
+  >
 
 <!-- Modal Content -->
 <div @click.stop
@@ -1017,6 +1113,10 @@ style="display: none"
    @keydown.escape.window="openSearch = false"
    class="fixed inset-0 z-[250] flex items-center justify-center bg-black/70 backdrop-blur-sm"
  style="display: none;"
+ data-aos="zoom-in"   
+data-aos-duration="3000"
+
+data-tilt data-tilt-axis="x"
    >
    <div class="bg-gray-900 text-white w-[90%] max-w-md p-6 rounded-xl relative shadow-2xl">
      <!-- Close Button -->
@@ -1209,37 +1309,10 @@ style="display: none"
   </footer>
   
   <script src="app.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    document.addEventListener('alpine:init', () => {
-      Alpine.data('smoothScroll', () => ({
-        scrollToElement(selector, offset = 0, duration = 500) {
-          const target = document.querySelector(selector);
-          if (!target) return;
-  
-          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
-          const startPosition = window.pageYOffset;
-          const distance = targetPosition - startPosition;
-          let startTime = null;
-  
-          const easeInOutQuad = (t, b, c, d) => {
-            t /= d / 2;
-            if (t < 1) return (c / 2) * t * t + b;
-            t--;
-            return (-c / 2) * (t * (t - 2) - 1) + b;
-          };
-  
-          const animation = currentTime => {
-            if (startTime === null) startTime = currentTime;
-            const timeElapsed = currentTime - startTime;
-            const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
-            window.scrollTo(0, run);
-            if (timeElapsed < duration) requestAnimationFrame(animation);
-          };
-  
-          requestAnimationFrame(animation);
-        }
-      }));
-    });
+    AOS.init({once: true, duration: 3000 });
   </script>
 </body>
 </html>
