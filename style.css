@@ -79,7 +79,7 @@ header{
     padding: 5px;
 }
 .carousel .list .item .buttons button:nth-child(1){
-    background-color: indigo;
+    background-color: #3949AB;
     border: 1px solid #fff;
     color: #eee;
 }
@@ -237,7 +237,7 @@ header{
     z-index: 1000;
     width: 0%;
     height: 6px;
-    background-color: indigo;
+    background-color: #3949AB;
     left: 0;
     top: 0;
 }
