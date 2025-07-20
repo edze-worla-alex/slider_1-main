@@ -28,7 +28,7 @@
     <!-- Desktop Menu -->
     <ul class="hidden md:flex space-x-6 mt-4 menu">
       <li><a href="#">Home</a></li>
-      <li><a href="#">Newsletters</a></li>
+      <li><a href="#newsletters" @click="scrollToElement('#newsletters', 10)">Newsletters</a></li>
       <li><a href="#">Podcasts</a></li>
       <li><a href="#">Videos</a></li>
       <li><a href="#">Academy</a></li>
@@ -49,7 +49,7 @@
       <button @click="openLogin = true; openRegister = false;" class="px-5 py-2 rounded-xl border border-indigo-500 text-indigo-500 hover:bg-indigo-600 hover:text-white transition duration-300">
         Login
       </button>
-      <button @click="openRegister = true; openLogin = false;" class="px-5 py-2 pr-4 rounded-xl border border-white bg-indigo-500 hover:bg-indigo-600 hover:text-white text-white transition duration-300">
+      <button @click="openRegister = true; openLogin = false;" class="px-5 py-2 mr-4 rounded-xl border border-white bg-indigo-500 hover:bg-indigo-600 hover:text-white text-white transition duration-300">
         Register
       </button>
     </div>
@@ -299,7 +299,7 @@
   
   <!-- Supported Platforms and Partners -->
   <div class="w-full m-1 md:m-4">
-    <div class="font-bold text-4xl"><i class="fas fa-layer-group text-green-400 mr-2"></i>Supported Platforms & Stats</div>
+    <div class="font-bold text-4xl"><i class="fas fa-layer-group text-green-400 mr-2"></i>Supported Platforms</div>
     <ul class="mt-4 gap-4 grid grid-cols-4 md:grid-cols-8">
       <li>
         <a href="#">
@@ -380,7 +380,7 @@
   
 
 <!-- Newsletters -->
-<section class="bg-gray-950 text-white py-16 px-4 sm:px-6 lg:px-12">
+<section class="bg-gray-950 text-white py-16 px-4 sm:px-6 lg:px-12" id="newsletters">
   <h2 class="text-4xl font-extrabold text-center mb-14 tracking-tight">📬 Top AI & Startup Newsletters</h2>
 
   <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 relative">
@@ -1189,5 +1189,37 @@ style="display: none"
   </footer>
   
   <script src="app.js"></script>
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('smoothScroll', () => ({
+        scrollToElement(selector, offset = 0, duration = 500) {
+          const target = document.querySelector(selector);
+          if (!target) return;
+  
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          const startPosition = window.pageYOffset;
+          const distance = targetPosition - startPosition;
+          let startTime = null;
+  
+          const easeInOutQuad = (t, b, c, d) => {
+            t /= d / 2;
+            if (t < 1) return (c / 2) * t * t + b;
+            t--;
+            return (-c / 2) * (t * (t - 2) - 1) + b;
+          };
+  
+          const animation = currentTime => {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) requestAnimationFrame(animation);
+          };
+  
+          requestAnimationFrame(animation);
+        }
+      }));
+    });
+  </script>
 </body>
 </html>
