@@ -48,25 +48,25 @@ function showSlider(type){
     }, timeAutoNext)
 }
 
-thumbnailItemsDom.forEach((thumbnail, index) => {
-    thumbnail.addEventListener('click', () => {
-        let  SliderItemsDom = SliderDom.querySelectorAll('.carousel .list .item');
-    let thumbnailItemsDom = document.querySelectorAll('.carousel .thumbnail .item');
+// thumbnailItemsDom.forEach((thumbnail, index) => {
+//     thumbnail.addEventListener('click', () => {
+//         let  SliderItemsDom = SliderDom.querySelectorAll('.carousel .list .item');
+//     let thumbnailItemsDom = document.querySelectorAll('.carousel .thumbnail .item');
     
-        SliderDom.appendChild(SliderItemsDom[index-1]);
-        thumbnailBorderDom.appendChild(thumbnailItemsDom[index-1]);
-        carouselDom.classList.add('prev');
+//         SliderDom.appendChild(SliderItemsDom[index-1]);
+//         thumbnailBorderDom.appendChild(thumbnailItemsDom[index-1]);
+//         carouselDom.classList.add('prev');
 
-        clearTimeout(runTimeOut);
-    runTimeOut = setTimeout(() => {
-        carouselDom.classList.remove('next');
-        carouselDom.classList.remove('prev');
-    }, timeRunning);
+//         clearTimeout(runTimeOut);
+//     runTimeOut = setTimeout(() => {
+//         carouselDom.classList.remove('next');
+//         carouselDom.classList.remove('prev');
+//     }, timeRunning);
 
-    clearTimeout(runNextAuto);
-    runNextAuto = setTimeout(() => {
-        next.click();
-    }, timeAutoNext)
-    })
-})
+//     clearTimeout(runNextAuto);
+//     runNextAuto = setTimeout(() => {
+//         next.click();
+//     }, timeAutoNext)
+//     })
+// })
 
