@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fresients AI</title>
+  <title>Fresients | AI & Startups Insights</title>
+  <link rel="shortcut icon" href="favicon.png"/>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="prose max-w-none relative w-screen overflow-x-hidden">
-  <header class="text-center py-4 flex justify-center">
-    <nav class="space-x-4 text-lg font-semibold">
+  <header class="text-center py-4 flex items-center justify-center container relative mx-auto">
+    <nav class="text-lg font-semibold flex flex-col md:flex-row items-center justify-between w-full">
+      <a class="mt-4 bg-white rounded-2xl md:shrink-0" href="index.html"><img alt="fresients" loading="lazy" width="158" height="36" src="fresient-logo.png"></a>
+      <ul class="hidden md:inline-flex mt-4">
+
       <a href="#">Home</a>
       <a href="#">Newsletters</a>
       <a href="#">Podcasts</a>
@@ -19,6 +24,17 @@
       <a href="#">Blogs</a>
       <a href="#">Events</a>
       <a href="#">Tools</a>
+      </ul>
+
+      <!-- Buttons -->
+    <div class="flex mt-6 gap-2">
+      <button class="px-5 py-2 rounded-xl border border-indigo-500 text-indigo-500 hover:bg-indigo-600 hover:text-white transition duration-300">
+        Login
+      </button>
+      <button class="px-5 py-2 rounded-xl border border-indigo-500 text-indigo-500 hover:bg-indigo-600 hover:text-white transition duration-300">
+        Register
+      </button>
+    </div>
     </nav>
   </header>
 
