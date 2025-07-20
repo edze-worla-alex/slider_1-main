@@ -68,12 +68,20 @@ header{
     margin-top: 20px;
 }
 .carousel .list .item .buttons button{
-    border: none;
-    background-color: #0004;
+    border: solid 1px #fff;
+    background-color: rgba(27, 27, 27, 0.918);
     letter-spacing: 3px;
     font-family: Poppins;
     font-weight: 500;
+    border-radius: 5px;
+    padding: 5px;
 }
+.carousel .list .item .buttons button:nth-child(1){
+    background-color: indigo;
+    border: 1px solid #fff;
+    color: #eee;
+}
+
 .carousel .list .item .buttons button:nth-child(2){
     background-color: transparent;
     border: 1px solid #fff;
