@@ -12,21 +12,21 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body x-data="{ openLogin: false,openRegister: false,openSearch: false }" class="prose max-w-none relative w-screen overflow-x-hidden">
-  
   <header 
-  x-data="{ scrolled: false, openMenu: false}" 
+  x-data="{ scrolled: false,mobileOpen: false}" 
   x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 10)" 
-  :class="scrolled ? 'bg-black/90 backdrop-blur-md shadow-md' : 'bg-transparent'"
-  class="text-white sticky top-0 z-[200] w-full transition-all duration-300 ease-in-out"
+  :class="scrolled ? 'bg-black/90 backdrop-blur-md shadow-md ml-0 w-full pr-4 pl-4 pb-4' : 'bg-transparent container'"
+  class="text-center py-2 pb-4 flex items-center justify-center relative sticky top-0 mx-auto z-[200] transition-all duration-300 ease-in-out text-white"
 >
-  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+  <nav class="text-lg font-semibold flex items-center justify-between w-full relative">
+
     <!-- Logo -->
-    <a href="index.html" class="bg-white rounded-2xl w-[80px] md:w-[158px] shrink-0">
-      <img src="fresient-logo.png" alt="fresients" width="158" height="36" loading="lazy">
+    <a class="mt-4 bg-white rounded-2xl w-[80px] md:w-[158px] md:shrink-0" href="index.html">
+      <img alt="fresients" loading="lazy" width="158" height="36" src="fresient-logo.png">
     </a>
 
-    <!-- Desktop Nav -->
-    <ul class="hidden md:flex space-x-6 text-lg font-semibold">
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex space-x-6 mt-4 menu">
       <li><a href="#">Home</a></li>
       <li><a href="#">Newsletters</a></li>
       <li><a href="#">Podcasts</a></li>
@@ -36,58 +36,60 @@
       <li><a href="#">Events</a></li>
       <li><a href="#">Tools</a></li>
     </ul>
-
-    <!-- Actions: Search & Buttons -->
-    <div class="flex items-center gap-3">
-      <!-- Search Icon -->
-      <button 
+    <button 
   @click="openSearch = true" 
-  class="text-white hover:text-indigo-400 transition duration-300 text-xl p-2 rounded-full bg-transparent hover:bg-white/10"
+  class="text-white hover:text-indigo-400 transition duration-300 text-xl p-2 rounded-full bg-transparent hover:bg-white/10 flex items-center justify-center mt-2"
   aria-label="Open search"
 >
   <i class="fas fa-search"></i>
 </button>
-
-      <!-- Auth Buttons -->
-      <div class="hidden md:flex gap-2">
-        <button @click="openLogin = true; openRegister = false;" class="px-4 py-2 rounded-xl border border-indigo-500 text-indigo-500 hover:bg-indigo-600 hover:text-white transition duration-300">
-          Login
-        </button>
-        <button @click="openRegister = true; openLogin = false;" class="px-4 py-2 rounded-xl bg-indigo-500 text-white hover:bg-indigo-600 transition duration-300">
-          Register
-        </button>
-      </div>
-
-      <!-- Hamburger (Mobile) -->
-      <button @click="openMenu = !openMenu" class="md:hidden flex flex-col justify-center items-center w-10 h-10 relative z-50">
-        <span :class="openMenu ? 'rotate-45 translate-y-1.5' : ''" class="block w-6 h-0.5 bg-white mb-1 transition-transform duration-300 ease-in-out"></span>
-        <span :class="openMenu ? 'opacity-0' : ''" class="block w-6 h-0.5 bg-white mb-1 transition-opacity duration-300 ease-in-out"></span>
-        <span :class="openMenu ? '-rotate-45 -translate-y-1.5' : ''" class="block w-6 h-0.5 bg-white transition-transform duration-300 ease-in-out"></span>
-      </button>
-    </div>
-  </div>
-
-  <!-- Mobile Nav -->
-  <div x-show="openMenu" x-transition class="md:hidden bg-black/90 backdrop-blur-sm text-white px-4 py-4 space-y-3 text-center font-semibold">
-    <a href="#">Home</a>
-    <a href="#">Newsletters</a>
-    <a href="#">Podcasts</a>
-    <a href="#">Videos</a>
-    <a href="#">Academy</a>
-    <a href="#">Blogs</a>
-    <a href="#">Events</a>
-    <a href="#">Tools</a>
-
-    <div class="flex flex-col gap-2 mt-4">
-      <button @click="openLogin = true; openRegister = false; openMenu = false" class="px-4 py-2 rounded-xl border border-indigo-500 text-indigo-500 hover:bg-indigo-600 hover:text-white transition duration-300">
+    <!-- Auth Buttons (desktop) -->
+    <div class="hidden md:flex mt-6 gap-2">
+      <button @click="openLogin = true; openRegister = false;" class="px-5 py-2 rounded-xl border border-indigo-500 text-indigo-500 hover:bg-indigo-600 hover:text-white transition duration-300">
         Login
       </button>
-      <button @click="openRegister = true; openLogin = false; openMenu = false" class="px-4 py-2 rounded-xl bg-indigo-500 text-white hover:bg-indigo-600 transition duration-300">
+      <button @click="openRegister = true; openLogin = false;" class="px-5 py-2 rounded-xl border border-white bg-indigo-500 hover:bg-indigo-600 hover:text-white text-white transition duration-300">
         Register
       </button>
     </div>
-  </div>
-  </header>
+
+    <!-- Mobile Menu Toggle -->
+    <button @click="mobileOpen = !mobileOpen" class="md:hidden focus:outline-none mt-4 z-50 relative pr-3">
+      <div class="w-6 h-6 relative">
+        <span :class="mobileOpen ? 'rotate-45 translate-y-2' : ''" class="block absolute h-0.5 w-6 bg-white transform transition duration-300 ease-in-out"></span>
+        <span :class="mobileOpen ? 'opacity-0' : ''" class="block absolute h-0.5 w-6 bg-white top-2.5 transform transition duration-300 ease-in-out"></span>
+        <span :class="mobileOpen ? '-rotate-45 -translate-y-2' : ''" class="block absolute h-0.5 w-6 bg-white top-5 transform transition duration-300 ease-in-out"></span>
+      </div>
+    </button>
+
+    <!-- Mobile Menu Dropdown -->
+    <div 
+      x-show="mobileOpen" 
+      x-transition 
+      class="absolute top-full left-0 w-full bg-black/90 text-white shadow-md flex flex-col items-center gap-4 py-6 z-40 md:hidden"
+    >
+      <ul class="flex flex-col space-y-3 text-lg">
+        <li><a href="#" @click="mobileOpen = false">Home</a></li>
+        <li><a href="#" @click="mobileOpen = false">Newsletters</a></li>
+        <li><a href="#" @click="mobileOpen = false">Podcasts</a></li>
+        <li><a href="#" @click="mobileOpen = false">Videos</a></li>
+        <li><a href="#" @click="mobileOpen = false">Academy</a></li>
+        <li><a href="#" @click="mobileOpen = false">Blogs</a></li>
+        <li><a href="#" @click="mobileOpen = false">Events</a></li>
+        <li><a href="#" @click="mobileOpen = false">Tools</a></li>
+      </ul>
+      <div class="flex flex-col gap-2 mt-4 w-full px-4">
+        <button @click="openLogin = true; openRegister = false; mobileOpen = false;" class="w-full px-5 py-2 rounded-xl border border-indigo-500 text-indigo-500 hover:bg-indigo-600 hover:text-white transition duration-300">
+          Login
+        </button>
+        <button @click="openRegister = true; openLogin = false; mobileOpen = false;" class="w-full px-5 py-2 rounded-xl border border-white bg-indigo-500 hover:bg-indigo-600 hover:text-white text-white transition duration-300">
+          Register
+        </button>
+      </div>
+    </div>
+
+  </nav>
+</header>
 
 
   <!-- carousel -->
@@ -981,6 +983,42 @@ style="display: none"
 </div>
    <!-- End Register Overlay -->
 
+   <!-- Start SerachBar Overlay -->
+   <div 
+   x-show="openSearch" 
+   x-transition 
+   @keydown.escape.window="openSearch = false"
+   class="fixed inset-0 z-[250] flex items-center justify-center bg-black/70 backdrop-blur-sm"
+ style="display: none;"
+   >
+   <div class="bg-gray-900 text-white w-[90%] max-w-md p-6 rounded-xl relative shadow-2xl">
+     <!-- Close Button -->
+     <button 
+       @click="openSearch = false" 
+       class="absolute top-3 right-3 text-gray-400 hover:text-white text-2xl"
+       aria-label="Close"
+     >
+      <i class="fas fa-times"></i>
+     </button>
+ 
+     <!-- Search Input -->
+     <input 
+       type="text" 
+       placeholder="Search Fresients..." 
+       class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 mt-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+     >
+ 
+     <!-- Suggestions -->
+     <ul class="mt-4 space-y-2">
+       <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">🔍 AI Startup Funding Reports</li>
+       <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">📊 Weekly AI Newsletters</li>
+       <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">🧠 Top AI Courses 2025</li>
+       <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">🚀 Founder Interviews</li>
+     </ul>
+   </div>
+ </div>
+ 
+   <!-- End Serach Bar Overlay -->
    <!-- Start Contact Us -->
    <section class="px-4 py-4 md:py-8 bg-gray-900 text-white">
     <form action="https://fabform.io/f/xxxxx" method="post">
@@ -1089,42 +1127,6 @@ style="display: none"
   </section>
   
    <!-- End Contact Us -->
-
-   <!-- Start Search Modal -->
-<!-- Search Modal -->
-<div 
-  x-show="openSearch" 
-  x-transition 
-  @keydown.escape.window="openSearch = false"
-  class="fixed inset-0 z-[250] flex items-center justify-center bg-black/70 backdrop-blur-sm"
->
-  <div class="bg-gray-900 text-white w-[90%] max-w-md p-6 rounded-xl relative shadow-2xl">
-    <!-- Close Button -->
-    <button 
-      @click="openSearch = false" 
-      class="absolute top-3 right-3 text-gray-400 hover:text-white text-2xl"
-      aria-label="Close"
-    >
-      &times;
-    </button>
-
-    <!-- Search Input -->
-    <input 
-      type="text" 
-      placeholder="Search Fresients..." 
-      class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 mt-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-    >
-
-    <!-- Suggestions -->
-    <ul class="mt-4 space-y-2">
-      <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">🔍 AI Startup Funding Reports</li>
-      <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">📊 Weekly AI Newsletters</li>
-      <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">🧠 Top AI Courses 2025</li>
-      <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">🚀 Founder Interviews</li>
-    </ul>
-  </div>
-</div>
-   <!-- End SearchModal -->
   <!-- Start Footer -->
   <footer class="bg-gray-950 text-gray-300 py-12 px-4 sm:px-8 lg:px-16">
     <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
