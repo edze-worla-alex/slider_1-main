@@ -13,15 +13,20 @@
 </head>
 <body x-data="{ openLogin: false,openRegister: false }" class="prose max-w-none relative w-screen overflow-x-hidden">
   <header 
-  x-data="{ scrolled: false }" 
+  x-data="{ scrolled: false, mobileOpen: false, openLogin: false, openRegister: false }" 
   x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 10)" 
-  :class="scrolled ? 'bg-black/90 backdrop-blur-md shadow-md ml-0 w-full pr-4 pl-4 pb-4' : 'bg-transparent container '"
-  class="text-center py-2 pb-4 flex items-center justify-center  relative sticky top-0 mx-auto z-[200] transition-all duration-300 ease-in-out text-white"
-  >
-    <nav class="text-lg font-semibold flex items-center justify-between w-full">
-      <a class="mt-4 bg-white rounded-2xl w-[80px] md:w-[158px] md:shrink-0" href="index.html"><img alt="fresients" loading="lazy" width="158" height="36" src="fresient-logo.png"></a>
-      <ul class="hidden md:flex space-x-6 mt-4">
+  :class="scrolled ? 'bg-black/90 backdrop-blur-md shadow-md ml-0 w-full pr-4 pl-4 pb-4' : 'bg-transparent container'"
+  class="text-center py-2 pb-4 flex items-center justify-center relative sticky top-0 mx-auto z-[200] transition-all duration-300 ease-in-out text-white"
+>
+  <nav class="text-lg font-semibold flex items-center justify-between w-full relative">
 
+    <!-- Logo -->
+    <a class="mt-4 bg-white rounded-2xl w-[80px] md:w-[158px] md:shrink-0" href="index.html">
+      <img alt="fresients" loading="lazy" width="158" height="36" src="fresient-logo.png">
+    </a>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex space-x-6 mt-4 menu">
       <li><a href="#">Home</a></li>
       <li><a href="#">Newsletters</a></li>
       <li><a href="#">Podcasts</a></li>
@@ -30,21 +35,56 @@
       <li><a href="#">Blogs</a></li>
       <li><a href="#">Events</a></li>
       <li><a href="#">Tools</a></li>
-      </ul>
+    </ul>
 
-      <!-- Buttons -->
-    <div class="flex mt-6 gap-2">
+    <!-- Auth Buttons (desktop) -->
+    <div class="hidden md:flex mt-6 gap-2">
       <button @click="openLogin = true; openRegister = false;" class="px-5 py-2 rounded-xl border border-indigo-500 text-indigo-500 hover:bg-indigo-600 hover:text-white transition duration-300">
-        
         Login
       </button>
       <button @click="openRegister = true; openLogin = false;" class="px-5 py-2 rounded-xl border border-white bg-indigo-500 hover:bg-indigo-600 hover:text-white text-white transition duration-300">
         Register
       </button>
-      
     </div>
-    </nav>
-  </header>
+
+    <!-- Mobile Menu Toggle -->
+    <button @click="mobileOpen = !mobileOpen" class="md:hidden focus:outline-none mt-4 z-50 relative">
+      <div class="w-6 h-6 relative">
+        <span :class="mobileOpen ? 'rotate-45 translate-y-2' : ''" class="block absolute h-0.5 w-6 bg-white transform transition duration-300 ease-in-out"></span>
+        <span :class="mobileOpen ? 'opacity-0' : ''" class="block absolute h-0.5 w-6 bg-white top-2.5 transform transition duration-300 ease-in-out"></span>
+        <span :class="mobileOpen ? '-rotate-45 -translate-y-2' : ''" class="block absolute h-0.5 w-6 bg-white top-5 transform transition duration-300 ease-in-out"></span>
+      </div>
+    </button>
+
+    <!-- Mobile Menu Dropdown -->
+    <div 
+      x-show="mobileOpen" 
+      x-transition 
+      class="absolute top-full left-0 w-full bg-black/90 text-white shadow-md flex flex-col items-center gap-4 py-6 z-40 md:hidden"
+    >
+      <ul class="flex flex-col space-y-3 text-lg">
+        <li><a href="#" @click="mobileOpen = false">Home</a></li>
+        <li><a href="#" @click="mobileOpen = false">Newsletters</a></li>
+        <li><a href="#" @click="mobileOpen = false">Podcasts</a></li>
+        <li><a href="#" @click="mobileOpen = false">Videos</a></li>
+        <li><a href="#" @click="mobileOpen = false">Academy</a></li>
+        <li><a href="#" @click="mobileOpen = false">Blogs</a></li>
+        <li><a href="#" @click="mobileOpen = false">Events</a></li>
+        <li><a href="#" @click="mobileOpen = false">Tools</a></li>
+      </ul>
+      <div class="flex flex-col gap-2 mt-4 w-full px-4">
+        <button @click="openLogin = true; openRegister = false; mobileOpen = false;" class="w-full px-5 py-2 rounded-xl border border-indigo-500 text-indigo-500 hover:bg-indigo-600 hover:text-white transition duration-300">
+          Login
+        </button>
+        <button @click="openRegister = true; openLogin = false; mobileOpen = false;" class="w-full px-5 py-2 rounded-xl border border-white bg-indigo-500 hover:bg-indigo-600 hover:text-white text-white transition duration-300">
+          Register
+        </button>
+      </div>
+    </div>
+
+  </nav>
+</header>
+
 
   <!-- carousel -->
   <div class="carousel">
@@ -948,41 +988,37 @@ style="display: none"
             <div class="lg:mb-0 mb-10">
               <div class="group w-full h-full">
                 <div class="relative h-full">
-                  <img src="https://pagedone.io/asset/uploads/1696488602.png"
-                       alt="ContactUs tailwind section"
-                       class="w-full h-full lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-indigo-700 opacity-80" />
+                  <iframe class="w-full h-full lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-indigo-700 opacity-80" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d31769.237661240073!2d-0.2764257446995105!3d5.544065693911171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sgoogle%20maps%20for%20dansoman%20russia%20road!5e0!3m2!1sen!2sgh!4v1753014492633!5m2!1sen!2sgh" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  
                   <h1 class="font-manrope text-white text-4xl font-bold leading-10 absolute top-11 left-11">Contact us</h1>
   
                   <div class="absolute bottom-0 w-full lg:p-11 p-5">
-                    <div class="bg-gray-800 rounded-lg p-6 block">
-                      <a href="javascript:;" class="flex items-center mb-6">
-                        <!-- Phone Icon -->
-                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                          <path d="..." stroke="#818CF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        <h5 class="text-white text-base font-normal leading-6 ml-5">470-601-1911</h5>
+                    <div class="bg-gray-800 rounded-lg p-6 block text-white space-y-6">
+                      <!-- Phone -->
+                      <a href="tel:+233249435529" class="flex items-center">
+                        <i class="fas fa-phone text-indigo-400 text-xl w-8"></i>
+                        <h5 class="ml-5 text-base font-normal leading-6">+233249435529</h5>
                       </a>
-  
-                      <a href="https://veilmail.io/irish-geoff" class="flex items-center mb-6">
-                        <!-- Mail Icon -->
-                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                          <path d="..." stroke="#818CF8" stroke-width="2" stroke-linecap="round" />
-                        </svg>
-                        <h5 class="text-white text-base font-normal leading-6 ml-5">https://veilmail.io/irish-geoff</h5>
+                    
+                      <!-- Email -->
+                      <a href="mailto:contact@fresients.com" class="flex items-center">
+                        <i class="fas fa-envelope text-indigo-400 text-xl w-8"></i>
+                        <h5 class="ml-5 text-base font-normal leading-6">contact@fresients.com</h5>
                       </a>
-  
-                      <a href="javascript:;" class="flex items-center">
-                        <!-- Location Icon -->
-                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                          <path d="..." stroke="#818CF8" stroke-width="2" />
-                          <path d="..." stroke="#818CF8" stroke-width="2" />
-                        </svg>
-                        <h5 class="text-white text-base font-normal leading-6 ml-5">654 Sycamore Avenue, Meadowville, WA 76543</h5>
+                    
+                      <!-- Location -->
+                      <div class="flex items-center">
+                        <i class="fas fa-map-marker-alt text-indigo-400 text-xl w-8"></i>
+                        <h5 class="ml-5 text-base font-normal leading-6">Russia Road, Dansoman - Accra, Ghana</h5>
+                      </div>
+                    
+                      <!-- Website -->
+                      <a href="https://www.fresients.com" target="_blank" class="flex items-center">
+                        <i class="fas fa-globe text-indigo-400 text-xl w-8"></i>
+                        <h5 class="ml-5 text-base font-normal leading-6">www.fresients.com</h5>
                       </a>
                     </div>
+                    
                   </div>
                 </div>
               </div>
