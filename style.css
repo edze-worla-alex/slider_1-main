@@ -331,3 +331,8 @@ header{
         100% 100%
       );
   }
+
+ 
+.hidetilt{
+    transform: inherit !important;
+}

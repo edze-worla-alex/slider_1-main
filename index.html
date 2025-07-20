@@ -71,6 +71,7 @@
       x-show="mobileOpen" 
       x-transition 
       class="absolute top-full left-0 w-full bg-black/90 text-white shadow-md flex flex-col items-center gap-4 py-6 z-40 md:hidden"
+      style="display: none"
     >
       <ul class="flex flex-col space-y-3 text-lg">
         <li><a href="#" @click="mobileOpen = false">Home</a></li>
@@ -1307,10 +1308,11 @@ data-tilt data-tilt-axis="x"
   </footer>
   
   <script src="app.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
       AOS.init({once: true,startEvent: 'DOMContentLoaded', duration: 3000 });  
   </script>
+ 
 </body>
 </html>
