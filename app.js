@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
     if (!nextDom || !prevDom || !SliderDom || !thumbnailBorderDom) return;
   
-    let timeRunning = 3000;
+    let timeRunning = 5000;
     let timeAutoNext = 7000;
     let runTimeOut;
     let runNextAuto;
@@ -47,4 +47,38 @@ document.addEventListener("DOMContentLoaded", function () {
   
     nextDom.addEventListener('click', () => showSlider('next'));
     prevDom.addEventListener('click', () => showSlider('prev'));
+
+    const handleThumbnailClick = () => {
+      const thumbnailItemsDom = thumbnailBorderDom.querySelectorAll('.item');
+      const sliderItemsDom = SliderDom.querySelectorAll('.item');
+    
+      thumbnailItemsDom.forEach((thumb, index) => {
+        thumb.addEventListener('click', () => {
+          const currentFirst = sliderItemsDom[0];
+          const targetItem = sliderItemsDom[index];
+    
+          if (currentFirst === targetItem) return; // Already active
+    
+          // Animate to selected slide
+          for (let i = 0; i < index; i++) {
+            SliderDom.appendChild(SliderDom.querySelector('.item'));
+            thumbnailBorderDom.appendChild(thumbnailBorderDom.querySelector('.item'));
+          }
+    
+          carouselDom.classList.add('next');
+    
+          clearTimeout(runTimeOut);
+          runTimeOut = setTimeout(() => {
+            carouselDom.classList.remove('next');
+          }, timeRunning);
+    
+          clearTimeout(runNextAuto);
+          runNextAuto = setTimeout(() => {
+            showSlider('next');
+          }, timeAutoNext);
+        });
+      });
+    };
+    
+    handleThumbnailClick();
   });
