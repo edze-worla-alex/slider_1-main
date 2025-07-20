@@ -86,10 +86,9 @@ header a{
 }
 /* thumbail */
 .thumbnail{
-    position: absolute;
     width: max-content;
     z-index: 100;
-    display: flex;
+    /* display: flex; */
     gap: 20px;
 }
 .thumbnail .item{
