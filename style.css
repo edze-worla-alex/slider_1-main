@@ -236,19 +236,19 @@ header{
     position: absolute;
     z-index: 1000;
     width: 0%;
-    height: 5px;
-    background-color: #141414;
+    height: 6px;
+    background-color: indigo;
     left: 0;
     top: 0;
 }
 
 .carousel.next .time,
 .carousel.prev .time{
-    animation: runningTime 3s linear 1 forwards;
+    animation: runningTime 2s linear 1 forwards;
 }
 @keyframes runningTime{
-    from{ width: 100%}
-    to{width: 0}
+    from{ width: 0%}
+    to{width: 100%}
 }
 
 
