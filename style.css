@@ -258,7 +258,7 @@ header{
     z-index: 2;
 }
 
-.carousel.prev .list .item:nth-child(2) img{
+.carousel.prev .list .item:nth-child(2) video{
     animation: outFrame 0.5s linear 1 forwards;
     position: absolute;
     bottom: 0;
