@@ -8,14 +8,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="prose max-w-none relative">
+<body class="prose max-w-none relative w-screen overflow-x-hidden">
   <header class="text-center py-4 flex justify-center">
     <nav class="space-x-4 text-lg font-semibold">
       <a href="#">Home</a>
       <a href="#">Newsletters</a>
       <a href="#">Podcasts</a>
       <a href="#">Videos</a>
-      <a href="#">Courses</a>
+      <a href="#">Academy</a>
       <a href="#">Blogs</a>
       <a href="#">Events</a>
       <a href="#">Tools</a>
@@ -131,10 +131,31 @@
           </div>
         </div>
       </div>
+
+      <div class="item relative">
+        <video muted loop autoplay>
+          <source src="https://videos.pexels.com/video-files/8466283/8466283-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-black opacity-50 w-screen h-screen pointer-events-none ">
+          
+        </div>
+        <div class="content">
+          <div class="author">FRESIENTS AI</div>
+          <div class="title">BREAKTHROUGHS</div>
+          <div class="topic">EXPLORE</div>
+          <div class="des">
+            We break down complex AI terms and systems into simple explainers. Watch our tutorials or read our Knowledge Quest series to upskill fast and free.
+          </div>
+          <div class="buttons">
+            <button>START LEARNING</button>
+            <button>WATCH NOW</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- list thumbnail -->
-    <div class="thumbnail hidden md:grid grid-cols-3 mr-0 absolute bottom-10 right-10">
+    <div class="thumbnail hidden md:grid grid-cols-3 mr-0 absolute bottom-10 right-10 rtl">
       <div class="item">
         <img src="image/slider1.jpg">
         <div class="content">
@@ -170,6 +191,14 @@
           <div class="description">Fast-track your skills</div>
         </div>
       </div>
+
+      <div class="item">
+        <img src="image/slider6.jpg">
+        <div class="content">
+          <div class="title">AI Academy</div>
+          <div class="description">Fast-track your skills</div>
+        </div>
+      </div>
     </div>
 
     <!-- next prev -->
@@ -181,7 +210,323 @@
     <!-- time running -->
     <div class="time"></div>
   </div>
+<!-- Newsletters -->
+<section class="bg-gray-950 text-white py-16 px-4 sm:px-6 lg:px-12">
+  <h2 class="text-4xl font-extrabold text-center mb-14 tracking-tight">📬 Top AI & Startup Newsletters</h2>
 
+  <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+    
+    <!-- Newsletter 1 -->
+    <div class="bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+      <div class="flex items-center mb-4 text-teal-400">
+        <i class="fas fa-robot text-2xl me-3"></i>
+        <h3 class="text-xl font-bold">FutureScope Weekly</h3>
+      </div>
+      <p class="text-gray-400 mb-4 text-sm">Your radar on upcoming AI trends, product launches & research papers.</p>
+      <div class="text-sm text-gray-300 space-y-2">
+        <div><i class="fas fa-clock text-teal-500 me-2"></i>Weekly</div>
+        <div><i class="fas fa-tags text-yellow-500 me-2"></i>AI, Research, Tools</div>
+        <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
+      </div>
+    </div>
+
+    <!-- Newsletter 2 -->
+    <div class="bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+      <div class="flex items-center mb-4 text-orange-400">
+        <i class="fas fa-lightbulb text-2xl me-3"></i>
+        <h3 class="text-xl font-bold">Startup Signals</h3>
+      </div>
+      <p class="text-gray-400 mb-4 text-sm">Venture trends, pitch breakdowns, and founder stories from Africa & beyond.</p>
+      <div class="text-sm text-gray-300 space-y-2">
+        <div><i class="fas fa-clock text-orange-500 me-2"></i>Bi-weekly</div>
+        <div><i class="fas fa-tags text-yellow-500 me-2"></i>Startups, VC, Africa</div>
+        <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
+      </div>
+    </div>
+
+    <!-- Newsletter 3 -->
+    <div class="bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+      <div class="flex items-center mb-4 text-pink-400">
+        <i class="fas fa-brain text-2xl me-3"></i>
+        <h3 class="text-xl font-bold">Deep Dive Digest</h3>
+      </div>
+      <p class="text-gray-400 mb-4 text-sm">Concise breakdowns of trending AI research papers and ML concepts.</p>
+      <div class="text-sm text-gray-300 space-y-2">
+        <div><i class="fas fa-clock text-pink-500 me-2"></i>Monthly</div>
+        <div><i class="fas fa-tags text-yellow-500 me-2"></i>AI Papers, NLP, CV</div>
+        <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
+      </div>
+    </div>
+
+    <!-- Newsletter 4 -->
+    <div class="bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+      <div class="flex items-center mb-4 text-green-400">
+        <i class="fas fa-globe-africa text-2xl me-3"></i>
+        <h3 class="text-xl font-bold">Africa Tech Pulse</h3>
+      </div>
+      <p class="text-gray-400 mb-4 text-sm">Curated African tech news, founder spotlights, and startup scenes.</p>
+      <div class="text-sm text-gray-300 space-y-2">
+        <div><i class="fas fa-clock text-green-500 me-2"></i>Weekly</div>
+        <div><i class="fas fa-tags text-yellow-500 me-2"></i>Africa, Startups, Funding</div>
+        <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
+      </div>
+    </div>
+
+    <!-- Newsletter 5 -->
+    <div class="bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+      <div class="flex items-center mb-4 text-purple-400">
+        <i class="fas fa-dna text-2xl me-3"></i>
+        <h3 class="text-xl font-bold">Health AI Insider</h3>
+      </div>
+      <p class="text-gray-400 mb-4 text-sm">Newsletters focusing on AI in healthcare, diagnostics & biotech innovation.</p>
+      <div class="text-sm text-gray-300 space-y-2">
+        <div><i class="fas fa-clock text-purple-500 me-2"></i>Bi-weekly</div>
+        <div><i class="fas fa-tags text-yellow-500 me-2"></i>Healthcare, AI, Biotech</div>
+        <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
+      </div>
+    </div>
+
+    <!-- Newsletter 6 -->
+    <div class="bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+      <div class="flex items-center mb-4 text-red-400">
+        <i class="fas fa-chart-line text-2xl me-3"></i>
+        <h3 class="text-xl font-bold">VC Watchlist</h3>
+      </div>
+      <p class="text-gray-400 mb-4 text-sm">Insights into venture funding trends, top rounds, and new accelerators.</p>
+      <div class="text-sm text-gray-300 space-y-2">
+        <div><i class="fas fa-clock text-red-500 me-2"></i>Weekly</div>
+        <div><i class="fas fa-tags text-yellow-500 me-2"></i>VC, Startups, Capital</div>
+        <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- End Newsletters -->
+ <!-- Featured Podcasts -->
+<section class="bg-gray-950 text-white py-16 px-4 sm:px-6 lg:px-12 overflow-x-hidden relative w-screen">
+  <h2 class="text-4xl font-extrabold text-center mb-14 tracking-tight">🎧 Featured Podcasts on Fresients</h2>
+
+  <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 container mx-auto">
+
+    <!-- Podcast Card -->
+    <div class="bg-gray-900 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1677212004257-103cfa6b59d0?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Podcast Cover" class="w-full h-48 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-bold mb-2">Future Decoded</h3>
+        <p class="text-gray-400 text-sm leading-relaxed mb-4">Dive into AI breakthroughs, startup stories, and tomorrow’s tech shaping the world.</p>
+        <div class="flex items-center justify-between text-sm text-gray-400">
+          <span><i class="fa-solid fa-microphone-lines me-2 text-teal-400"></i>18 Episodes</span>
+          <div class="space-x-4">
+            <a href="#" class="hover:text-teal-400"><i class="fas fa-eye"></i> <span class="sr-only">Preview</span></a>
+            <a href="#" class="hover:text-teal-400"><i class="fas fa-play-circle"></i> <span class="sr-only">Listen</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Podcast 2 -->
+    <div class="bg-gray-900 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
+      <img src="https://plus.unsplash.com/premium_photo-1700740342769-17e817ad6400?q=80&w=774&auto=format&fit=crop" alt="Podcast Cover" class="w-full h-48 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-bold mb-2">The Algorithm Circle</h3>
+        <p class="text-gray-400 text-sm leading-relaxed mb-4">From ML to NLP — deep dives with researchers and AI engineers breaking the mold.</p>
+        <div class="flex items-center justify-between text-sm text-gray-400">
+          <span><i class="fa-solid fa-microphone-lines me-2 text-teal-400"></i>12 Episodes</span>
+          <div class="space-x-4">
+            <a href="#" class="hover:text-teal-400"><i class="fas fa-eye"></i></a>
+            <a href="#" class="hover:text-teal-400"><i class="fas fa-play-circle"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Podcast 3 -->
+    <div class="bg-gray-900 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1553484771-0a615f264d58?q=80&w=870&auto=format&fit=crop" alt="Podcast Cover" class="w-full h-48 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-bold mb-2">Founders Unfiltered</h3>
+        <p class="text-gray-400 text-sm leading-relaxed mb-4">Real stories. Real failures. Real grit. Meet the dreamers building Africa's tech future.</p>
+        <div class="flex items-center justify-between text-sm text-gray-400">
+          <span><i class="fa-solid fa-microphone-lines me-2 text-teal-400"></i>24 Episodes</span>
+          <div class="space-x-4">
+            <a href="#" class="hover:text-teal-400"><i class="fas fa-eye"></i></a>
+            <a href="#" class="hover:text-teal-400"><i class="fas fa-play-circle"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Podcast 4 -->
+    <div class="bg-gray-900 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
+      <img src="https://plus.unsplash.com/premium_photo-1684522167826-a473e63337b1?q=80&w=1032&auto=format&fit=crop" alt="Podcast Cover" class="w-full h-48 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-bold mb-2">Cloud & Scale</h3>
+        <p class="text-gray-400 text-sm leading-relaxed mb-4">Tech stack talk for founders scaling with AWS, GCP, and edge infrastructure.</p>
+        <div class="flex items-center justify-between text-sm text-gray-400">
+          <span><i class="fa-solid fa-microphone-lines me-2 text-teal-400"></i>9 Episodes</span>
+          <div class="space-x-4">
+            <a href="#" class="hover:text-teal-400"><i class="fas fa-eye"></i></a>
+            <a href="#" class="hover:text-teal-400"><i class="fas fa-play-circle"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <!--End Featured Podcasts  -->
+
+  <!-- Videos & Academy -->
+  <section class="grid gap-0 sm:grid-cols-1 lg:grid-cols-2 bg-gray-900 ">
+    <!-- Start Videos -->
+  <div class="bg-gray-950 text-white px-4 py-8 container mx-auto">
+    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+      <svg class="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553 2.276A1 1 0 0120 13.118V17a1 1 0 01-.553.894L15 20M9 4v16M3 7v10" />
+      </svg>
+      Featured Videos
+    </h2>
+  
+    <div class="grid md:grid-cols-1 gap-6 ">
+      <!-- Video Card 1 -->
+      <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg">
+        <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/Qh7Dqzm8f7Y?rel=0" title="YouTube video player" allowfullscreen></iframe>
+        <div class="md:w-1/2 space-y-2">
+          <div class="flex items-center gap-2 text-sm text-teal-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 4.75L4.5 10m0 0l5.25 5.25M4.5 10H20.25" /></svg>
+            AI x Startup Insights
+          </div>
+          <h3 class="text-lg font-semibold">The AI Funding Boom – Are We in a Bubble?</h3>
+          <p class="text-gray-400 text-sm">Explore current trends, investor behavior, and what it means for founders in AI startup ecosystems.</p>
+          <div class="flex gap-3 mt-2 text-gray-400 text-xs">
+            <div class="flex items-center gap-1"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6v6l4 2" /></svg> 10 min</div>
+            <div class="flex items-center gap-1"><svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 3h18v18H3V3z" /></svg> TechCrunch</div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Video Card 2 -->
+      <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg">
+        <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/1Q8fG0TtVAY?rel=0" title="YouTube video player" allowfullscreen></iframe>
+        <div class="md:w-1/2 space-y-2">
+          <div class="flex items-center gap-2 text-sm text-purple-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405M20 17V7a2 2 0 00-2-2H6a2 2 0 00-2 2v10m4 0h10" /></svg>
+            Deep Dive
+          </div>
+          <h3 class="text-lg font-semibold">Inside OpenAI: How They Build Models</h3>
+          <p class="text-gray-400 text-sm">Take a peek into OpenAI’s engineering processes, safety frameworks, and how GPT-like models are trained.</p>
+          <div class="flex gap-3 mt-2 text-gray-400 text-xs">
+            <div class="flex items-center gap-1"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6v6l4 2" /></svg> 8 min</div>
+            <div class="flex items-center gap-1"><svg class="w-4 h-4 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2l4 4H8l4-4zM12 22l-4-4h8l-4 4z" /></svg> OpenAI</div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Video Card 3 -->
+      <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg">
+        <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/Opnb2r-J0dM?rel=0" title="YouTube video player" allowfullscreen></iframe>
+        <div class="md:w-1/2 space-y-2">
+          <div class="flex items-center gap-2 text-sm text-rose-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h3m3-6h6m3 6h3m-3 6h3M3 16h3m3 6h6" /></svg>
+            AI Applications
+          </div>
+          <h3 class="text-lg font-semibold">10 Ways AI Is Changing Healthcare in Africa</h3>
+          <p class="text-gray-400 text-sm">From diagnostics to drug development, here’s how AI is transforming health delivery in emerging economies.</p>
+          <div class="flex gap-3 mt-2 text-gray-400 text-xs">
+            <div class="flex items-center gap-1"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6v6l4 2" /></svg> 12 min</div>
+            <div class="flex items-center gap-1"><svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></svg> BBC Africa Tech</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- End Videos -->
+
+  <!-- Start Academy -->
+  <div class="bg-gray-900 text-white py-16 px-4 md:px-16 w-full rounded-md">
+    <div class="text-center">
+      <h2 class="text-4xl font-extrabold mb-4"><i class="fas fa-graduation-cap text-yellow-400 mr-2"></i>Join Fresients Academy</h2>
+      <p class="text-gray-300 mb-10 text-lg">
+        Unlock your potential with cutting-edge courses in AI, startups, and future tech. Learn from top industry experts.
+      </p>
+  
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-2">
+        <!-- Course 1 -->
+        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-yellow-500/20 transition">
+          <img src="https://source.unsplash.com/400x250/?ai,technology" alt="AI Mastery" class="w-full h-40 object-cover">
+          <div class="p-5">
+            <h3 class="text-xl font-semibold mb-2">
+              <i class="fas fa-robot text-teal-400 mr-2"></i>AI Mastery
+            </h3>
+            <p class="text-gray-400 text-sm mb-4">Learn AI fundamentals, ML pipelines, and build models using Python.</p>
+            <div class="flex justify-between text-sm text-gray-400">
+              <span><i class="fas fa-clock mr-1"></i> 6 Weeks</span>
+              <span><i class="fas fa-signal mr-1"></i> Intermediate</span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Course 2 -->
+        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-purple-500/20 transition">
+          <img src="https://source.unsplash.com/400x250/?startup,business" alt="Startup Launchpad" class="w-full h-40 object-cover">
+          <div class="p-5">
+            <h3 class="text-xl font-semibold mb-2">
+              <i class="fas fa-rocket text-purple-400 mr-2"></i>Startup Launchpad
+            </h3>
+            <p class="text-gray-400 text-sm mb-4">Learn how to validate, build, and scale your startup idea with real examples.</p>
+            <div class="flex justify-between text-sm text-gray-400">
+              <span><i class="fas fa-clock mr-1"></i> 4 Weeks</span>
+              <span><i class="fas fa-fire mr-1"></i> Beginner</span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Course 3 -->
+        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-green-500/20 transition">
+          <img src="https://source.unsplash.com/400x250/?data,analytics" alt="Data Analytics Pro" class="w-full h-40 object-cover">
+          <div class="p-5">
+            <h3 class="text-xl font-semibold mb-2">
+              <i class="fas fa-chart-line text-green-400 mr-2"></i>Data Analytics Pro
+            </h3>
+            <p class="text-gray-400 text-sm mb-4">Master Excel, SQL, Tableau, and Python for real-world data projects.</p>
+            <div class="flex justify-between text-sm text-gray-400">
+              <span><i class="fas fa-clock mr-1"></i> 5 Weeks</span>
+              <span><i class="fas fa-laptop-code mr-1"></i> Advanced</span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Course 4 -->
+        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition">
+          <img src="https://source.unsplash.com/400x250/?coding,web" alt="Web for Founders" class="w-full h-40 object-cover">
+          <div class="p-5">
+            <h3 class="text-xl font-semibold mb-2">
+              <i class="fas fa-code text-blue-400 mr-2"></i>Web for Founders
+            </h3>
+            <p class="text-gray-400 text-sm mb-4">Build startup websites using HTML, Tailwind CSS, and no-code tools.</p>
+            <div class="flex justify-between text-sm text-gray-400">
+              <span><i class="fas fa-clock mr-1"></i> 3 Weeks</span>
+              <span><i class="fas fa-paint-brush mr-1"></i> All Levels</span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="mt-12">
+        <a href="#" class="inline-flex items-center bg-indigo-500 hover:bg-indigo-600 text-gray-900 font-bold px-6 py-3 rounded-full text-lg transition">
+          <i class="fas fa-sign-in-alt mr-2"></i> Enroll Now
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- End Academy -->
+  </section>
+  
   <script src="app.js"></script>
 </body>
 </html>
