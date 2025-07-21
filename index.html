@@ -1,846 +1,897 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fresients | AI & Startups Insights</title>
-  <link rel="shortcut icon" href="favicon.png"/>
+  <link rel="shortcut icon" href="favicon.png" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
-    
+
 </head>
-<body x-data="{ openLogin: false,openRegister: false,openSearch: false }" class="prose max-w-none relative w-screen overflow-x-hidden">
-  <header 
-  x-data="{ scrolled: false,mobileOpen: false}" 
-  x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 10)" 
-  :class="scrolled ? 'bg-black/90 backdrop-blur-md shadow-md ml-0 w-full pr-4 pl-4 pb-4' : 'bg-transparent container'"
-  class="text-center py-2 pb-4 flex items-center justify-center relative sticky top-0 mx-auto z-[200] transition-all duration-300 ease-in-out text-white"
->
-  <nav class="text-lg font-semibold flex items-center justify-between w-full relative">
 
-    <!-- Logo -->
-    <a class="mt-4 bg-white rounded-2xl w-[80px] md:w-[158px] md:shrink-0" href="index.html">
-      <img alt="fresients" loading="lazy" width="158" height="36" src="fresient-logo.png">
-    </a>
+<body x-data="{ openLogin: false,openRegister: false,openSearch: false }"
+  class="prose max-w-none relative w-screen overflow-x-hidden">
+  <header x-data="{ scrolled: false,mobileOpen: false}"
+    x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 10)"
+    :class="scrolled ? 'bg-black/90 backdrop-blur-md shadow-md ml-0 w-full pr-4 pl-4 pb-4' : 'bg-transparent container'"
+    class="text-center py-2 pb-4 flex items-center justify-center relative sticky top-0 mx-auto z-[200] transition-all duration-300 ease-in-out text-white">
+    <nav class="text-lg font-semibold flex items-center justify-between w-full relative">
 
-    <!-- Desktop Menu -->
-    <ul class="hidden md:flex space-x-6 mt-4 menu">
-      <li><a href="#">Home</a></li>
-      <li><a href="#newsletters" @click="scrollToElement('#newsletters', 10)">Newsletters</a></li>
-      <li><a href="#">Podcasts</a></li>
-      <li><a href="#">Videos</a></li>
-      <li><a href="#">Academy</a></li>
-      <li><a href="#">Blogs</a></li>
-      <li><a href="#">Events</a></li>
-      <li><a href="#">Tools</a></li>
-    </ul>
-    <!-- Search Button -->
-    <button 
-  @click="openSearch = true" 
-  class="text-white hover:text-indigo-400 transition duration-300 text-xl p-2 rounded-full bg-transparent hover:bg-white/10 flex items-center justify-center mt-2"
-  aria-label="Open search"
->
-  <i class="fas fa-search"></i>
-</button>
-    <!-- Auth Buttons (desktop) -->
-    <div class="hidden md:flex mt-6 gap-2">
-      <button @click="openLogin = true; openRegister = false;" class="px-5 py-2 rounded-xl border border-indigo-500 text-indigo-500 hover:bg-indigo-600 hover:text-white transition duration-300">
-        Login
-      </button>
-      <button @click="openRegister = true; openLogin = false;" class="px-5 py-2 mr-4 rounded-xl border border-white bg-indigo-500 hover:bg-indigo-600 hover:text-white text-white transition duration-300">
-        Register
-      </button>
-    </div>
+      <!-- Logo -->
+      <a class="mt-4 bg-white rounded-2xl w-[80px] md:w-[158px] md:shrink-0" href="index.html">
+        <img alt="fresients" loading="lazy" width="158" height="36" src="fresient-logo.png">
+      </a>
 
-    <!-- Mobile Menu Toggle -->
-    <button @click="mobileOpen = !mobileOpen" class="md:hidden focus:outline-none mt-4 z-50 relative pr-3">
-      <div class="w-6 h-6 relative">
-        <span :class="mobileOpen ? 'rotate-45 translate-y-2' : ''" class="block absolute h-0.5 w-6 bg-white transform transition duration-300 ease-in-out"></span>
-        <span :class="mobileOpen ? 'opacity-0' : ''" class="block absolute h-0.5 w-6 bg-white top-2.5 transform transition duration-300 ease-in-out"></span>
-        <span :class="mobileOpen ? '-rotate-45 -translate-y-2' : ''" class="block absolute h-0.5 w-6 bg-white top-5 transform transition duration-300 ease-in-out"></span>
-      </div>
-    </button>
-
-    <!-- Mobile Menu Dropdown -->
-    <div 
-      x-show="mobileOpen" 
-      x-transition 
-      class="absolute top-full left-0 w-full bg-black/90 text-white shadow-md flex flex-col items-center gap-4 py-6 z-40 md:hidden"
-      style="display: none"
-    >
-      <ul class="flex flex-col space-y-3 text-lg">
-        <li><a href="#" @click="mobileOpen = false">Home</a></li>
-        <li><a href="#" @click="mobileOpen = false">Newsletters</a></li>
-        <li><a href="#" @click="mobileOpen = false">Podcasts</a></li>
-        <li><a href="#" @click="mobileOpen = false">Videos</a></li>
-        <li><a href="#" @click="mobileOpen = false">Academy</a></li>
-        <li><a href="#" @click="mobileOpen = false">Blogs</a></li>
-        <li><a href="#" @click="mobileOpen = false">Events</a></li>
-        <li><a href="#" @click="mobileOpen = false">Tools</a></li>
+      <!-- Desktop Menu -->
+      <ul class="hidden md:flex space-x-6 mt-4 menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#newsletters" @click="scrollToElement('#newsletters', 10)">Newsletters</a></li>
+        <li><a href="#">Podcasts</a></li>
+        <li><a href="#">Videos</a></li>
+        <li><a href="#">Academy</a></li>
+        <li><a href="#">Blogs</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Tools</a></li>
       </ul>
-      <div class="flex flex-col gap-2 mt-4 w-full px-4">
-        <button @click="openLogin = true; openRegister = false; mobileOpen = false;" class="w-full px-5 py-2 rounded-xl border border-indigo-500 text-indigo-500 hover:bg-indigo-600 hover:text-white transition duration-300">
+      <!-- Search Button -->
+      <button @click="openSearch = true"
+        class="text-white hover:text-indigo-400 transition duration-300 text-xl p-2 rounded-full bg-transparent hover:bg-white/10 flex items-center justify-center mt-2"
+        aria-label="Open search">
+        <i class="fas fa-search"></i>
+      </button>
+      <!-- Auth Buttons (desktop) -->
+      <div class="hidden md:flex mt-6 gap-2">
+        <button @click="openLogin = true; openRegister = false;"
+          class="px-5 py-2 rounded-xl border border-indigo-500 text-indigo-500 hover:bg-indigo-600 hover:text-white transition duration-300">
           Login
         </button>
-        <button @click="openRegister = true; openLogin = false; mobileOpen = false;" class="w-full px-5 py-2 rounded-xl border border-white bg-indigo-500 hover:bg-indigo-600 hover:text-white text-white transition duration-300">
+        <button @click="openRegister = true; openLogin = false;"
+          class="px-5 py-2 mr-4 rounded-xl border border-white bg-indigo-500 hover:bg-indigo-600 hover:text-white text-white transition duration-300">
           Register
         </button>
       </div>
-    </div>
 
-  </nav>
-</header>
-
-<section class="relative">
-  <div class="hidden sm:block absolute bottom-0 left-0 w-full h-28 bg-gray-950"
-     style="clip-path: polygon(0 100%, 100% 100%, 50% 50%); z-index: 100;">
-</div>
-  <!-- carousel -->
-  <div class="carousel relative">
-
-    <!-- list item -->
-    <div class="list">
-      <div class="item relative">
-        <video muted loop autoplay>
-          <source src="videos/video1.mp4" type="video/mp4">
-        </video>
-        <div class="absolute inset-0 bg-black/50 backdrop-blur-xs w-full h-screen pointer-events-none ">
-          
+      <!-- Mobile Menu Toggle -->
+      <button @click="mobileOpen = !mobileOpen" class="md:hidden focus:outline-none mt-4 z-50 relative pr-3">
+        <div class="w-6 h-6 relative">
+          <span :class="mobileOpen ? 'rotate-45 translate-y-2' : ''"
+            class="block absolute h-0.5 w-6 bg-white transform transition duration-300 ease-in-out"></span>
+          <span :class="mobileOpen ? 'opacity-0' : ''"
+            class="block absolute h-0.5 w-6 bg-white top-2.5 transform transition duration-300 ease-in-out"></span>
+          <span :class="mobileOpen ? '-rotate-45 -translate-y-2' : ''"
+            class="block absolute h-0.5 w-6 bg-white top-5 transform transition duration-300 ease-in-out"></span>
         </div>
-        <div class="content">
-          <div class="author">FRESIENTS AI</div>
-          <div class="title">AI FIRST</div>
-          <div class="topic">INTELLIGENCE</div>
-          <div class="des h-1 w-3/4 bg-white">
-          </div>
-          <div class="des font-bold text-2xl ">
-            Powering Africa’s tech future with insights, automation, and predictive intelligence. Fresients AI empowers decision-makers and entrepreneurs through curated data and machine learning tools.
-          </div>
-          
-          <div class="buttons">
-            <input class="px-4 py-2" type="email" placeholder="Enter your email">
-            <button>SUBSCRIBE</button>
-          </div>
+      </button>
+
+      <!-- Mobile Menu Dropdown -->
+      <div x-show="mobileOpen" x-transition
+        class="absolute top-full left-0 w-full bg-black/90 text-white shadow-md flex flex-col items-center gap-4 py-6 z-40 md:hidden"
+        style="display: none">
+        <ul class="flex flex-col space-y-3 text-lg">
+          <li><a href="#" @click="mobileOpen = false">Home</a></li>
+          <li><a href="#" @click="mobileOpen = false">Newsletters</a></li>
+          <li><a href="#" @click="mobileOpen = false">Podcasts</a></li>
+          <li><a href="#" @click="mobileOpen = false">Videos</a></li>
+          <li><a href="#" @click="mobileOpen = false">Academy</a></li>
+          <li><a href="#" @click="mobileOpen = false">Blogs</a></li>
+          <li><a href="#" @click="mobileOpen = false">Events</a></li>
+          <li><a href="#" @click="mobileOpen = false">Tools</a></li>
+        </ul>
+        <div class="flex flex-col gap-2 mt-4 w-full px-4">
+          <button @click="openLogin = true; openRegister = false; mobileOpen = false;"
+            class="w-full px-5 py-2 rounded-xl border border-indigo-500 text-indigo-500 hover:bg-indigo-600 hover:text-white transition duration-300">
+            Login
+          </button>
+          <button @click="openRegister = true; openLogin = false; mobileOpen = false;"
+            class="w-full px-5 py-2 rounded-xl border border-white bg-indigo-500 hover:bg-indigo-600 hover:text-white text-white transition duration-300">
+            Register
+          </button>
         </div>
       </div>
 
-      <div class="item relative">
-        <video muted loop autoplay>
+    </nav>
+  </header>
+
+  <section class="relative">
+    <div class="hidden sm:block absolute bottom-0 left-0 w-full h-28 bg-gray-950"
+      style="clip-path: polygon(0 100%, 100% 100%, 50% 50%); z-index: 100;">
+    </div>
+    <!-- carousel -->
+    <div class="carousel relative">
+
+      <!-- list item -->
+      <div class="list">
+        <div class="item relative">
+          <video muted loop autoplay>
+            <source src="videos/video1.mp4" type="video/mp4">
+          </video>
+          <div class="absolute inset-0 bg-black/50 backdrop-blur-xs w-full h-screen pointer-events-none ">
+
+          </div>
+          <div class="content">
+            <div class="author">FRESIENTS AI</div>
+            <div class="title">AI FIRST</div>
+            <div class="topic">INTELLIGENCE</div>
+            <div class="des h-1 w-3/4 bg-white">
+            </div>
+            <div class="des font-bold text-2xl ">
+              Powering Africa’s tech future with insights, automation, and predictive intelligence. Fresients AI
+              empowers decision-makers and entrepreneurs through curated data and machine learning tools.
+            </div>
+
+            <div class="buttons">
+              <input class="px-4 py-2" type="email" placeholder="Enter your email">
+              <button>SUBSCRIBE</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="item relative">
+          <video muted loop autoplay>
             <source src="videos/video2.mp4" type="video/mp4">
           </video>
           <div class="absolute inset-0 bg-black/50 backdrop-blur-xs w-full h-screen pointer-events-none ">
-          
+
           </div>
-        <div class="content">
-          <div class="author">FRESIENTS AI</div>
-          <div class="title">WEEKLY INSIGHTS</div>
-          <div class="topic">STARTUP INTEL</div>
-          <div class="des h-1 w-3/4 bg-white">
-          </div>
-          <div class="des font-bold text-2xl">
-            Discover the hottest AI startups, funding rounds, tech founder stories, and new innovations disrupting industries weekly. Stay ahead with our newsletter and YouTube briefings.
-          </div>
-          <div class="buttons">
-            <button>SEE MORE</button>
-            <button>SUBSCRIBE</button>
+          <div class="content">
+            <div class="author">FRESIENTS AI</div>
+            <div class="title">WEEKLY INSIGHTS</div>
+            <div class="topic">STARTUP INTEL</div>
+            <div class="des h-1 w-3/4 bg-white">
+            </div>
+            <div class="des font-bold text-2xl">
+              Discover the hottest AI startups, funding rounds, tech founder stories, and new innovations disrupting
+              industries weekly. Stay ahead with our newsletter and YouTube briefings.
+            </div>
+            <div class="buttons">
+              <button>SEE MORE</button>
+              <button>SUBSCRIBE</button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="item relative">
-        <video muted loop autoplay>
+        <div class="item relative">
+          <video muted loop autoplay>
             <source src="videos/video3.mp4" type="video/mp4">
           </video>
           <div class="absolute inset-0 bg-black/50 backdrop-blur-xs w-full h-screen pointer-events-none ">
-          
+
           </div>
-        <div class="content">
-          <div class="author">FRESIENTS AI</div>
-          <div class="title">DATA ANALYTICS</div>
-          <div class="topic">PREDICTIONS</div>
-          <div class="des h-1 w-3/4 bg-white">
+          <div class="content">
+            <div class="author">FRESIENTS AI</div>
+            <div class="title">DATA ANALYTICS</div>
+            <div class="topic">PREDICTIONS</div>
+            <div class="des h-1 w-3/4 bg-white">
+            </div>
+            <div class="des font-bold text-2xl">
+              Our platform integrates AI models that forecast user behavior, personalize experiences, and offer
+              actionable insights for health, fintech, and e-commerce sectors.
+            </div>
+            <div class="buttons">
+              <button>LEARN MORE</button>
+              <button>TRY NOW</button>
+            </div>
           </div>
-          <div class="des font-bold text-2xl">
-            Our platform integrates AI models that forecast user behavior, personalize experiences, and offer actionable insights for health, fintech, and e-commerce sectors.
+        </div>
+
+        <div class="item relative">
+          <video muted loop autoplay>
+            <source src="videos/video4.mp4" type="video/mp4">
+          </video>
+          <div class="absolute inset-0 bg-black/50 backdrop-blur-xs w-full h-screen pointer-events-none ">
+
           </div>
-          <div class="buttons">
-            <button>LEARN MORE</button>
-            <button>TRY NOW</button>
+          <div class="content">
+            <div class="author">FRESIENTS AI</div>
+            <div class="title">RESEARCH + CODE</div>
+            <div class="topic">DEV TOOLS</div>
+            <div class="des h-1 w-3/4 bg-white">
+            </div>
+            <div class="des font-bold text-2xl">
+              Dive deep into trending AI research papers, datasets, APIs, and tools. Everything a developer or
+              researcher needs to experiment, build, and innovate.
+            </div>
+            <div class="buttons">
+              <button>ACCESS TOOLS</button>
+              <button>JOIN SLACK</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="item relative">
+          <video muted loop autoplay>
+            <source src="videos/video5.mp4" type="video/mp4">
+          </video>
+          <div class="absolute inset-0 bg-black/50 backdrop-blur-xs w-full h-screen pointer-events-none ">
+
+          </div>
+          <div class="content">
+            <div class="author">FRESIENTS AI</div>
+            <div class="title">KNOWLEDGE QUEST</div>
+            <div class="topic">LEARN AI</div>
+            <div class="des h-1 w-3/4 bg-white">
+            </div>
+            <div class="des font-bold text-2xl   ">
+              We break down complex AI terms and systems into simple explainers. Watch our tutorials or read our
+              Knowledge Quest series to upskill fast and free.
+            </div>
+            <div class="buttons">
+              <button>START LEARNING</button>
+              <button>WATCH NOW</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="item relative">
+          <video muted loop autoplay>
+            <source src="videos/video6.mp4" type="video/mp4">
+          </video>
+          <div class="absolute inset-0 bg-black/50 backdrop-blur-xs w-full h-screen pointer-events-none ">
+
+          </div>
+          <div class="content">
+            <div class="author">FRESIENTS AI</div>
+            <div class="title">BREAKTHROUGHS</div>
+            <div class="topic">EXPLORE</div>
+            <div class="des h-1 w-3/4 bg-white">
+            </div>
+            <div class="des font-bold text-2xl ">
+              We break down complex AI terms and systems into simple explainers. Watch our tutorials or read our
+              Knowledge Quest series to upskill fast and free.
+            </div>
+            <div class="buttons">
+              <button>START LEARNING</button>
+              <button>WATCH NOW</button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="item relative">
-        <video muted loop autoplay>
-          <source src="videos/video4.mp4" type="video/mp4">
-        </video>
-        <div class="absolute inset-0 bg-black/50 backdrop-blur-xs w-full h-screen pointer-events-none ">
-          
+      <!-- list thumbnail -->
+      <div class="thumbnail hidden md:grid grid-cols-3 mr-0 absolute bottom-10 right-10 :rtl">
+        <div class="item" data-tilt>
+          <img src="image/slider1.jpg">
+          <div class="content">
+            <div class="title">Future of AI</div>
+            <div class="description">Forecasting innovation</div>
+          </div>
         </div>
-        <div class="content">
-          <div class="author">FRESIENTS AI</div>
-          <div class="title">RESEARCH + CODE</div>
-          <div class="topic">DEV TOOLS</div>
-          <div class="des h-1 w-3/4 bg-white">
+        <div class="item" data-tilt>
+          <img src="image/slider2.jpg">
+          <div class="content">
+            <div class="title">Startup Radar</div>
+            <div class="description">Weekly growth stories</div>
           </div>
-          <div class="des font-bold text-2xl">
-            Dive deep into trending AI research papers, datasets, APIs, and tools. Everything a developer or researcher needs to experiment, build, and innovate.
+        </div>
+        <div class="item" data-tilt>
+          <img src="image/slider3.jpg">
+          <div class="content">
+            <div class="title">AI Predictions</div>
+            <div class="description">Make data work</div>
           </div>
-          <div class="buttons">
-            <button>ACCESS TOOLS</button>
-            <button>JOIN SLACK</button>
+        </div>
+        <div class="item" data-tilt>
+          <img src="image/slider4.jpg">
+          <div class="content">
+            <div class="title">Dev Toolbox</div>
+            <div class="description">Power your project</div>
+          </div>
+        </div>
+        <div class="item" data-tilt>
+          <img src="image/slider5.jpg">
+          <div class="content">
+            <div class="title">AI Academy</div>
+            <div class="description">Fast-track your skills</div>
+          </div>
+        </div>
+
+        <div class="item" data-tilt>
+          <img src="image/slider6.jpg">
+          <div class="content">
+            <div class="title">AI Academy</div>
+            <div class="description">Fast-track your skills</div>
           </div>
         </div>
       </div>
 
-      <div class="item relative">
-        <video muted loop autoplay>
-          <source src="videos/video5.mp4" type="video/mp4">
-        </video>
-        <div class="absolute inset-0 bg-black/50 backdrop-blur-xs w-full h-screen pointer-events-none ">
-          
-        </div>
-        <div class="content">
-          <div class="author">FRESIENTS AI</div>
-          <div class="title">KNOWLEDGE QUEST</div>
-          <div class="topic">LEARN AI</div>
-          <div class="des h-1 w-3/4 bg-white">
-          </div>
-          <div class="des font-bold text-2xl   ">
-            We break down complex AI terms and systems into simple explainers. Watch our tutorials or read our Knowledge Quest series to upskill fast and free.
-          </div>
-          <div class="buttons">
-            <button>START LEARNING</button>
-            <button>WATCH NOW</button>
-          </div>
-        </div>
+      <!-- next prev -->
+      <div class="arrows">
+        <button id="prev"><i class="fa-solid fa-arrow-left"></i></button>
+        <button id="next"><i class="fa-solid fa-arrow-right"></i></button>
       </div>
 
-      <div class="item relative">
-        <video muted loop autoplay>
-          <source src="videos/video6.mp4" type="video/mp4">
-        </video>
-        <div class="absolute inset-0 bg-black/50 backdrop-blur-xs w-full h-screen pointer-events-none ">
-          
-        </div>
-        <div class="content">
-          <div class="author">FRESIENTS AI</div>
-          <div class="title">BREAKTHROUGHS</div>
-          <div class="topic">EXPLORE</div>
-          <div class="des h-1 w-3/4 bg-white">
-          </div>
-          <div class="des font-bold text-2xl ">
-            We break down complex AI terms and systems into simple explainers. Watch our tutorials or read our Knowledge Quest series to upskill fast and free.
-          </div>
-          <div class="buttons">
-            <button>START LEARNING</button>
-            <button>WATCH NOW</button>
-          </div>
-        </div>
-      </div>
+      <!-- time running -->
+      <div class="time"></div>
     </div>
-
-    <!-- list thumbnail -->
-    <div class="thumbnail hidden md:grid grid-cols-3 mr-0 absolute bottom-10 right-10 :rtl">
-      <div class="item" data-tilt >
-        <img src="image/slider1.jpg">
-        <div class="content">
-          <div class="title">Future of AI</div>
-          <div class="description">Forecasting innovation</div>
-        </div>
-      </div>
-      <div class="item" data-tilt>
-        <img src="image/slider2.jpg">
-        <div class="content">
-          <div class="title">Startup Radar</div>
-          <div class="description">Weekly growth stories</div>
-        </div>
-      </div>
-      <div class="item" data-tilt>
-        <img src="image/slider3.jpg">
-        <div class="content">
-          <div class="title">AI Predictions</div>
-          <div class="description">Make data work</div>
-        </div>
-      </div>
-      <div class="item" data-tilt>
-        <img src="image/slider4.jpg">
-        <div class="content">
-          <div class="title">Dev Toolbox</div>
-          <div class="description">Power your project</div>
-        </div>
-      </div>
-      <div class="item" data-tilt>
-        <img src="image/slider5.jpg">
-        <div class="content">
-          <div class="title">AI Academy</div>
-          <div class="description">Fast-track your skills</div>
-        </div>
-      </div>
-
-      <div class="item" data-tilt>
-        <img src="image/slider6.jpg">
-        <div class="content">
-          <div class="title">AI Academy</div>
-          <div class="description">Fast-track your skills</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- next prev -->
-    <div class="arrows">
-      <button id="prev"><i class="fa-solid fa-arrow-left"></i></button>
-      <button id="next"><i class="fa-solid fa-arrow-right"></i></button>
-    </div>
-
-    <!-- time running -->
-    <div class="time"></div>
-  </div>
   </section>
 
-<!-- Stats & Supported Platforms -->
-<section class="bg-gray-950 text-white px-4 py-12 relative grid grid-cols-1 md:grid-cols-2 gap-1 overflow-x-hidden">
-  <!-- Supported Platforms and Partners -->
+  <!-- Stats & Supported Platforms -->
+  <section class="bg-gray-950 text-white px-4 py-12 relative grid grid-cols-1 md:grid-cols-2 gap-1 overflow-x-hidden">
+    <!-- Supported Platforms and Partners -->
 
-  <div class="w-full m-1 md:m-4 z-10 " data-aos="zoom-in"   
+    <div class="w-full m-1 md:m-4 z-10 " data-aos="zoom-in" data-tilt data-tilt-axis="x">
+      <div class="font-bold text-4xl"><i class="fas fa-layer-group text-green-400 mr-2"></i>Supported Platforms</div>
+      <ul class="mt-4 gap-4 grid grid-cols-4 md:grid-cols-8">
+        <li>
+          <a href="#">
+            <img src="image/logos/supported_platforms/Gmail/google-mail-logo.png" class="h-10 w-10" alt="Gmail">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="image/logos/supported_platforms/AppleMail/Mail_(iOS).svg.png" class="h-10 w-10" alt="Apple Mail">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="image/logos/supported_platforms/Outlook/microsoft-outlook-icon.png" class="h-10 w-10"
+              alt="Outlook">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="image/logos/supported_platforms/Spotify/Spotify_icon.svg.png" class="h-10 w-10" alt="Spotify">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="image/logos/supported_platforms/YouTube/YouTube_full-color_icon_(2017).svg.png" class="h-10 w-10"
+              alt="YouTube">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="image/logos/supported_platforms/ZohoMail/ZOHO_logo_2023.svg.png" class="h-10 w-10" alt="Zoho">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="image/logos/supported_platforms/YahooMail/YahooMail1.png" class="h-10 w-10" alt="Yahoo">
+          </a>
+        </li>
+      </ul>
 
-
-data-tilt data-tilt-axis="x">
-    <div class="font-bold text-4xl"><i class="fas fa-layer-group text-green-400 mr-2"></i>Supported Platforms</div>
-    <ul class="mt-4 gap-4 grid grid-cols-4 md:grid-cols-8">
-      <li>
-        <a href="#">
-          <img src="image/logos/supported_platforms/Gmail/google-mail-logo.png" class="h-10 w-10" alt="Gmail">
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="image/logos/supported_platforms/AppleMail/Mail_(iOS).svg.png" class="h-10 w-10" alt="Apple Mail">
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="image/logos/supported_platforms/Outlook/microsoft-outlook-icon.png" class="h-10 w-10" alt="Outlook">
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="image/logos/supported_platforms/Spotify/Spotify_icon.svg.png" class="h-10 w-10" alt="Spotify">
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="image/logos/supported_platforms/YouTube/YouTube_full-color_icon_(2017).svg.png" class="h-10 w-10" alt="YouTube">
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="image/logos/supported_platforms/ZohoMail/ZOHO_logo_2023.svg.png" class="h-10 w-10" alt="Zoho">
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="image/logos/supported_platforms/YahooMail/YahooMail1.png" class="h-10 w-10" alt="Yahoo">
-        </a>
-      </li>
-    </ul>
-
-    <div class="py-8">
-      <hr class="border-gray-700 border-2" />
-    </div>
-  </div>
-  <!-- End Supported Platforms -->
-
-  <!-- Stats Overcards -->
-  <div class="w-full mt-10 ml-0 md:-ml-4 md:mt-0 grid grid-cols-1 sm:grid-cols-3 gap-4 px-4 z-10">
-    <!-- Card 1 -->
-    <div class="bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-700" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-      <div class="text-4xl mb-2">
-        <i class="fas fa-newspaper text-purple-400"></i>
-      </div>
-      <h4 class="text-xl font-semibold">10+</h4>
-      <p class="text-gray-400 text-sm mt-1">Monthly Newsletters</p>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-700" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-      <div class="text-4xl mb-2">
-        <i class="fas fa-chart-line text-green-400"></i>
-      </div>
-      <h4 class="text-xl font-semibold">75+</h4>
-      <p class="text-gray-400 text-sm mt-1">Data Insights Reports</p>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-700" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-      <div class="text-4xl mb-2">
-        <i class="fas fa-users text-yellow-300"></i>
-      </div>
-      <h4 class="text-xl font-semibold">10K+</h4>
-      <p class="text-gray-400 text-sm mt-1">Global Readers</p>
-    </div>
-  </div>
-  <!-- End Stats -->
-</section>
-<!-- End Supported Platforms & Stats -->
-
-  
-
-<!-- Newsletters -->
-<section class="bg-gray-950 text-white py-16 px-4 sm:px-6 lg:px-12" id="newsletters">
-  <h2 class="text-4xl font-extrabold text-center mb-14 tracking-tight" data-aos="fade-in">📬 Top AI & Startup Newsletters</h2>
-
-  <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 relative">
-    
-    <!-- Newsletter 1 -->
-    <div class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-indigo-400 border-t-8" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-      <i class="fas fa-thumbtack text-indigo-400 text-2xl absolute top-4 right-4 rotate-45"></i>
-      <div class="flex items-center mb-4 text-indigo-400">
-        <i class="fas fa-robot text-2xl me-3"></i>
-        <h3 class="text-xl font-bold">FutureScope Weekly</h3>
-      </div>
-      <p class="text-gray-400 mb-4 text-sm">Your radar on upcoming AI trends, product launches & research papers.</p>
-      <div class="text-sm text-gray-300 space-y-2">
-        <div><i class="fas fa-clock text-indigo-500 me-2"></i>Weekly</div>
-        <div><i class="fas fa-tags text-yellow-500 me-2"></i>AI, Research, Tools</div>
-        <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
+      <div class="py-8">
+        <hr class="border-gray-700 border-2" />
       </div>
     </div>
+    <!-- End Supported Platforms -->
 
-    <!-- Newsletter 2 -->
-    <div class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-orange-400 border-t-8" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-      <i class="fas fa-thumbtack text-orange-400 text-2xl absolute top-4 right-4 rotate-45"></i>
-      <div class="flex items-center mb-4 text-orange-400">
-        <i class="fas fa-lightbulb text-2xl me-3"></i>
-        <h3 class="text-xl font-bold">Startup Signals</h3>
+    <!-- Stats Overcards -->
+    <div class="w-full mt-10 ml-0 md:-ml-4 md:mt-0 grid grid-cols-1 sm:grid-cols-3 gap-4 px-4 z-10">
+      <!-- Card 1 -->
+      <div class="bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-700" data-aos="zoom-in" data-tilt
+        data-tilt-axis="x">
+        <div class="text-4xl mb-2">
+          <i class="fas fa-newspaper text-purple-400"></i>
+        </div>
+        <h4 class="text-xl font-semibold">10+</h4>
+        <p class="text-gray-400 text-sm mt-1">Monthly Newsletters</p>
       </div>
-      <p class="text-gray-400 mb-4 text-sm">Venture trends, pitch breakdowns, and founder stories from Africa & beyond.</p>
-      <div class="text-sm text-gray-300 space-y-2">
-        <div><i class="fas fa-clock text-orange-500 me-2"></i>Bi-weekly</div>
-        <div><i class="fas fa-tags text-yellow-500 me-2"></i>Startups, VC, Africa</div>
-        <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
+
+      <!-- Card 2 -->
+      <div class="bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-700" data-aos="zoom-in" data-tilt
+        data-tilt-axis="x">
+        <div class="text-4xl mb-2">
+          <i class="fas fa-chart-line text-green-400"></i>
+        </div>
+        <h4 class="text-xl font-semibold">75+</h4>
+        <p class="text-gray-400 text-sm mt-1">Data Insights Reports</p>
       </div>
-    </div>
 
-    <!-- Newsletter 3 -->
-    <div class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-pink-400 border-t-8" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-      <i class="fas fa-thumbtack text-pink-400 text-2xl absolute top-4 right-4 rotate-45"></i>
-      <div class="flex items-center mb-4 text-pink-400">
-        <i class="fas fa-brain text-2xl me-3"></i>
-        <h3 class="text-xl font-bold">Deep Dive Digest</h3>
-      </div>
-      <p class="text-gray-400 mb-4 text-sm">Concise breakdowns of trending AI research papers and ML concepts.</p>
-      <div class="text-sm text-gray-300 space-y-2">
-        <div><i class="fas fa-clock text-pink-500 me-2"></i>Monthly</div>
-        <div><i class="fas fa-tags text-yellow-500 me-2"></i>AI Papers, NLP, CV</div>
-        <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
+      <!-- Card 3 -->
+      <div class="bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-700" data-aos="zoom-in" data-tilt
+        data-tilt-axis="x">
+        <div class="text-4xl mb-2">
+          <i class="fas fa-users text-yellow-300"></i>
+        </div>
+        <h4 class="text-xl font-semibold">10K+</h4>
+        <p class="text-gray-400 text-sm mt-1">Global Readers</p>
       </div>
     </div>
+    <!-- End Stats -->
+  </section>
+  <!-- End Supported Platforms & Stats -->
 
-    <!-- Newsletter 4 -->
-    <div class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-green-400 border-t-8" data-aos="zoom-in"   
 
 
-data-tilt data-tilt-axis="x">
-      <i class="fas fa-thumbtack text-green-400 text-2xl absolute top-4 right-4 rotate-45"></i>
-      <div class="flex items-center mb-4 text-green-400">
-        <i class="fas fa-globe-africa text-2xl me-3"></i>
-        <h3 class="text-xl font-bold">Africa Tech Pulse</h3>
+  <!-- Newsletters -->
+  <section class="bg-gray-950 text-white py-16 px-4 sm:px-6 lg:px-12" id="newsletters">
+    <h2 class="text-4xl font-extrabold text-center mb-14 tracking-tight" data-aos="fade-in">📬 Top AI & Startup
+      Newsletters</h2>
+
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 relative">
+
+      <!-- Newsletter 1 -->
+      <div
+        class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-indigo-400 border-t-8"
+        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        <i class="fas fa-thumbtack text-indigo-400 text-2xl absolute top-4 right-4 rotate-45"></i>
+        <div class="flex items-center mb-4 text-indigo-400">
+          <i class="fas fa-robot text-2xl me-3"></i>
+          <h3 class="text-xl font-bold">FutureScope Weekly</h3>
+        </div>
+        <p class="text-gray-400 mb-4 text-sm">Your radar on upcoming AI trends, product launches & research papers.</p>
+        <div class="text-sm text-gray-300 space-y-2">
+          <div><i class="fas fa-clock text-indigo-500 me-2"></i>Weekly</div>
+          <div><i class="fas fa-tags text-yellow-500 me-2"></i>AI, Research, Tools</div>
+          <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
+        </div>
       </div>
-      <p class="text-gray-400 mb-4 text-sm">Curated African tech news, founder spotlights, and startup scenes.</p>
-      <div class="text-sm text-gray-300 space-y-2">
-        <div><i class="fas fa-clock text-green-500 me-2"></i>Weekly</div>
-        <div><i class="fas fa-tags text-yellow-500 me-2"></i>Africa, Startups, Funding</div>
-        <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
+
+      <!-- Newsletter 2 -->
+      <div
+        class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-orange-400 border-t-8"
+        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        <i class="fas fa-thumbtack text-orange-400 text-2xl absolute top-4 right-4 rotate-45"></i>
+        <div class="flex items-center mb-4 text-orange-400">
+          <i class="fas fa-lightbulb text-2xl me-3"></i>
+          <h3 class="text-xl font-bold">Startup Signals</h3>
+        </div>
+        <p class="text-gray-400 mb-4 text-sm">Venture trends, pitch breakdowns, and founder stories from Africa &
+          beyond.</p>
+        <div class="text-sm text-gray-300 space-y-2">
+          <div><i class="fas fa-clock text-orange-500 me-2"></i>Bi-weekly</div>
+          <div><i class="fas fa-tags text-yellow-500 me-2"></i>Startups, VC, Africa</div>
+          <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
+        </div>
       </div>
+
+      <!-- Newsletter 3 -->
+      <div
+        class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-pink-400 border-t-8"
+        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        <i class="fas fa-thumbtack text-pink-400 text-2xl absolute top-4 right-4 rotate-45"></i>
+        <div class="flex items-center mb-4 text-pink-400">
+          <i class="fas fa-brain text-2xl me-3"></i>
+          <h3 class="text-xl font-bold">Deep Dive Digest</h3>
+        </div>
+        <p class="text-gray-400 mb-4 text-sm">Concise breakdowns of trending AI research papers and ML concepts.</p>
+        <div class="text-sm text-gray-300 space-y-2">
+          <div><i class="fas fa-clock text-pink-500 me-2"></i>Monthly</div>
+          <div><i class="fas fa-tags text-yellow-500 me-2"></i>AI Papers, NLP, CV</div>
+          <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
+        </div>
+      </div>
+
+      <!-- Newsletter 4 -->
+      <div
+        class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-green-400 border-t-8"
+        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        <i class="fas fa-thumbtack text-green-400 text-2xl absolute top-4 right-4 rotate-45"></i>
+        <div class="flex items-center mb-4 text-green-400">
+          <i class="fas fa-globe-africa text-2xl me-3"></i>
+          <h3 class="text-xl font-bold">Africa Tech Pulse</h3>
+        </div>
+        <p class="text-gray-400 mb-4 text-sm">Curated African tech news, founder spotlights, and startup scenes.</p>
+        <div class="text-sm text-gray-300 space-y-2">
+          <div><i class="fas fa-clock text-green-500 me-2"></i>Weekly</div>
+          <div><i class="fas fa-tags text-yellow-500 me-2"></i>Africa, Startups, Funding</div>
+          <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
+        </div>
+      </div>
+
+      <!-- Newsletter 5 -->
+      <div
+        class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-purple-400 border-t-8"
+        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        <i class="fas fa-thumbtack text-purple-400 text-2xl absolute top-4 right-4 rotate-45"></i>
+        <div class="flex items-center mb-4 text-purple-400">
+          <i class="fas fa-dna text-2xl me-3"></i>
+          <h3 class="text-xl font-bold">Health AI Insider</h3>
+        </div>
+        <p class="text-gray-400 mb-4 text-sm">Newsletters focusing on AI in healthcare, diagnostics & biotech
+          innovation.</p>
+        <div class="text-sm text-gray-300 space-y-2">
+          <div><i class="fas fa-clock text-purple-500 me-2"></i>Bi-weekly</div>
+          <div><i class="fas fa-tags text-yellow-500 me-2"></i>Healthcare, AI, Biotech</div>
+          <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
+        </div>
+      </div>
+
+      <!-- Newsletter 6 -->
+      <div
+        class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-red-400 border-t-8"
+        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        <i class="fas fa-thumbtack text-red-400 text-2xl absolute top-4 right-4 rotate-45"></i>
+        <div class="flex items-center mb-4 text-red-400">
+          <i class="fas fa-chart-line text-2xl me-3"></i>
+          <h3 class="text-xl font-bold">VC Watchlist</h3>
+        </div>
+        <p class="text-gray-400 mb-4 text-sm">Insights into venture funding trends, top rounds, and new accelerators.
+        </p>
+        <div class="text-sm text-gray-300 space-y-2">
+          <div><i class="fas fa-clock text-red-500 me-2"></i>Weekly</div>
+          <div><i class="fas fa-tags text-yellow-500 me-2"></i>VC, Startups, Capital</div>
+          <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
+        </div>
+      </div>
+
     </div>
-
-    <!-- Newsletter 5 -->
-    <div class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-purple-400 border-t-8" data-aos="zoom-in"   
+  </section>
 
 
-data-tilt data-tilt-axis="x">
-      <i class="fas fa-thumbtack text-purple-400 text-2xl absolute top-4 right-4 rotate-45"></i>
-      <div class="flex items-center mb-4 text-purple-400">
-        <i class="fas fa-dna text-2xl me-3"></i>
-        <h3 class="text-xl font-bold">Health AI Insider</h3>
-      </div>
-      <p class="text-gray-400 mb-4 text-sm">Newsletters focusing on AI in healthcare, diagnostics & biotech innovation.</p>
-      <div class="text-sm text-gray-300 space-y-2">
-        <div><i class="fas fa-clock text-purple-500 me-2"></i>Bi-weekly</div>
-        <div><i class="fas fa-tags text-yellow-500 me-2"></i>Healthcare, AI, Biotech</div>
-        <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
-      </div>
+  <!-- End Newsletters -->
+  <!-- Featured Podcasts -->
+  <section class="bg-gray-950 text-white py-10 px-4 sm:px-6 lg:px-12 overflow-x-hidden relative w-screen">
+    <h2 class="text-4xl font-extrabold text-center mb-14 tracking-tight z-10 relative" data-aos="fade-in">🎧 Featured
+      Podcasts on Fresients</h2>
+    <div class="absolute z-1 left-0 -top-2 hidden sm:block" data-aos="zoom-in">
+      <img src="image/enhancements/lady_listening_to_podcast2.png" />
     </div>
-
-    <!-- Newsletter 6 -->
-    <div class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-red-400 border-t-8" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-      <i class="fas fa-thumbtack text-red-400 text-2xl absolute top-4 right-4 rotate-45"></i>
-      <div class="flex items-center mb-4 text-red-400">
-        <i class="fas fa-chart-line text-2xl me-3"></i>
-        <h3 class="text-xl font-bold">VC Watchlist</h3>
-      </div>
-      <p class="text-gray-400 mb-4 text-sm">Insights into venture funding trends, top rounds, and new accelerators.</p>
-      <div class="text-sm text-gray-300 space-y-2">
-        <div><i class="fas fa-clock text-red-500 me-2"></i>Weekly</div>
-        <div><i class="fas fa-tags text-yellow-500 me-2"></i>VC, Startups, Capital</div>
-        <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
-      </div>
+    <div class="absolute z-1 right-0 -top-2" data-aos="zoom-in">
+      <img src="image/enhancements/lady_podcast_listening.png" />
     </div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 container mx-auto z-10">
 
-  </div>
-</section>
-
-
-<!-- End Newsletters -->
- <!-- Featured Podcasts -->
- <section class="bg-gray-950 text-white py-10 px-4 sm:px-6 lg:px-12 overflow-x-hidden relative w-screen">
-  <h2 class="text-4xl font-extrabold text-center mb-14 tracking-tight z-10 relative" data-aos="fade-in">🎧 Featured Podcasts on Fresients</h2>
- <div class="absolute z-1 left-0 -top-2 hidden sm:block" data-aos="zoom-in" >
-  <img src="image/enhancements/lady_listening_to_podcast2.png"/>
- </div>
- <div class="absolute z-1 right-0 -top-2" data-aos="zoom-in" >
-  <img src="image/enhancements/lady_podcast_listening.png"/>
- </div>
-  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 container mx-auto z-10">
-
-    <!-- Podcast 1 -->
-    <div class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-      <div class="relative">
-        <img src="https://images.unsplash.com/photo-1677212004257-103cfa6b59d0?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Podcast Cover" class="w-full h-48 object-cover">
-        <a href="#" class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
-          <i class="fas fa-play text-3xl"></i>
-        </a>
-      </div>
-      <div class="p-6 pt-10">
-        <h3 class="text-xl font-bold mb-2">Future Decoded</h3>
-        <p class="text-gray-400 text-sm leading-relaxed mb-4">Dive into AI breakthroughs, startup stories, and tomorrow’s tech shaping the world.</p>
-        <div class="flex items-center justify-between text-sm text-gray-400">
-          <span><i class="fa-solid fa-microphone-lines me-2 text-indigo-400"></i>18 Episodes</span>
-          <div class="space-x-4">
-            <a href="#" class="hover:text-indigo-400"><i class="fas fa-eye"></i></a>
-            <a href="#" class="hover:text-indigo-400"><i class="fas fa-play-circle"></i></a>
+      <!-- Podcast 1 -->
+      <div
+        class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative"
+        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        <div class="relative">
+          <img
+            src="https://images.unsplash.com/photo-1677212004257-103cfa6b59d0?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0"
+            alt="Podcast Cover" class="w-full h-48 object-cover">
+          <a href="#"
+            class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
+            <i class="fas fa-play text-3xl"></i>
+          </a>
+        </div>
+        <div class="p-6 pt-10">
+          <h3 class="text-xl font-bold mb-2">Future Decoded</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">Dive into AI breakthroughs, startup stories, and
+            tomorrow’s tech shaping the world.</p>
+          <div class="flex items-center justify-between text-sm text-gray-400">
+            <span><i class="fa-solid fa-microphone-lines me-2 text-indigo-400"></i>18 Episodes</span>
+            <div class="space-x-4">
+              <a href="#" class="hover:text-indigo-400"><i class="fas fa-eye"></i></a>
+              <a href="#" class="hover:text-indigo-400"><i class="fas fa-play-circle"></i></a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Podcast 2 -->
-    <div class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-      <div class="relative">
-        <img src="https://plus.unsplash.com/premium_photo-1700740342769-17e817ad6400?q=80&w=774&auto=format&fit=crop" alt="Podcast Cover" class="w-full h-48 object-cover">
-        <a href="#" class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
-          <i class="fas fa-play text-2xl"></i>
-        </a>
-      </div>
-      <div class="p-6 pt-10">
-        <h3 class="text-xl font-bold mb-2">The Algorithm Circle</h3>
-        <p class="text-gray-400 text-sm leading-relaxed mb-4">From ML to NLP — deep dives with researchers and AI engineers breaking the mold.</p>
-        <div class="flex items-center justify-between text-sm text-gray-400">
-          <span><i class="fa-solid fa-microphone-lines me-2 text-indigo-400"></i>12 Episodes</span>
-          <div class="space-x-4">
-            <a href="#" class="hover:text-indigo-400"><i class="fas fa-eye"></i></a>
-            <a href="#" class="hover:text-indigo-400"><i class="fas fa-play-circle"></i></a>
+      <!-- Podcast 2 -->
+      <div
+        class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative"
+        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        <div class="relative">
+          <img src="https://plus.unsplash.com/premium_photo-1700740342769-17e817ad6400?q=80&w=774&auto=format&fit=crop"
+            alt="Podcast Cover" class="w-full h-48 object-cover">
+          <a href="#"
+            class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
+            <i class="fas fa-play text-2xl"></i>
+          </a>
+        </div>
+        <div class="p-6 pt-10">
+          <h3 class="text-xl font-bold mb-2">The Algorithm Circle</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">From ML to NLP — deep dives with researchers and AI
+            engineers breaking the mold.</p>
+          <div class="flex items-center justify-between text-sm text-gray-400">
+            <span><i class="fa-solid fa-microphone-lines me-2 text-indigo-400"></i>12 Episodes</span>
+            <div class="space-x-4">
+              <a href="#" class="hover:text-indigo-400"><i class="fas fa-eye"></i></a>
+              <a href="#" class="hover:text-indigo-400"><i class="fas fa-play-circle"></i></a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Podcast 3 -->
-    <div class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-      <div class="relative">
-        <img src="https://images.unsplash.com/photo-1553484771-0a615f264d58?q=80&w=870&auto=format&fit=crop" alt="Podcast Cover" class="w-full h-48 object-cover">
-        <a href="#" class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
-          <i class="fas fa-play text-2xl"></i>
-        </a>
-      </div>
-      <div class="p-6 pt-10">
-        <h3 class="text-xl font-bold mb-2">Founders Unfiltered</h3>
-        <p class="text-gray-400 text-sm leading-relaxed mb-4">Real stories. Real failures. Real grit. Meet the dreamers building Africa's tech future.</p>
-        <div class="flex items-center justify-between text-sm text-gray-400">
-          <span><i class="fa-solid fa-microphone-lines me-2 text-indigo-400"></i>24 Episodes</span>
-          <div class="space-x-4">
-            <a href="#" class="hover:text-indigo-400"><i class="fas fa-eye"></i></a>
-            <a href="#" class="hover:text-indigo-400"><i class="fas fa-play-circle"></i></a>
+      <!-- Podcast 3 -->
+      <div
+        class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative"
+        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1553484771-0a615f264d58?q=80&w=870&auto=format&fit=crop"
+            alt="Podcast Cover" class="w-full h-48 object-cover">
+          <a href="#"
+            class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
+            <i class="fas fa-play text-2xl"></i>
+          </a>
+        </div>
+        <div class="p-6 pt-10">
+          <h3 class="text-xl font-bold mb-2">Founders Unfiltered</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">Real stories. Real failures. Real grit. Meet the
+            dreamers building Africa's tech future.</p>
+          <div class="flex items-center justify-between text-sm text-gray-400">
+            <span><i class="fa-solid fa-microphone-lines me-2 text-indigo-400"></i>24 Episodes</span>
+            <div class="space-x-4">
+              <a href="#" class="hover:text-indigo-400"><i class="fas fa-eye"></i></a>
+              <a href="#" class="hover:text-indigo-400"><i class="fas fa-play-circle"></i></a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Podcast 4 -->
-    <div class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-      <div class="relative">
-        <img src="https://plus.unsplash.com/premium_photo-1684522167826-a473e63337b1?q=80&w=1032&auto=format&fit=crop" alt="Podcast Cover" class="w-full h-48 object-cover">
-        <a href="#" class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
-          <i class="fas fa-play text-2xl"></i>
-        </a>
-      </div>
-      <div class="p-6 pt-10">
-        <h3 class="text-xl font-bold mb-2">Cloud & Scale</h3>
-        <p class="text-gray-400 text-sm leading-relaxed mb-4">Tech stack talk for founders scaling with AWS, GCP, and edge infrastructure.</p>
-        <div class="flex items-center justify-between text-sm text-gray-400">
-          <span><i class="fa-solid fa-microphone-lines me-2 text-indigo-400"></i>9 Episodes</span>
-          <div class="space-x-4">
-            <a href="#" class="hover:text-indigo-400"><i class="fas fa-eye"></i></a>
-            <a href="#" class="hover:text-indigo-400"><i class="fas fa-play-circle"></i></a>
+      <!-- Podcast 4 -->
+      <div
+        class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative"
+        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        <div class="relative">
+          <img src="https://plus.unsplash.com/premium_photo-1684522167826-a473e63337b1?q=80&w=1032&auto=format&fit=crop"
+            alt="Podcast Cover" class="w-full h-48 object-cover">
+          <a href="#"
+            class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
+            <i class="fas fa-play text-2xl"></i>
+          </a>
+        </div>
+        <div class="p-6 pt-10">
+          <h3 class="text-xl font-bold mb-2">Cloud & Scale</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">Tech stack talk for founders scaling with AWS, GCP, and
+            edge infrastructure.</p>
+          <div class="flex items-center justify-between text-sm text-gray-400">
+            <span><i class="fa-solid fa-microphone-lines me-2 text-indigo-400"></i>9 Episodes</span>
+            <div class="space-x-4">
+              <a href="#" class="hover:text-indigo-400"><i class="fas fa-eye"></i></a>
+              <a href="#" class="hover:text-indigo-400"><i class="fas fa-play-circle"></i></a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-  </div>
-</section>
+    </div>
+  </section>
 
   <!--End Featured Podcasts  -->
 
   <!-- Videos & Academy -->
   <section class=" bg-gray-950 relative">
     <!-- Start Videos -->
-       
-  <div class="bg-gray-950 text-white px-4 py-8 container mx-auto">
 
-    
-    <h2 class="text-4xl font-bold mb-6 flex items-center gap-2" data-aos="fade-in">
-      <i class="fas fa-video text-indigo-400"></i>
-      Featured Videos
-    </h2>
-  
-    <div class="grid md:grid-cols-2 gap-6 ">
-      <!-- Video Card 1 -->
-      <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"   
+    <div class="bg-gray-950 text-white px-4 py-8 container mx-auto">
 
 
-data-tilt data-tilt-axis="x">
-        <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/Qh7Dqzm8f7Y?rel=0" title="YouTube video player" allowfullscreen></iframe>
-        <div class="md:w-1/2 space-y-2">
-          <div class="flex items-center gap-2 text-sm text-indigo-400">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 4.75L4.5 10m0 0l5.25 5.25M4.5 10H20.25" /></svg>
-            AI x Startup Insights
-          </div>
-          <h3 class="text-lg font-semibold">The AI Funding Boom – Are We in a Bubble?</h3>
-          <p class="text-gray-400 text-sm">Explore current trends, investor behavior, and what it means for founders in AI startup ecosystems.</p>
-          <div class="flex gap-3 mt-2 text-gray-400 text-xs">
-            <div class="flex items-center gap-1"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6v6l4 2" /></svg> 10 min</div>
-            <div class="flex items-center gap-1"><svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 3h18v18H3V3z" /></svg> TechCrunch</div>
+      <h2 class="text-4xl font-bold mb-6 flex items-center gap-2" data-aos="fade-in">
+        <i class="fas fa-video text-indigo-400"></i>
+        Featured Videos
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-6 ">
+        <!-- Video Card 1 -->
+        <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"
+          data-tilt data-tilt-axis="x">
+          <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/Qh7Dqzm8f7Y?rel=0"
+            title="YouTube video player" allowfullscreen></iframe>
+          <div class="md:w-1/2 space-y-2">
+            <div class="flex items-center gap-2 text-sm text-indigo-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9.75 4.75L4.5 10m0 0l5.25 5.25M4.5 10H20.25" />
+              </svg>
+              AI x Startup Insights
+            </div>
+            <h3 class="text-lg font-semibold">The AI Funding Boom – Are We in a Bubble?</h3>
+            <p class="text-gray-400 text-sm">Explore current trends, investor behavior, and what it means for founders
+              in AI startup ecosystems.</p>
+            <div class="flex gap-3 mt-2 text-gray-400 text-xs">
+              <div class="flex items-center gap-1"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M12 6v6l4 2" />
+                </svg> 10 min</div>
+              <div class="flex items-center gap-1"><svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M3 3h18v18H3V3z" />
+                </svg> TechCrunch</div>
+            </div>
           </div>
         </div>
+
+        <!-- Video Card 2 -->
+        <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"
+          data-tilt data-tilt-axis="x">
+          <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/1Q8fG0TtVAY?rel=0"
+            title="YouTube video player" allowfullscreen></iframe>
+          <div class="md:w-1/2 space-y-2">
+            <div class="flex items-center gap-2 text-sm text-purple-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 17h5l-1.405-1.405M20 17V7a2 2 0 00-2-2H6a2 2 0 00-2 2v10m4 0h10" />
+              </svg>
+              Deep Dive
+            </div>
+            <h3 class="text-lg font-semibold">Inside OpenAI: How They Build Models</h3>
+            <p class="text-gray-400 text-sm">Take a peek into OpenAI’s engineering processes, safety frameworks, and how
+              GPT-like models are trained.</p>
+            <div class="flex gap-3 mt-2 text-gray-400 text-xs">
+              <div class="flex items-center gap-1"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M12 6v6l4 2" />
+                </svg> 8 min</div>
+              <div class="flex items-center gap-1"><svg class="w-4 h-4 text-yellow-300" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l4 4H8l4-4zM12 22l-4-4h8l-4 4z" />
+                </svg> OpenAI</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Card 3 -->
+        <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"
+          data-tilt data-tilt-axis="x">
+          <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/Opnb2r-J0dM?rel=0"
+            title="YouTube video player" allowfullscreen></iframe>
+          <div class="md:w-1/2 space-y-2">
+            <div class="flex items-center gap-2 text-sm text-rose-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 10h3m3-6h6m3 6h3m-3 6h3M3 16h3m3 6h6" />
+              </svg>
+              AI Applications
+            </div>
+            <h3 class="text-lg font-semibold">10 Ways AI Is Changing Healthcare in Africa</h3>
+            <p class="text-gray-400 text-sm">From diagnostics to drug development, here’s how AI is transforming health
+              delivery in emerging economies.</p>
+            <div class="flex gap-3 mt-2 text-gray-400 text-xs">
+              <div class="flex items-center gap-1"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M12 6v6l4 2" />
+                </svg> 12 min</div>
+              <div class="flex items-center gap-1"><svg class="w-4 h-4 text-indigo-400" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M4 6h16M4 12h16M4 18h16" />
+                </svg> BBC Africa Tech</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"
+          data-tilt data-tilt-axis="x">
+          <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/f7SIwZJwmzE?rel=0"
+            title="YouTube video player" allowfullscreen></iframe>
+          <div class="md:w-1/2 space-y-2">
+            <div class="flex items-center gap-2 text-sm text-rose-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 10h3m3-6h6m3 6h3m-3 6h3M3 16h3m3 6h6" />
+              </svg>
+              AI Applications
+            </div>
+            <h3 class="text-lg font-semibold">How AI might change medical care</h3>
+            <p class="text-gray-400 text-sm">From diagnostics to drug development, here’s how AI is transforming health
+              delivery in emerging economies.</p>
+            <div class="flex gap-3 mt-2 text-gray-400 text-xs">
+              <div class="flex items-center gap-1"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M12 6v6l4 2" />
+                </svg> 12 min</div>
+              <div class="flex items-center gap-1"><svg class="w-4 h-4 text-indigo-400" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M4 6h16M4 12h16M4 18h16" />
+                </svg> BBC Africa Tech</div>
+            </div>
+          </div>
+        </div>
+        <!-- End Card -->
       </div>
-  
-      <!-- Video Card 2 -->
-      <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"   
+    </div>
 
+    <!-- End Videos -->
 
-data-tilt data-tilt-axis="x">
-        <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/1Q8fG0TtVAY?rel=0" title="YouTube video player" allowfullscreen></iframe>
-        <div class="md:w-1/2 space-y-2">
-          <div class="flex items-center gap-2 text-sm text-purple-400">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405M20 17V7a2 2 0 00-2-2H6a2 2 0 00-2 2v10m4 0h10" /></svg>
-            Deep Dive
-          </div>
-          <h3 class="text-lg font-semibold">Inside OpenAI: How They Build Models</h3>
-          <p class="text-gray-400 text-sm">Take a peek into OpenAI’s engineering processes, safety frameworks, and how GPT-like models are trained.</p>
-          <div class="flex gap-3 mt-2 text-gray-400 text-xs">
-            <div class="flex items-center gap-1"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6v6l4 2" /></svg> 8 min</div>
-            <div class="flex items-center gap-1"><svg class="w-4 h-4 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2l4 4H8l4-4zM12 22l-4-4h8l-4 4z" /></svg> OpenAI</div>
-          </div>
-        </div>
+    <!-- Start Academy -->
+    <div class="bg-gray-900 text-white py-16 px-4 md:px-16 w-full rounded-md relative">
+      <div class="absolute inset-0 opacity-10 pointer-events-none"
+        style="background-image: url('image/patterns/education.png'); background-repeat: repeat;background-size: 400px;">
       </div>
-  
-      <!-- Video Card 3 -->
-      <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"   
+      <div class="hidden sm:block absolute top-0 left-0 w-full h-16 bg-gray-950 z-[120] -mt-1"
+        style="clip-path: polygon(0 0, 50% 100%, 100% 0);"></div>
 
+      <div class="text-center relative z-[110]">
+        <h2 class="text-4xl font-extrabold mb-4" data-aos="fade-in"><i
+            class="fas fa-graduation-cap text-yellow-400 mr-2"></i>Join Fresients Academy</h2>
+        <p class="text-gray-300 mb-10 text-lg" data-aos="fade-in">
+          Unlock your potential with cutting-edge courses in AI, startups, and future tech. Learn from top industry
+          experts.
+        </p>
 
-data-tilt data-tilt-axis="x">
-        <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/Opnb2r-J0dM?rel=0" title="YouTube video player" allowfullscreen></iframe>
-        <div class="md:w-1/2 space-y-2">
-          <div class="flex items-center gap-2 text-sm text-rose-400">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h3m3-6h6m3 6h3m-3 6h3M3 16h3m3 6h6" /></svg>
-            AI Applications
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Course 1 -->
+          <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-yellow-500/20 transition"
+            data-aos="zoom-in" data-tilt data-tilt-axis="x">
+            <img src="https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=850&auto=format&fit=crop"
+              alt="AI Mastery" class="w-full h-40 object-cover">
+            <div class="p-5">
+              <h3 class="text-xl font-semibold mb-2">
+                <i class="fas fa-robot text-indigo-400 mr-2"></i>AI Mastery
+              </h3>
+              <p class="text-gray-400 text-sm mb-4">Learn AI fundamentals, ML pipelines, and build models using Python.
+              </p>
+              <div class="flex justify-between text-sm text-gray-400">
+                <span><i class="fas fa-clock mr-1"></i> 6 Weeks</span>
+                <span><i class="fas fa-signal mr-1"></i> Intermediate</span>
+              </div>
+            </div>
           </div>
-          <h3 class="text-lg font-semibold">10 Ways AI Is Changing Healthcare in Africa</h3>
-          <p class="text-gray-400 text-sm">From diagnostics to drug development, here’s how AI is transforming health delivery in emerging economies.</p>
-          <div class="flex gap-3 mt-2 text-gray-400 text-xs">
-            <div class="flex items-center gap-1"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6v6l4 2" /></svg> 12 min</div>
-            <div class="flex items-center gap-1"><svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></svg> BBC Africa Tech</div>
+
+          <!-- Course 2 -->
+          <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-purple-500/20 transition"
+            data-aos="zoom-in" data-tilt data-tilt-axis="x">
+            <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=870&auto=format&fit=crop"
+              alt="Startup Launchpad" class="w-full h-40 object-cover">
+            <div class="p-5">
+              <h3 class="text-xl font-semibold mb-2">
+                <i class="fas fa-rocket text-purple-400 mr-2"></i>Startup Launchpad
+              </h3>
+              <p class="text-gray-400 text-sm mb-4">Learn how to validate, build, and scale your startup idea with real
+                examples.</p>
+              <div class="flex justify-between text-sm text-gray-400">
+                <span><i class="fas fa-clock mr-1"></i> 4 Weeks</span>
+                <span><i class="fas fa-fire mr-1"></i> Beginner</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course 3 -->
+          <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-green-500/20 transition"
+            data-aos="zoom-in" data-tilt data-tilt-axis="x">
+            <img src="https://images.unsplash.com/photo-1584291527908-033f4d6542c8?q=80&w=725&auto=format&fit=crop"
+              alt="Data Analytics Pro" class="w-full h-40 object-cover">
+            <div class="p-5">
+              <h3 class="text-xl font-semibold mb-2">
+                <i class="fas fa-chart-line text-green-400 mr-2"></i>Data Analytics Pro
+              </h3>
+              <p class="text-gray-400 text-sm mb-4">Master Excel, SQL, Tableau, and Python for real-world data projects.
+              </p>
+              <div class="flex justify-between text-sm text-gray-400">
+                <span><i class="fas fa-clock mr-1"></i> 5 Weeks</span>
+                <span><i class="fas fa-laptop-code mr-1"></i> Advanced</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course 4 -->
+          <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-blue-500/20 transition"
+            data-aos="zoom-in" data-tilt data-tilt-axis="x">
+            <img
+              src="https://plus.unsplash.com/premium_photo-1661782505582-07ea68e3e760?q=80&w=869&auto=format&fit=crop"
+              alt="Web for Founders" class="w-full h-40 object-cover">
+            <div class="p-5">
+              <h3 class="text-xl font-semibold mb-2">
+                <i class="fas fa-code text-blue-400 mr-2"></i>Web for Founders
+              </h3>
+              <p class="text-gray-400 text-sm mb-4">Build startup websites using HTML, Tailwind CSS, and no-code tools.
+              </p>
+              <div class="flex justify-between text-sm text-gray-400">
+                <span><i class="fas fa-clock mr-1"></i> 3 Weeks</span>
+                <span><i class="fas fa-paint-brush mr-1"></i> All Levels</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Card 4 -->
-      <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-      <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/f7SIwZJwmzE?rel=0" title="YouTube video player" allowfullscreen></iframe>
-      <div class="md:w-1/2 space-y-2">
-        <div class="flex items-center gap-2 text-sm text-rose-400">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h3m3-6h6m3 6h3m-3 6h3M3 16h3m3 6h6" /></svg>
-          AI Applications
-        </div>
-        <h3 class="text-lg font-semibold">How AI might change medical care</h3>
-        <p class="text-gray-400 text-sm">From diagnostics to drug development, here’s how AI is transforming health delivery in emerging economies.</p>
-        <div class="flex gap-3 mt-2 text-gray-400 text-xs">
-          <div class="flex items-center gap-1"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6v6l4 2" /></svg> 12 min</div>
-          <div class="flex items-center gap-1"><svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></svg> BBC Africa Tech</div>
+        <div class="mt-12">
+          <a href="#"
+            class="inline-flex items-center bg-indigo-500 hover:bg-indigo-600 text-gray-900 font-bold px-6 py-3 rounded-full text-lg transition">
+            <i class="fas fa-sign-in-alt mr-2"></i> Enroll Now
+          </a>
         </div>
       </div>
     </div>
-    <!-- End Card -->
-    </div>
-  </div>
-  
-  <!-- End Videos -->
 
-  <!-- Start Academy -->
-  <div class="bg-gray-900 text-white py-16 px-4 md:px-16 w-full rounded-md relative">
-    <div class="absolute inset-0 opacity-10 pointer-events-none"
-    style="background-image: url('image/patterns/education.png'); background-repeat: repeat;background-size: 400px;">
-  </div>
-    <div class="hidden sm:block absolute top-0 left-0 w-full h-16 bg-gray-950 z-[120] -mt-1"
-    style="clip-path: polygon(0 0, 50% 100%, 100% 0);"></div> 
-    
-    <div class="text-center relative z-[110]">
-      <h2 class="text-4xl font-extrabold mb-4" data-aos="fade-in"><i class="fas fa-graduation-cap text-yellow-400 mr-2"></i>Join Fresients Academy</h2>
-      <p class="text-gray-300 mb-10 text-lg" data-aos="fade-in">
-        Unlock your potential with cutting-edge courses in AI, startups, and future tech. Learn from top industry experts.
-      </p>
-  
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Course 1 -->
-        <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-yellow-500/20 transition" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-          <img src="https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=850&auto=format&fit=crop" alt="AI Mastery" class="w-full h-40 object-cover">
-          <div class="p-5">
-            <h3 class="text-xl font-semibold mb-2">
-              <i class="fas fa-robot text-indigo-400 mr-2"></i>AI Mastery
-            </h3>
-            <p class="text-gray-400 text-sm mb-4">Learn AI fundamentals, ML pipelines, and build models using Python.</p>
-            <div class="flex justify-between text-sm text-gray-400">
-              <span><i class="fas fa-clock mr-1"></i> 6 Weeks</span>
-              <span><i class="fas fa-signal mr-1"></i> Intermediate</span>
-            </div>
-          </div>
-        </div>
-  
-        <!-- Course 2 -->
-        <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-purple-500/20 transition" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-          <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=870&auto=format&fit=crop" alt="Startup Launchpad" class="w-full h-40 object-cover">
-          <div class="p-5">
-            <h3 class="text-xl font-semibold mb-2">
-              <i class="fas fa-rocket text-purple-400 mr-2"></i>Startup Launchpad
-            </h3>
-            <p class="text-gray-400 text-sm mb-4">Learn how to validate, build, and scale your startup idea with real examples.</p>
-            <div class="flex justify-between text-sm text-gray-400">
-              <span><i class="fas fa-clock mr-1"></i> 4 Weeks</span>
-              <span><i class="fas fa-fire mr-1"></i> Beginner</span>
-            </div>
-          </div>
-        </div>
-  
-        <!-- Course 3 -->
-        <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-green-500/20 transition" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-          <img src="https://images.unsplash.com/photo-1584291527908-033f4d6542c8?q=80&w=725&auto=format&fit=crop" alt="Data Analytics Pro" class="w-full h-40 object-cover">
-          <div class="p-5">
-            <h3 class="text-xl font-semibold mb-2">
-              <i class="fas fa-chart-line text-green-400 mr-2"></i>Data Analytics Pro
-            </h3>
-            <p class="text-gray-400 text-sm mb-4">Master Excel, SQL, Tableau, and Python for real-world data projects.</p>
-            <div class="flex justify-between text-sm text-gray-400">
-              <span><i class="fas fa-clock mr-1"></i> 5 Weeks</span>
-              <span><i class="fas fa-laptop-code mr-1"></i> Advanced</span>
-            </div>
-          </div>
-        </div>
-  
-        <!-- Course 4 -->
-        <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-blue-500/20 transition" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-          <img src="https://plus.unsplash.com/premium_photo-1661782505582-07ea68e3e760?q=80&w=869&auto=format&fit=crop" alt="Web for Founders" class="w-full h-40 object-cover">
-          <div class="p-5">
-            <h3 class="text-xl font-semibold mb-2">
-              <i class="fas fa-code text-blue-400 mr-2"></i>Web for Founders
-            </h3>
-            <p class="text-gray-400 text-sm mb-4">Build startup websites using HTML, Tailwind CSS, and no-code tools.</p>
-            <div class="flex justify-between text-sm text-gray-400">
-              <span><i class="fas fa-clock mr-1"></i> 3 Weeks</span>
-              <span><i class="fas fa-paint-brush mr-1"></i> All Levels</span>
-            </div>
-          </div>
-        </div>
-      </div>
-  
-      <div class="mt-12">
-        <a href="#" class="inline-flex items-center bg-indigo-500 hover:bg-indigo-600 text-gray-900 font-bold px-6 py-3 rounded-full text-lg transition">
-          <i class="fas fa-sign-in-alt mr-2"></i> Enroll Now
-        </a>
-      </div>
-    </div>
-  </div>
-  
-  <!-- End Academy -->
+    <!-- End Academy -->
   </section>
 
   <!-- Start Events -->
   <section class="py-10 bg-gray-950">
     <h2 class="text-center text-white text-4xl font-bold mb-10" data-aos="fade-in">
-    <i class="fas fa-calendar-alt mr-2 text-indigo-400"></i>  Upcoming Events
+      <i class="fas fa-calendar-alt mr-2 text-indigo-400"></i> Upcoming Events
     </h2>
     <div class="flex flex-col md:flex-row justify-center gap-8 px-4 container mx-auto">
       <!-- Card 1 -->
-      <div class="relative w-72 h-72 rounded-full overflow-hidden shadow-lg group" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-        <img src="https://hightechcampus.com/storage/1963/20210922_High_Tech_Campus_009_2207.jpg" alt="Event 1" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-white text-center p-6 transition-opacity duration-300 group-hover:bg-opacity-80">
+      <div class="relative w-72 h-72 rounded-full overflow-hidden shadow-lg group" data-aos="zoom-in" data-tilt
+        data-tilt-axis="x">
+        <img src="https://hightechcampus.com/storage/1963/20210922_High_Tech_Campus_009_2207.jpg" alt="Event 1"
+          class="w-full h-full object-cover">
+        <div
+          class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-white text-center p-6 transition-opacity duration-300 group-hover:bg-opacity-80">
           <i class="fas fa-robot text-4xl mb-2 text-yellow-400"></i>
           <h3 class="text-xl font-semibold mb-1">AI Innovation Meetup</h3>
           <p class="text-sm mb-2">Explore cutting-edge AI tools and network with innovators.</p>
@@ -848,14 +899,14 @@ data-tilt data-tilt-axis="x">
           <p><i class="fas fa-location-dot mr-1 text-blue-400"></i>Accra, Ghana</p>
         </div>
       </div>
-  
+
       <!-- Card 2 -->
-      <div class="relative w-72 h-72 rounded-full overflow-hidden shadow-lg group" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-        <img src="https://axiscolleges.org/wp-content/uploads/2023/04/Axis-Startup-Launchpad.webp" alt="Event 2" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-white text-center p-6 transition-opacity duration-300 group-hover:bg-opacity-80">
+      <div class="relative w-72 h-72 rounded-full overflow-hidden shadow-lg group" data-aos="zoom-in" data-tilt
+        data-tilt-axis="x">
+        <img src="https://axiscolleges.org/wp-content/uploads/2023/04/Axis-Startup-Launchpad.webp" alt="Event 2"
+          class="w-full h-full object-cover">
+        <div
+          class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-white text-center p-6 transition-opacity duration-300 group-hover:bg-opacity-80">
           <i class="fas fa-rocket text-4xl mb-2 text-green-400"></i>
           <h3 class="text-xl font-semibold mb-1">Startup Launchpad</h3>
           <p class="text-sm mb-2">Pitch your startup and get mentorship from top VCs.</p>
@@ -863,14 +914,14 @@ data-tilt data-tilt-axis="x">
           <p><i class="fas fa-location-dot mr-1 text-blue-400"></i>Lagos, Nigeria</p>
         </div>
       </div>
-  
+
       <!-- Card 3 -->
-      <div class="relative w-72 h-72 rounded-full overflow-hidden shadow-lg group" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-        <img src="https://technical.ly/wp-content/uploads/2024/06/zipcodewilmington-computer.jpg" alt="Event 3" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-white text-center p-6 transition-opacity duration-300 group-hover:bg-opacity-80">
+      <div class="relative w-72 h-72 rounded-full overflow-hidden shadow-lg group" data-aos="zoom-in" data-tilt
+        data-tilt-axis="x">
+        <img src="https://technical.ly/wp-content/uploads/2024/06/zipcodewilmington-computer.jpg" alt="Event 3"
+          class="w-full h-full object-cover">
+        <div
+          class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-white text-center p-6 transition-opacity duration-300 group-hover:bg-opacity-80">
           <i class="fas fa-code text-4xl mb-2 text-purple-400"></i>
           <h3 class="text-xl font-semibold mb-1">Dev Tools Bootcamp</h3>
           <p class="text-sm mb-2">Hands-on coding sessions and latest dev tools exposé.</p>
@@ -880,23 +931,25 @@ data-tilt data-tilt-axis="x">
       </div>
     </div>
   </section>
-  
+
   <!-- End Events -->
 
   <!-- Start News  -->
   <section class="bg-gray-900 text-white px-6 py-12">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center tracking-tight" data-aos="fade-in">📰 Latest News from Fresients</h2>
-  
+      <h2 class="text-4xl font-bold mb-8 text-center tracking-tight" data-aos="fade-in">📰 Latest News from Fresients
+      </h2>
+
       <div class="grid md:grid-cols-3 gap-8">
         <!-- Blog Card -->
-        <div class="relative group rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-          <img src="https://imageio.forbes.com/specials-images/imageserve/65e4a4f2ce50e2747a4c8503/The-Future-Of-Generative-AI--6-Predictions-Everyone-Should-Know-About/960x0.jpg?format=jpg&width=960" alt="Blog Image" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+        <div
+          class="relative group rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500"
+          data-aos="zoom-in" data-tilt data-tilt-axis="x">
+          <img
+            src="https://imageio.forbes.com/specials-images/imageserve/65e4a4f2ce50e2747a4c8503/The-Future-Of-Generative-AI--6-Predictions-Everyone-Should-Know-About/960x0.jpg?format=jpg&width=960"
+            alt="Blog Image" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
           <div class="absolute inset-0 bg-black/50"></div>
-  
+
           <div class="absolute bottom-0 p-6 z-10 text-white">
             <div class="mb-2 text-sm flex items-center gap-2 text-gray-300">
               <i class="fas fa-tag"></i>
@@ -911,15 +964,16 @@ data-tilt data-tilt-axis="x">
             </div>
           </div>
         </div>
-  
+
         <!-- Blog Card 2 -->
-        <div class="relative group rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-          <img src="https://aicontentblog.com/wp-content/uploads/2025/03/Top-10-AI-Tools-for-Customer-Service-Revolutionizing-Support-with-Technology.png" alt="Blog Image" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+        <div
+          class="relative group rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500"
+          data-aos="zoom-in" data-tilt data-tilt-axis="x">
+          <img
+            src="https://aicontentblog.com/wp-content/uploads/2025/03/Top-10-AI-Tools-for-Customer-Service-Revolutionizing-Support-with-Technology.png"
+            alt="Blog Image" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
           <div class="absolute inset-0 bg-black/50"></div>
-  
+
           <div class="absolute bottom-0 p-6 z-10 text-white">
             <div class="mb-2 text-sm flex items-center gap-2 text-gray-300">
               <i class="fas fa-lightbulb"></i>
@@ -934,15 +988,16 @@ data-tilt data-tilt-axis="x">
             </div>
           </div>
         </div>
-  
+
         <!-- Blog Card 3 -->
-        <div class="relative group rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500" data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x">
-          <img src="https://tateeda.com/wp-content/uploads/2024/01/How_to_Integrate_AI_in_Healthcare_Solutions_Examples__Services-3.jpg" alt="Blog Image" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+        <div
+          class="relative group rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500"
+          data-aos="zoom-in" data-tilt data-tilt-axis="x">
+          <img
+            src="https://tateeda.com/wp-content/uploads/2024/01/How_to_Integrate_AI_in_Healthcare_Solutions_Examples__Services-3.jpg"
+            alt="Blog Image" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
           <div class="absolute inset-0 bg-black/50"></div>
-  
+
           <div class="absolute bottom-0 p-6 z-10 text-white">
             <div class="mb-2 text-sm flex items-center gap-2 text-gray-300">
               <i class="fas fa-chart-line"></i>
@@ -961,204 +1016,182 @@ data-tilt data-tilt-axis="x">
     </div>
   </section>
   <!-- End News -->
-   <!-- Login Overlay -->
-<!-- Overlay -->
-<div
-x-show="openLogin"
-class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-[250]"
-x-transition
-style="display: none"
-data-aos="zoom-in"   
+  <!-- Login Overlay -->
+  <!-- Overlay -->
+  <div x-show="openLogin"
+    class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-[250]" x-transition
+    style="display: none" data-aos="zoom-in" data-tilt data-tilt-axis="x">
+    <!-- Modal -->
+    <div @click.away="openLogin = false"
+      class="bg-gray-900 text-white rounded-xl shadow-xl w-full max-w-md p-6 space-y-6 border border-gray-700 relative"
+      x-transition>
+      <!-- Close Button -->
+      <button @click="openLogin = false" class="absolute top-3 right-3 text-gray-400 hover:text-white">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <!-- Header -->
+      <div class="text-center">
+        <h2 class="text-2xl font-bold mb-1">Welcome Back</h2>
+        <p class="text-sm text-gray-400">Sign in to your account</p>
+      </div>
+
+      <!-- Login Buttons -->
+      <div class="space-y-3 flex flex-col">
+        <button
+          class="w-full flex items-center justify-center bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded-lg text-sm font-medium">
+          <i class="fab fa-facebook-f mr-2"></i> Continue with Facebook
+        </button>
+
+        <button
+          class="w-full flex items-center justify-center bg-white text-black hover:bg-gray-100 py-2 px-4 rounded-lg text-sm font-medium">
+          <i class="fab fa-google mr-2"></i> Continue with Google
+        </button>
+
+        <button
+          class="w-full flex items-center justify-center bg-black hover:bg-gray-800 py-2 px-4 rounded-lg text-sm font-medium">
+          <i class="fab fa-apple mr-2"></i> Continue with Apple
+        </button>
+
+        <button
+          class="w-full flex items-center justify-center bg-gray-800 hover:bg-gray-700 py-2 px-4 rounded-lg text-sm font-medium">
+          <i class="fab fa-github mr-2"></i> Continue with GitHub
+        </button>
+
+        <button
+          class="w-full flex items-center justify-center bg-blue-500 hover:bg-blue-600 py-2 px-4 rounded-lg text-sm font-medium">
+          <i class="fab fa-microsoft mr-2"></i> Continue with Microsoft
+        </button>
+      </div>
 
 
-data-tilt data-tilt-axis="x"
->
-<!-- Modal -->
-<div 
-  @click.away="openLogin = false"
-  class="bg-gray-900 text-white rounded-xl shadow-xl w-full max-w-md p-6 space-y-6 border border-gray-700 relative"
-  x-transition
-  
->
-  <!-- Close Button -->
-  <button @click="openLogin = false" class="absolute top-3 right-3 text-gray-400 hover:text-white">
-    <i class="fas fa-times"></i>
-  </button>
+      <!-- Divider -->
+      <div class="flex items-center space-x-2">
+        <div class="flex-1 h-px bg-gray-700"></div>
+        <span class="text-xs text-gray-400">or</span>
+        <div class="flex-1 h-px bg-gray-700"></div>
+      </div>
 
-  <!-- Header -->
-  <div class="text-center">
-    <h2 class="text-2xl font-bold mb-1">Welcome Back</h2>
-    <p class="text-sm text-gray-400">Sign in to your account</p>
+      <!-- Email Login Form -->
+      <form class="space-y-4">
+        <input type="email" placeholder="Email"
+          class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        <input type="password" placeholder="Password"
+          class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        <button type="submit"
+          class="w-full bg-indigo-600 hover:bg-indigo-700 py-2 rounded-lg font-semibold">Login</button>
+      </form>
+
+      <!-- Footer -->
+      <p class="text-sm text-gray-500 text-center">Don't have an account? <a href="#"
+          class="text-indigo-400 hover:underline">Register</a></p>
+    </div>
   </div>
+  <!-- End Login Overlay -->
 
- <!-- Login Buttons -->
-<div class="space-y-3 flex flex-col">
-  <button class="w-full flex items-center justify-center bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded-lg text-sm font-medium">
-    <i class="fab fa-facebook-f mr-2"></i> Continue with Facebook
-  </button>
+  <!-- Register Modal -->
+  <div x-show="openRegister" x-transition.opacity @keydown.escape.window="openRegister = false"
+    @click.away="openRegister = false" class="fixed inset-0 bg-black/60 z-[250] flex items-center justify-center"
+    style="display: none" data-aos="zoom-in" data-tilt data-tilt-axis="x">
 
-  <button class="w-full flex items-center justify-center bg-white text-black hover:bg-gray-100 py-2 px-4 rounded-lg text-sm font-medium">
-    <i class="fab fa-google mr-2"></i> Continue with Google
-  </button>
+    <!-- Modal Content -->
+    <div @click.stop x-transition class="bg-gray-900 text-white w-full max-w-md rounded-xl shadow-lg p-6 space-y-6">
 
-  <button class="w-full flex items-center justify-center bg-black hover:bg-gray-800 py-2 px-4 rounded-lg text-sm font-medium">
-    <i class="fab fa-apple mr-2"></i> Continue with Apple
-  </button>
+      <!-- Header -->
+      <div class="flex justify-between items-center">
+        <h2 class="text-2xl font-semibold">Register</h2>
+        <button @click="openRegister = false"
+          class="text-gray-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
 
-  <button class="w-full flex items-center justify-center bg-gray-800 hover:bg-gray-700 py-2 px-4 rounded-lg text-sm font-medium">
-    <i class="fab fa-github mr-2"></i> Continue with GitHub
-  </button>
+      <!-- Social Icons -->
+      <div class="flex justify-center gap-4 text-xl">
+        <button class="hover:text-blue-600"><i class="fab fa-facebook-f"></i></button>
+        <button class="hover:text-red-500"><i class="fab fa-google"></i></button>
+        <button class="hover:text-gray-300"><i class="fab fa-apple"></i></button>
+        <button class="hover:text-white"><i class="fab fa-github"></i></button>
+        <button class="hover:text-blue-500"><i class="fab fa-microsoft"></i></button>
+      </div>
 
-  <button class="w-full flex items-center justify-center bg-blue-500 hover:bg-blue-600 py-2 px-4 rounded-lg text-sm font-medium">
-    <i class="fab fa-microsoft mr-2"></i> Continue with Microsoft
-  </button>
-</div>
-
-
-  <!-- Divider -->
-  <div class="flex items-center space-x-2">
-    <div class="flex-1 h-px bg-gray-700"></div>
-    <span class="text-xs text-gray-400">or</span>
-    <div class="flex-1 h-px bg-gray-700"></div>
-  </div>
-
-  <!-- Email Login Form -->
-  <form class="space-y-4">
-    <input type="email" placeholder="Email" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
-    <input type="password" placeholder="Password" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
-    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 py-2 rounded-lg font-semibold">Login</button>
-  </form>
-
-  <!-- Footer -->
-  <p class="text-sm text-gray-500 text-center">Don't have an account? <a href="#" class="text-indigo-400 hover:underline">Register</a></p>
-</div>
-</div>
-   <!-- End Login Overlay -->
-
-   <!-- Register Modal -->
-  <div x-show="openRegister"
-  x-transition.opacity
-  @keydown.escape.window="openRegister = false"
-  @click.away="openRegister = false"
-  class="fixed inset-0 bg-black/60 z-[250] flex items-center justify-center"
-  style="display: none"
-  data-aos="zoom-in"   
-
-
-data-tilt data-tilt-axis="x"
-  >
-
-<!-- Modal Content -->
-<div @click.stop
-    x-transition
-    class="bg-gray-900 text-white w-full max-w-md rounded-xl shadow-lg p-6 space-y-6">
-
- <!-- Header -->
- <div class="flex justify-between items-center">
-   <h2 class="text-2xl font-semibold">Register</h2>
-   <button @click="openRegister = false" class="text-gray-400 hover:text-white text-2xl leading-none">&times;</button>
- </div>
-
- <!-- Social Icons -->
- <div class="flex justify-center gap-4 text-xl">
-   <button class="hover:text-blue-600"><i class="fab fa-facebook-f"></i></button>
-   <button class="hover:text-red-500"><i class="fab fa-google"></i></button>
-   <button class="hover:text-gray-300"><i class="fab fa-apple"></i></button>
-   <button class="hover:text-white"><i class="fab fa-github"></i></button>
-   <button class="hover:text-blue-500"><i class="fab fa-microsoft"></i></button>
- </div>
-
- <!-- Form -->
- <form @submit.prevent="alert('Registered!'); openRegister = false;" class="space-y-4">
-   <div>
-     <label class="block text-sm mb-1">Name</label>
-     <input type="text" required
+      <!-- Form -->
+      <form @submit.prevent="alert('Registered!'); openRegister = false;" class="space-y-4">
+        <div>
+          <label class="block text-sm mb-1">Name</label>
+          <input type="text" required
             class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded focus:ring-2 focus:ring-indigo-500 focus:outline-none"
             placeholder="Your Name">
-   </div>
-   <div>
-    <label class="block text-sm mb-1">Phone Number(Starting with your country code)</label>
-    <input type="text" required
-           class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-           placeholder="Your Phone Number e.g +233">
-  </div>
-   <div>
-     <label class="block text-sm mb-1">Email</label>
-     <input type="email" required
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Phone Number(Starting with your country code)</label>
+          <input type="text" required
+            class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+            placeholder="Your Phone Number e.g +233">
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Email</label>
+          <input type="email" required
             class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded focus:ring-2 focus:ring-indigo-500 focus:outline-none"
             placeholder="you@example.com">
-   </div>
-   <div>
-     <label class="block text-sm mb-1">Password</label>
-     <input type="password" required
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Password</label>
+          <input type="password" required
             class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded focus:ring-2 focus:ring-indigo-500 focus:outline-none"
             placeholder="********">
-   </div>
+        </div>
 
-   <!-- Submit -->
-   <button type="submit"
-           class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded transition">
-     Register
-   </button>
- </form>
-</div>
-</div>
-   <!-- End Register Overlay -->
+        <!-- Submit -->
+        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded transition">
+          Register
+        </button>
+      </form>
+    </div>
+  </div>
+  <!-- End Register Overlay -->
 
-   <!-- Start SerachBar Overlay -->
-   <div 
-   x-show="openSearch" 
-   x-transition 
-   @keydown.escape.window="openSearch = false"
-   class="fixed inset-0 z-[250] flex items-center justify-center bg-black/70 backdrop-blur-sm"
- style="display: none;"
- data-aos="zoom-in"   
+  <!-- Start SerachBar Overlay -->
+  <div x-show="openSearch" x-transition @keydown.escape.window="openSearch = false"
+    class="fixed inset-0 z-[250] flex items-center justify-center bg-black/70 backdrop-blur-sm" style="display: none;"
+    data-aos="zoom-in" data-tilt data-tilt-axis="x">
+    <div class="bg-gray-900 text-white w-[90%] max-w-md p-6 rounded-xl relative shadow-2xl">
+      <!-- Close Button -->
+      <button @click="openSearch = false" class="absolute top-3 right-3 text-gray-400 hover:text-white text-2xl"
+        aria-label="Close">
+        <i class="fas fa-times"></i>
+      </button>
 
+      <!-- Search Input -->
+      <input type="text" placeholder="Search Fresients..."
+        class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 mt-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500">
 
-data-tilt data-tilt-axis="x"
-   >
-   <div class="bg-gray-900 text-white w-[90%] max-w-md p-6 rounded-xl relative shadow-2xl">
-     <!-- Close Button -->
-     <button 
-       @click="openSearch = false" 
-       class="absolute top-3 right-3 text-gray-400 hover:text-white text-2xl"
-       aria-label="Close"
-     >
-      <i class="fas fa-times"></i>
-     </button>
- 
-     <!-- Search Input -->
-     <input 
-       type="text" 
-       placeholder="Search Fresients..." 
-       class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 mt-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-     >
- 
-     <!-- Suggestions -->
-     <ul class="mt-4 space-y-2">
-       <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">🔍 AI Startup Funding Reports</li>
-       <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">📊 Weekly AI Newsletters</li>
-       <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">🧠 Top AI Courses 2025</li>
-       <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">🚀 Founder Interviews</li>
-     </ul>
-   </div>
- </div>
- 
-   <!-- End Serach Bar Overlay -->
-   <!-- Start Contact Us -->
-   <section class="px-4 py-4 md:py-4 bg-gray-900 text-white relative">
+      <!-- Suggestions -->
+      <ul class="mt-4 space-y-2">
+        <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">🔍 AI Startup Funding Reports</li>
+        <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">📊 Weekly AI Newsletters</li>
+        <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">🧠 Top AI Courses 2025</li>
+        <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">🚀 Founder Interviews</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- End Serach Bar Overlay -->
+  <!-- Start Contact Us -->
+  <section class="px-4 py-4 md:py-4 bg-gray-900 text-white relative">
     <form action="https://fabform.io/f/xxxxx" method="post" class="mt-8 md:mt-2">
       <div class="py-8">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="grid lg:grid-cols-2 grid-cols-1">
-            
+
             <!-- Left: Image + Contact Info -->
             <div class="lg:mb-0 mb-10">
               <div class="group w-full h-full">
                 <div class="relative h-full">
-                  <iframe class="w-full h-full lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-indigo-700 opacity-80" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d31769.237661240073!2d-0.2764257446995105!3d5.544065693911171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sgoogle%20maps%20for%20dansoman%20russia%20road!5e0!3m2!1sen!2sgh!4v1753014492633!5m2!1sen!2sgh" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                  
-  
+                  <iframe class="w-full h-full lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-indigo-700 opacity-80"
+                    src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d31769.237661240073!2d-0.2764257446995105!3d5.544065693911171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sgoogle%20maps%20for%20dansoman%20russia%20road!5e0!3m2!1sen!2sgh!4v1753014492633!5m2!1sen!2sgh"
+                    style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
                   <div class="absolute left-0 right-0 bottom-0 md:bottom-10   flex items-center justify-around">
                     <div class="bg-gray-800 rounded-lg p-6 block text-white space-y-6">
                       <!-- Phone -->
@@ -1166,82 +1199,82 @@ data-tilt data-tilt-axis="x"
                         <i class="fas fa-phone text-indigo-400 text-xl w-8"></i>
                         <h5 class="ml-5 text-base font-normal leading-6">+233249435529</h5>
                       </a>
-                    
+
                       <!-- Email -->
                       <a href="mailto:contact@fresients.com" class="flex items-center">
                         <i class="fas fa-envelope text-indigo-400 text-xl w-8"></i>
                         <h5 class="ml-5 text-base font-normal leading-6">contact@fresients.com</h5>
                       </a>
-                    
+
                       <!-- Location -->
                       <div class="flex items-center">
                         <i class="fas fa-map-marker-alt text-indigo-400 text-xl w-8"></i>
                         <h5 class="ml-5 text-base font-normal leading-6">Russia Road, Dansoman - Accra, Ghana</h5>
                       </div>
-                    
+
                       <!-- Website -->
                       <a href="https://www.fresients.com" target="_blank" class="flex items-center">
                         <i class="fas fa-globe text-indigo-400 text-xl w-8"></i>
                         <h5 class="ml-5 text-base font-normal leading-6">www.fresients.com</h5>
                       </a>
                     </div>
-                    
+
                   </div>
                 </div>
               </div>
             </div>
-  
+
             <!-- Right: Form -->
             <div class="bg-gray-800 p-5 lg:p-11 lg:rounded-r-2xl rounded-2xl">
               <h2 class="text-indigo-400 font-manrope text-3xl font-semibold leading-10 mb-11">Send Us A Message</h2>
-  
+
               <!-- Inputs -->
               <input type="text" name="name"
-                     class="w-full h-12 text-white placeholder-gray-400 shadow-sm bg-gray-700 text-lg font-normal leading-7 rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-4 mb-10"
-                     placeholder="Name" required>
-  
+                class="w-full h-12 text-white placeholder-gray-400 shadow-sm bg-gray-700 text-lg font-normal leading-7 rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-4 mb-10"
+                placeholder="Name" required>
+
               <input type="email" name="email"
-                     class="w-full h-12 text-white placeholder-gray-400 shadow-sm bg-gray-700 text-lg font-normal leading-7 rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-4 mb-10"
-                     placeholder="Email" required>
-  
+                class="w-full h-12 text-white placeholder-gray-400 shadow-sm bg-gray-700 text-lg font-normal leading-7 rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-4 mb-10"
+                placeholder="Email" required>
+
               <input type="text" name="phone"
-                     class="w-full h-12 text-white placeholder-gray-400 shadow-sm bg-gray-700 text-lg font-normal leading-7 rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-4 mb-10"
-                     placeholder="Phone">
-  
+                class="w-full h-12 text-white placeholder-gray-400 shadow-sm bg-gray-700 text-lg font-normal leading-7 rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-4 mb-10"
+                placeholder="Phone">
+
               <!-- Radio -->
               <div class="mb-10">
                 <h4 class="text-gray-400 text-lg font-normal leading-7 mb-4">Preferred method of communication</h4>
                 <div class="flex">
                   <div class="flex items-center mr-11">
-                    <input id="radio-group-1" type="radio" name="communication" value="Email"
-                           class="hidden peer">
+                    <input id="radio-group-1" type="radio" name="communication" value="Email" class="hidden peer">
                     <label for="radio-group-1"
-                           class="flex items-center cursor-pointer text-gray-300 text-base font-normal leading-6 peer-checked:text-indigo-400">
-                      <span class="border border-gray-500 peer-checked:border-indigo-500 rounded-full mr-2 w-4 h-4 ml-2"></span>
+                      class="flex items-center cursor-pointer text-gray-300 text-base font-normal leading-6 peer-checked:text-indigo-400">
+                      <span
+                        class="border border-gray-500 peer-checked:border-indigo-500 rounded-full mr-2 w-4 h-4 ml-2"></span>
                       Email
                     </label>
                   </div>
-  
+
                   <div class="flex items-center">
-                    <input id="radio-group-2" type="radio" name="communication" value="Phone"
-                           class="hidden peer">
+                    <input id="radio-group-2" type="radio" name="communication" value="Phone" class="hidden peer">
                     <label for="radio-group-2"
-                           class="flex items-center cursor-pointer text-gray-300 text-base font-normal leading-6 peer-checked:text-indigo-400">
-                      <span class="border border-gray-500 peer-checked:border-indigo-500 rounded-full mr-2 w-4 h-4 ml-2"></span>
+                      class="flex items-center cursor-pointer text-gray-300 text-base font-normal leading-6 peer-checked:text-indigo-400">
+                      <span
+                        class="border border-gray-500 peer-checked:border-indigo-500 rounded-full mr-2 w-4 h-4 ml-2"></span>
                       Phone
                     </label>
                   </div>
                 </div>
               </div>
-  
+
               <!-- Message -->
               <input type="text" name="message"
-                     class="w-full h-12 text-white placeholder-gray-400 bg-gray-700 text-lg shadow-sm font-normal leading-7 rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-4 mb-10"
-                     placeholder="Message">
-  
+                class="w-full h-12 text-white placeholder-gray-400 bg-gray-700 text-lg shadow-sm font-normal leading-7 rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-4 mb-10"
+                placeholder="Message">
+
               <!-- Submit -->
               <button type="submit"
-                      class="w-full h-12 text-white text-base font-semibold leading-6 rounded-full transition-all duration-700 bg-indigo-600 hover:bg-indigo-700 shadow-sm">
+                class="w-full h-12 text-white text-base font-semibold leading-6 rounded-full transition-all duration-700 bg-indigo-600 hover:bg-indigo-700 shadow-sm">
                 Send
               </button>
             </div>
@@ -1250,15 +1283,16 @@ data-tilt data-tilt-axis="x"
       </div>
     </form>
   </section>
-  
-   <!-- End Contact Us -->
+
+  <!-- End Contact Us -->
   <!-- Start Footer -->
   <footer class="bg-gray-950 text-gray-300 py-12 px-4 sm:px-8 lg:px-16">
     <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
       <!-- Brand Info -->
       <div>
         <h2 class="text-2xl font-bold text-white mb-4">Fresients</h2>
-        <p class="text-sm">Your passport to the world of Startups & AI. Stay ahead with curated insights, weekly trends, and future-forward innovations.</p>
+        <p class="text-sm">Your passport to the world of Startups & AI. Stay ahead with curated insights, weekly trends,
+          and future-forward innovations.</p>
         <div class="flex mt-4 space-x-4">
           <a href="#" class="text-blue-400 hover:text-white"><i class="fab fa-twitter fa-lg"></i></a>
           <a href="#" class="text-pink-500 hover:text-white"><i class="fab fa-instagram fa-lg"></i></a>
@@ -1267,33 +1301,42 @@ data-tilt data-tilt-axis="x"
           <a href="#" class="text-white hover:text-yellow-400"><i class="fab fa-linkedin fa-lg"></i></a>
         </div>
       </div>
-  
+
       <!-- Quick Links -->
       <div>
-        <h3 class="text-xl font-semibold text-white mb-4"><i class="fas fa-link mr-2 text-indigo-400"></i>Quick Links</h3>
+        <h3 class="text-xl font-semibold text-white mb-4"><i class="fas fa-link mr-2 text-indigo-400"></i>Quick Links
+        </h3>
         <ul class="space-y-2 text-sm">
           <li><a href="#" class="hover:text-white"><i class="fas fa-home mr-2 text-yellow-400"></i>Home</a></li>
           <li><a href="#" class="hover:text-white"><i class="fas fa-bolt mr-2 text-pink-400"></i>AI Insights</a></li>
           <li><a href="#" class="hover:text-white"><i class="fas fa-play-circle mr-2 text-red-400"></i>Podcasts</a></li>
-          <li><a href="#" class="hover:text-white"><i class="fas fa-graduation-cap mr-2 text-green-400"></i>Academy</a></li>
-          <li><a href="#" class="hover:text-white"><i class="fas fa-envelope-open-text mr-2 text-blue-400"></i>Newsletter</a></li>
+          <li><a href="#" class="hover:text-white"><i class="fas fa-graduation-cap mr-2 text-green-400"></i>Academy</a>
+          </li>
+          <li><a href="#" class="hover:text-white"><i
+                class="fas fa-envelope-open-text mr-2 text-blue-400"></i>Newsletter</a></li>
         </ul>
       </div>
-  
+
       <!-- Academy Courses -->
       <div>
-        <h3 class="text-xl font-semibold text-white mb-4"><i class="fas fa-laptop-code mr-2 text-indigo-400"></i>Top Courses</h3>
+        <h3 class="text-xl font-semibold text-white mb-4"><i class="fas fa-laptop-code mr-2 text-indigo-400"></i>Top
+          Courses</h3>
         <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:text-white"><i class="fas fa-robot mr-2 text-pink-500"></i>Intro to AI & ML</a></li>
-          <li><a href="#" class="hover:text-white"><i class="fas fa-brain mr-2 text-yellow-500"></i>Neural Networks 101</a></li>
-          <li><a href="#" class="hover:text-white"><i class="fas fa-database mr-2 text-green-500"></i>Data Science Crash</a></li>
-          <li><a href="#" class="hover:text-white"><i class="fas fa-shield-alt mr-2 text-red-400"></i>Ethics in AI</a></li>
+          <li><a href="#" class="hover:text-white"><i class="fas fa-robot mr-2 text-pink-500"></i>Intro to AI & ML</a>
+          </li>
+          <li><a href="#" class="hover:text-white"><i class="fas fa-brain mr-2 text-yellow-500"></i>Neural Networks
+              101</a></li>
+          <li><a href="#" class="hover:text-white"><i class="fas fa-database mr-2 text-green-500"></i>Data Science
+              Crash</a></li>
+          <li><a href="#" class="hover:text-white"><i class="fas fa-shield-alt mr-2 text-red-400"></i>Ethics in AI</a>
+          </li>
         </ul>
       </div>
-  
+
       <!-- Contact -->
       <div>
-        <h3 class="text-xl font-semibold text-white mb-4"><i class="fas fa-phone-alt mr-2 text-cyan-400"></i>Contact</h3>
+        <h3 class="text-xl font-semibold text-white mb-4"><i class="fas fa-phone-alt mr-2 text-cyan-400"></i>Contact
+        </h3>
         <ul class="text-sm space-y-3">
           <li><i class="fas fa-envelope mr-2 text-purple-400"></i>hello@fresients.ai</li>
           <li><i class="fas fa-map-marker-alt mr-2 text-orange-400"></i>Accra, Ghana</li>
@@ -1301,18 +1344,19 @@ data-tilt data-tilt-axis="x"
         </ul>
       </div>
     </div>
-  
+
     <div class="mt-10 border-t border-gray-700 pt-6 text-sm text-center text-gray-500">
       &copy; 2025 Fresients. All rights reserved. Powered by <span class="text-white font-semibold">Sikanua Inc.</span>
     </div>
   </footer>
-  
+
   <script src="app.js"></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-      AOS.init({once: true,startEvent: 'DOMContentLoaded', duration: 1500 });  
+    AOS.init({ once: true, startEvent: 'DOMContentLoaded', duration: 1500 });  
   </script>
 
 </body>
+
 </html>
