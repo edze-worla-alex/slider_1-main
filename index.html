@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
   <meta charset="UTF-8">
@@ -7,7 +7,21 @@
   <title>Fresients | AI & Startups Insights</title>
   <link rel="shortcut icon" href="favicon.png" />
 
+  <script>
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -17,12 +31,27 @@
 
 </head>
 
-<body x-data="{ openLogin: false,openRegister: false,openSearch: false }"
-  class="prose max-w-none relative w-screen overflow-x-hidden">
+<body x-data="{
+    openLogin: false,
+    openRegister: false,
+    openSearch: false,
+    theme: localStorage.getItem('theme') || 'dark',
+    toggleTheme() {
+        this.theme = this.theme === 'light' ? 'dark' : 'light'
+        localStorage.setItem('theme', this.theme)
+        if (this.theme === 'dark') {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    }
+  }"
+  x-init="theme = localStorage.getItem('theme') || 'dark'"
+  class="prose max-w-none relative w-screen overflow-x-hidden bg-white dark:bg-gray-950 text-gray-900 dark:text-white">
   <header x-data="{ scrolled: false,mobileOpen: false}"
     x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 10)"
-    :class="scrolled ? 'bg-black/90 backdrop-blur-md shadow-md ml-0 w-full pr-4 pl-4 pb-4' : 'bg-transparent container'"
-    class="text-center py-2 pb-4 flex items-center justify-center relative sticky top-0 mx-auto z-[200] transition-all duration-300 ease-in-out text-white">
+    :class="scrolled ? 'bg-black/50 dark:bg-black/90 backdrop-blur-md shadow-md ml-0 w-full pr-4 pl-4 pb-4' : 'bg-transparent container'"
+    class="text-center py-2 pb-4 flex items-center justify-center relative sticky top-0 mx-auto z-[200] transition-all duration-300 ease-in-out text-gray-50 dark:text-white">
     <nav class="text-lg font-semibold flex items-center justify-between w-full relative">
 
       <!-- Logo -->
@@ -41,12 +70,20 @@
         <li><a href="#">Events</a></li>
         <li><a href="#">Tools</a></li>
       </ul>
-      <!-- Search Button -->
-      <button @click="openSearch = true"
-        class="text-white hover:text-indigo-400 transition duration-300 text-xl p-2 rounded-full bg-transparent hover:bg-white/10 flex items-center justify-center mt-2"
-        aria-label="Open search">
-        <i class="fas fa-search"></i>
-      </button>
+      <!-- Search and Theme Toggle -->
+      <div class="flex items-center gap-2 mt-2">
+        <button @click="openSearch = true"
+          class="text-gray-900 dark:text-white hover:text-indigo-400 transition duration-300 text-xl p-2 rounded-full bg-transparent hover:bg-gray-200 dark:hover:bg-white/10 flex items-center justify-center"
+          aria-label="Open search">
+          <i class="fas fa-search"></i>
+        </button>
+        <button @click="toggleTheme()"
+          class="text-gray-900 dark:text-white hover:text-indigo-400 transition duration-300 text-xl p-2 rounded-full bg-transparent hover:bg-gray-200 dark:hover:bg-white/10 flex items-center justify-center"
+          aria-label="Toggle theme">
+          <i x-show="theme === 'dark'" class="fas fa-sun"></i>
+          <i x-show="theme === 'light'" class="fas fa-moon" style="display: none;"></i>
+        </button>
+      </div>
       <!-- Auth Buttons (desktop) -->
       <div class="hidden md:flex mt-6 gap-2">
         <button @click="openLogin = true; openRegister = false;"
@@ -54,7 +91,7 @@
           Login
         </button>
         <button @click="openRegister = true; openLogin = false;"
-          class="px-5 py-2 mr-4 rounded-xl border border-white bg-indigo-500 hover:bg-indigo-600 hover:text-white text-white transition duration-300">
+          class="px-5 py-2 mr-4 rounded-xl border bg-indigo-500 hover:bg-indigo-600 text-white transition duration-300">
           Register
         </button>
       </div>
@@ -314,7 +351,7 @@
   </section>
 
   <!-- Stats & Supported Platforms -->
-  <section class="bg-gray-950 text-white px-4 py-12 relative grid grid-cols-1 md:grid-cols-2 gap-1 overflow-x-hidden">
+  <section class="bg-gray-100 dark:bg-gray-950 px-4 py-12 relative grid grid-cols-1 md:grid-cols-2 gap-1 overflow-x-hidden">
     <!-- Supported Platforms and Partners -->
 
     <div class="w-full m-1 md:m-4 z-10 " data-aos="zoom-in" data-tilt data-tilt-axis="x">
@@ -360,7 +397,7 @@
       </ul>
 
       <div class="py-8">
-        <hr class="border-gray-700 border-2" />
+        <hr class="border-gray-300 dark:border-gray-700 border-2" />
       </div>
     </div>
     <!-- End Supported Platforms -->
@@ -368,33 +405,33 @@
     <!-- Stats Overcards -->
     <div class="w-full mt-10 ml-0 md:-ml-4 md:mt-0 grid grid-cols-1 sm:grid-cols-3 gap-4 px-4 z-10">
       <!-- Card 1 -->
-      <div class="bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-700" data-aos="zoom-in" data-tilt
+      <div class="bg-white dark:bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-200 dark:border-gray-700" data-aos="zoom-in" data-tilt
         data-tilt-axis="x">
         <div class="text-4xl mb-2">
           <i class="fas fa-newspaper text-purple-400"></i>
         </div>
         <h4 class="text-xl font-semibold">10+</h4>
-        <p class="text-gray-400 text-sm mt-1">Monthly Newsletters</p>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">Monthly Newsletters</p>
       </div>
 
       <!-- Card 2 -->
-      <div class="bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-700" data-aos="zoom-in" data-tilt
+      <div class="bg-white dark:bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-200 dark:border-gray-700" data-aos="zoom-in" data-tilt
         data-tilt-axis="x">
         <div class="text-4xl mb-2">
           <i class="fas fa-chart-line text-green-400"></i>
         </div>
         <h4 class="text-xl font-semibold">75+</h4>
-        <p class="text-gray-400 text-sm mt-1">Data Insights Reports</p>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">Data Insights Reports</p>
       </div>
 
       <!-- Card 3 -->
-      <div class="bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-700" data-aos="zoom-in" data-tilt
+      <div class="bg-white dark:bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-200 dark:border-gray-700" data-aos="zoom-in" data-tilt
         data-tilt-axis="x">
         <div class="text-4xl mb-2">
           <i class="fas fa-users text-yellow-300"></i>
         </div>
         <h4 class="text-xl font-semibold">10K+</h4>
-        <p class="text-gray-400 text-sm mt-1">Global Readers</p>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">Global Readers</p>
       </div>
     </div>
     <!-- End Stats -->
@@ -404,7 +441,7 @@
 
 
   <!-- Newsletters -->
-  <section class="bg-gray-950 text-white py-16 px-4 sm:px-6 lg:px-12" id="newsletters">
+  <section class="bg-gray-100 dark:bg-gray-950 py-16 px-4 sm:px-6 lg:px-12" id="newsletters">
     <h2 class="text-4xl font-extrabold text-center mb-14 tracking-tight" data-aos="fade-in">📬 Top AI & Startup
       Newsletters</h2>
 
@@ -412,15 +449,15 @@
 
       <!-- Newsletter 1 -->
       <div
-        class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-indigo-400 border-t-8"
+        class="relative bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-indigo-200 dark:border-indigo-400 border-t-8"
         data-aos="zoom-in" data-tilt data-tilt-axis="x">
         <i class="fas fa-thumbtack text-indigo-400 text-2xl absolute top-4 right-4 rotate-45"></i>
         <div class="flex items-center mb-4 text-indigo-400">
           <i class="fas fa-robot text-2xl me-3"></i>
           <h3 class="text-xl font-bold">FutureScope Weekly</h3>
         </div>
-        <p class="text-gray-400 mb-4 text-sm">Your radar on upcoming AI trends, product launches & research papers.</p>
-        <div class="text-sm text-gray-300 space-y-2">
+        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">Your radar on upcoming AI trends, product launches & research papers.</p>
+        <div class="text-sm text-gray-700 dark:text-gray-300 space-y-2">
           <div><i class="fas fa-clock text-indigo-500 me-2"></i>Weekly</div>
           <div><i class="fas fa-tags text-yellow-500 me-2"></i>AI, Research, Tools</div>
           <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
@@ -429,16 +466,16 @@
 
       <!-- Newsletter 2 -->
       <div
-        class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-orange-400 border-t-8"
+        class="relative bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-orange-200 dark:border-orange-400 border-t-8"
         data-aos="zoom-in" data-tilt data-tilt-axis="x">
         <i class="fas fa-thumbtack text-orange-400 text-2xl absolute top-4 right-4 rotate-45"></i>
         <div class="flex items-center mb-4 text-orange-400">
           <i class="fas fa-lightbulb text-2xl me-3"></i>
           <h3 class="text-xl font-bold">Startup Signals</h3>
         </div>
-        <p class="text-gray-400 mb-4 text-sm">Venture trends, pitch breakdowns, and founder stories from Africa &
+        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">Venture trends, pitch breakdowns, and founder stories from Africa &
           beyond.</p>
-        <div class="text-sm text-gray-300 space-y-2">
+        <div class="text-sm text-gray-700 dark:text-gray-300 space-y-2">
           <div><i class="fas fa-clock text-orange-500 me-2"></i>Bi-weekly</div>
           <div><i class="fas fa-tags text-yellow-500 me-2"></i>Startups, VC, Africa</div>
           <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
@@ -447,15 +484,15 @@
 
       <!-- Newsletter 3 -->
       <div
-        class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-pink-400 border-t-8"
+        class="relative bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-pink-200 dark:border-pink-400 border-t-8"
         data-aos="zoom-in" data-tilt data-tilt-axis="x">
         <i class="fas fa-thumbtack text-pink-400 text-2xl absolute top-4 right-4 rotate-45"></i>
         <div class="flex items-center mb-4 text-pink-400">
           <i class="fas fa-brain text-2xl me-3"></i>
           <h3 class="text-xl font-bold">Deep Dive Digest</h3>
         </div>
-        <p class="text-gray-400 mb-4 text-sm">Concise breakdowns of trending AI research papers and ML concepts.</p>
-        <div class="text-sm text-gray-300 space-y-2">
+        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">Concise breakdowns of trending AI research papers and ML concepts.</p>
+        <div class="text-sm text-gray-700 dark:text-gray-300 space-y-2">
           <div><i class="fas fa-clock text-pink-500 me-2"></i>Monthly</div>
           <div><i class="fas fa-tags text-yellow-500 me-2"></i>AI Papers, NLP, CV</div>
           <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
@@ -464,15 +501,15 @@
 
       <!-- Newsletter 4 -->
       <div
-        class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-green-400 border-t-8"
+        class="relative bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-green-200 dark:border-green-400 border-t-8"
         data-aos="zoom-in" data-tilt data-tilt-axis="x">
         <i class="fas fa-thumbtack text-green-400 text-2xl absolute top-4 right-4 rotate-45"></i>
         <div class="flex items-center mb-4 text-green-400">
           <i class="fas fa-globe-africa text-2xl me-3"></i>
           <h3 class="text-xl font-bold">Africa Tech Pulse</h3>
         </div>
-        <p class="text-gray-400 mb-4 text-sm">Curated African tech news, founder spotlights, and startup scenes.</p>
-        <div class="text-sm text-gray-300 space-y-2">
+        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">Curated African tech news, founder spotlights, and startup scenes.</p>
+        <div class="text-sm text-gray-700 dark:text-gray-300 space-y-2">
           <div><i class="fas fa-clock text-green-500 me-2"></i>Weekly</div>
           <div><i class="fas fa-tags text-yellow-500 me-2"></i>Africa, Startups, Funding</div>
           <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
@@ -481,16 +518,16 @@
 
       <!-- Newsletter 5 -->
       <div
-        class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-purple-400 border-t-8"
+        class="relative bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-purple-200 dark:border-purple-400 border-t-8"
         data-aos="zoom-in" data-tilt data-tilt-axis="x">
         <i class="fas fa-thumbtack text-purple-400 text-2xl absolute top-4 right-4 rotate-45"></i>
         <div class="flex items-center mb-4 text-purple-400">
           <i class="fas fa-dna text-2xl me-3"></i>
           <h3 class="text-xl font-bold">Health AI Insider</h3>
         </div>
-        <p class="text-gray-400 mb-4 text-sm">Newsletters focusing on AI in healthcare, diagnostics & biotech
+        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">Newsletters focusing on AI in healthcare, diagnostics & biotech
           innovation.</p>
-        <div class="text-sm text-gray-300 space-y-2">
+        <div class="text-sm text-gray-700 dark:text-gray-300 space-y-2">
           <div><i class="fas fa-clock text-purple-500 me-2"></i>Bi-weekly</div>
           <div><i class="fas fa-tags text-yellow-500 me-2"></i>Healthcare, AI, Biotech</div>
           <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
@@ -499,16 +536,16 @@
 
       <!-- Newsletter 6 -->
       <div
-        class="relative bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-red-400 border-t-8"
+        class="relative bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-red-200 dark:border-red-400 border-t-8"
         data-aos="zoom-in" data-tilt data-tilt-axis="x">
         <i class="fas fa-thumbtack text-red-400 text-2xl absolute top-4 right-4 rotate-45"></i>
         <div class="flex items-center mb-4 text-red-400">
           <i class="fas fa-chart-line text-2xl me-3"></i>
           <h3 class="text-xl font-bold">VC Watchlist</h3>
         </div>
-        <p class="text-gray-400 mb-4 text-sm">Insights into venture funding trends, top rounds, and new accelerators.
+        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">Insights into venture funding trends, top rounds, and new accelerators.
         </p>
-        <div class="text-sm text-gray-300 space-y-2">
+        <div class="text-sm text-gray-700 dark:text-gray-300 space-y-2">
           <div><i class="fas fa-clock text-red-500 me-2"></i>Weekly</div>
           <div><i class="fas fa-tags text-yellow-500 me-2"></i>VC, Startups, Capital</div>
           <div><i class="fas fa-link text-blue-400 me-2"></i><a href="#" class="hover:underline">Subscribe</a></div>
@@ -521,7 +558,7 @@
 
   <!-- End Newsletters -->
   <!-- Featured Podcasts -->
-  <section class="bg-gray-950 text-white py-10 px-4 sm:px-6 lg:px-12 overflow-x-hidden relative w-screen">
+  <section class="bg-gray-100 dark:bg-gray-950 py-10 px-4 sm:px-6 lg:px-12 overflow-x-hidden relative w-screen">
     <h2 class="text-4xl font-extrabold text-center mb-14 tracking-tight z-10 relative" data-aos="fade-in">🎧 Featured
       Podcasts on Fresients</h2>
     <div class="absolute z-1 left-0 -top-2 hidden sm:block" data-aos="zoom-in">
@@ -534,22 +571,22 @@
 
       <!-- Podcast 1 -->
       <div
-        class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative"
+        class="bg-white dark:bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative"
         data-aos="zoom-in" data-tilt data-tilt-axis="x">
         <div class="relative">
           <img
             src="https://images.unsplash.com/photo-1677212004257-103cfa6b59d0?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0"
             alt="Podcast Cover" class="w-full h-48 object-cover">
           <a href="#"
-            class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
+            class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-white dark:bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
             <i class="fas fa-play text-3xl"></i>
           </a>
         </div>
         <div class="p-6 pt-10">
           <h3 class="text-xl font-bold mb-2">Future Decoded</h3>
-          <p class="text-gray-400 text-sm leading-relaxed mb-4">Dive into AI breakthroughs, startup stories, and
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">Dive into AI breakthroughs, startup stories, and
             tomorrow’s tech shaping the world.</p>
-          <div class="flex items-center justify-between text-sm text-gray-400">
+          <div class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
             <span><i class="fa-solid fa-microphone-lines me-2 text-indigo-400"></i>18 Episodes</span>
             <div class="space-x-4">
               <a href="#" class="hover:text-indigo-400"><i class="fas fa-eye"></i></a>
@@ -561,21 +598,21 @@
 
       <!-- Podcast 2 -->
       <div
-        class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative"
+        class="bg-white dark:bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative"
         data-aos="zoom-in" data-tilt data-tilt-axis="x">
         <div class="relative">
           <img src="https://plus.unsplash.com/premium_photo-1700740342769-17e817ad6400?q=80&w=774&auto=format&fit=crop"
             alt="Podcast Cover" class="w-full h-48 object-cover">
           <a href="#"
-            class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
+            class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-white dark:bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
             <i class="fas fa-play text-2xl"></i>
           </a>
         </div>
         <div class="p-6 pt-10">
           <h3 class="text-xl font-bold mb-2">The Algorithm Circle</h3>
-          <p class="text-gray-400 text-sm leading-relaxed mb-4">From ML to NLP — deep dives with researchers and AI
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">From ML to NLP — deep dives with researchers and AI
             engineers breaking the mold.</p>
-          <div class="flex items-center justify-between text-sm text-gray-400">
+          <div class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
             <span><i class="fa-solid fa-microphone-lines me-2 text-indigo-400"></i>12 Episodes</span>
             <div class="space-x-4">
               <a href="#" class="hover:text-indigo-400"><i class="fas fa-eye"></i></a>
@@ -587,21 +624,21 @@
 
       <!-- Podcast 3 -->
       <div
-        class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative"
+        class="bg-white dark:bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative"
         data-aos="zoom-in" data-tilt data-tilt-axis="x">
         <div class="relative">
           <img src="https://images.unsplash.com/photo-1553484771-0a615f264d58?q=80&w=870&auto=format&fit=crop"
             alt="Podcast Cover" class="w-full h-48 object-cover">
           <a href="#"
-            class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
+            class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-white dark:bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
             <i class="fas fa-play text-2xl"></i>
           </a>
         </div>
         <div class="p-6 pt-10">
           <h3 class="text-xl font-bold mb-2">Founders Unfiltered</h3>
-          <p class="text-gray-400 text-sm leading-relaxed mb-4">Real stories. Real failures. Real grit. Meet the
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">Real stories. Real failures. Real grit. Meet the
             dreamers building Africa's tech future.</p>
-          <div class="flex items-center justify-between text-sm text-gray-400">
+          <div class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
             <span><i class="fa-solid fa-microphone-lines me-2 text-indigo-400"></i>24 Episodes</span>
             <div class="space-x-4">
               <a href="#" class="hover:text-indigo-400"><i class="fas fa-eye"></i></a>
@@ -613,21 +650,21 @@
 
       <!-- Podcast 4 -->
       <div
-        class="bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative"
+        class="bg-white dark:bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative"
         data-aos="zoom-in" data-tilt data-tilt-axis="x">
         <div class="relative">
           <img src="https://plus.unsplash.com/premium_photo-1684522167826-a473e63337b1?q=80&w=1032&auto=format&fit=crop"
             alt="Podcast Cover" class="w-full h-48 object-cover">
           <a href="#"
-            class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
+            class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-10 bg-white dark:bg-gray-950 text-indigo-400 p-4 rounded-full shadow-lg hover:bg-indigo-700 hover:text-white transition">
             <i class="fas fa-play text-2xl"></i>
           </a>
         </div>
         <div class="p-6 pt-10">
           <h3 class="text-xl font-bold mb-2">Cloud & Scale</h3>
-          <p class="text-gray-400 text-sm leading-relaxed mb-4">Tech stack talk for founders scaling with AWS, GCP, and
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">Tech stack talk for founders scaling with AWS, GCP, and
             edge infrastructure.</p>
-          <div class="flex items-center justify-between text-sm text-gray-400">
+          <div class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
             <span><i class="fa-solid fa-microphone-lines me-2 text-indigo-400"></i>9 Episodes</span>
             <div class="space-x-4">
               <a href="#" class="hover:text-indigo-400"><i class="fas fa-eye"></i></a>
@@ -643,10 +680,10 @@
   <!--End Featured Podcasts  -->
 
   <!-- Videos & Academy -->
-  <section class=" bg-gray-950 relative">
+  <section class="bg-gray-100 dark:bg-gray-950 relative">
     <!-- Start Videos -->
 
-    <div class="bg-gray-950 text-white px-4 py-8 container mx-auto">
+    <div class="bg-gray-100 dark:bg-gray-950 px-4 py-8 container mx-auto">
 
 
       <h2 class="text-4xl font-bold mb-6 flex items-center gap-2" data-aos="fade-in">
@@ -656,7 +693,7 @@
 
       <div class="grid md:grid-cols-2 gap-6 ">
         <!-- Video Card 1 -->
-        <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"
+        <div class="flex flex-col md:flex-row items-start gap-4 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"
           data-tilt data-tilt-axis="x">
           <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/Qh7Dqzm8f7Y?rel=0"
             title="YouTube video player" allowfullscreen></iframe>
@@ -669,9 +706,9 @@
               AI x Startup Insights
             </div>
             <h3 class="text-lg font-semibold">The AI Funding Boom – Are We in a Bubble?</h3>
-            <p class="text-gray-400 text-sm">Explore current trends, investor behavior, and what it means for founders
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Explore current trends, investor behavior, and what it means for founders
               in AI startup ecosystems.</p>
-            <div class="flex gap-3 mt-2 text-gray-400 text-xs">
+            <div class="flex gap-3 mt-2 text-gray-600 dark:text-gray-400 text-xs">
               <div class="flex items-center gap-1"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
                   viewBox="0 0 24 24">
                   <path d="M12 6v6l4 2" />
@@ -685,7 +722,7 @@
         </div>
 
         <!-- Video Card 2 -->
-        <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"
+        <div class="flex flex-col md:flex-row items-start gap-4 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"
           data-tilt data-tilt-axis="x">
           <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/1Q8fG0TtVAY?rel=0"
             title="YouTube video player" allowfullscreen></iframe>
@@ -698,9 +735,9 @@
               Deep Dive
             </div>
             <h3 class="text-lg font-semibold">Inside OpenAI: How They Build Models</h3>
-            <p class="text-gray-400 text-sm">Take a peek into OpenAI’s engineering processes, safety frameworks, and how
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Take a peek into OpenAI’s engineering processes, safety frameworks, and how
               GPT-like models are trained.</p>
-            <div class="flex gap-3 mt-2 text-gray-400 text-xs">
+            <div class="flex gap-3 mt-2 text-gray-600 dark:text-gray-400 text-xs">
               <div class="flex items-center gap-1"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
                   viewBox="0 0 24 24">
                   <path d="M12 6v6l4 2" />
@@ -714,7 +751,7 @@
         </div>
 
         <!-- Video Card 3 -->
-        <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"
+        <div class="flex flex-col md:flex-row items-start gap-4 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"
           data-tilt data-tilt-axis="x">
           <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/Opnb2r-J0dM?rel=0"
             title="YouTube video player" allowfullscreen></iframe>
@@ -727,9 +764,9 @@
               AI Applications
             </div>
             <h3 class="text-lg font-semibold">10 Ways AI Is Changing Healthcare in Africa</h3>
-            <p class="text-gray-400 text-sm">From diagnostics to drug development, here’s how AI is transforming health
+            <p class="text-gray-600 dark:text-gray-400 text-sm">From diagnostics to drug development, here’s how AI is transforming health
               delivery in emerging economies.</p>
-            <div class="flex gap-3 mt-2 text-gray-400 text-xs">
+            <div class="flex gap-3 mt-2 text-gray-600 dark:text-gray-400 text-xs">
               <div class="flex items-center gap-1"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
                   viewBox="0 0 24 24">
                   <path d="M12 6v6l4 2" />
@@ -743,7 +780,7 @@
         </div>
 
         <!-- Card 4 -->
-        <div class="flex flex-col md:flex-row items-start gap-4 bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"
+        <div class="flex flex-col md:flex-row items-start gap-4 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"
           data-tilt data-tilt-axis="x">
           <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/f7SIwZJwmzE?rel=0"
             title="YouTube video player" allowfullscreen></iframe>
@@ -756,9 +793,9 @@
               AI Applications
             </div>
             <h3 class="text-lg font-semibold">How AI might change medical care</h3>
-            <p class="text-gray-400 text-sm">From diagnostics to drug development, here’s how AI is transforming health
+            <p class="text-gray-600 dark:text-gray-400 text-sm">From diagnostics to drug development, here’s how AI is transforming health
               delivery in emerging economies.</p>
-            <div class="flex gap-3 mt-2 text-gray-400 text-xs">
+            <div class="flex gap-3 mt-2 text-gray-600 dark:text-gray-400 text-xs">
               <div class="flex items-center gap-1"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor"
                   viewBox="0 0 24 24">
                   <path d="M12 6v6l4 2" />
@@ -777,24 +814,24 @@
     <!-- End Videos -->
 
     <!-- Start Academy -->
-    <div class="bg-gray-900 text-white py-16 px-4 md:px-16 w-full rounded-md relative">
+    <div class="bg-white dark:bg-gray-900 py-16 px-4 md:px-16 w-full rounded-md relative">
       <div class="absolute inset-0 opacity-10 pointer-events-none"
         style="background-image: url('image/patterns/education.png'); background-repeat: repeat;background-size: 400px;">
       </div>
-      <div class="hidden sm:block absolute top-0 left-0 w-full h-16 bg-gray-950 z-[120] -mt-1"
+      <div class="hidden sm:block absolute top-0 left-0 w-full h-16 bg-gray-100 dark:bg-gray-950 z-[120] -mt-1"
         style="clip-path: polygon(0 0, 50% 100%, 100% 0);"></div>
 
       <div class="text-center relative z-[110]">
         <h2 class="text-4xl font-extrabold mb-4" data-aos="fade-in"><i
             class="fas fa-graduation-cap text-yellow-400 mr-2"></i>Join Fresients Academy</h2>
-        <p class="text-gray-300 mb-10 text-lg" data-aos="fade-in">
+        <p class="text-gray-700 dark:text-gray-300 mb-10 text-lg" data-aos="fade-in">
           Unlock your potential with cutting-edge courses in AI, startups, and future tech. Learn from top industry
           experts.
         </p>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- Course 1 -->
-          <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-yellow-500/20 transition"
+          <div class="bg-gray-200 dark:bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-yellow-500/20 transition"
             data-aos="zoom-in" data-tilt data-tilt-axis="x">
             <img src="https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=850&auto=format&fit=crop"
               alt="AI Mastery" class="w-full h-40 object-cover">
@@ -802,9 +839,9 @@
               <h3 class="text-xl font-semibold mb-2">
                 <i class="fas fa-robot text-indigo-400 mr-2"></i>AI Mastery
               </h3>
-              <p class="text-gray-400 text-sm mb-4">Learn AI fundamentals, ML pipelines, and build models using Python.
+              <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Learn AI fundamentals, ML pipelines, and build models using Python.
               </p>
-              <div class="flex justify-between text-sm text-gray-400">
+              <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400">
                 <span><i class="fas fa-clock mr-1"></i> 6 Weeks</span>
                 <span><i class="fas fa-signal mr-1"></i> Intermediate</span>
               </div>
@@ -812,7 +849,7 @@
           </div>
 
           <!-- Course 2 -->
-          <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-purple-500/20 transition"
+          <div class="bg-gray-200 dark:bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-purple-500/20 transition"
             data-aos="zoom-in" data-tilt data-tilt-axis="x">
             <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=870&auto=format&fit=crop"
               alt="Startup Launchpad" class="w-full h-40 object-cover">
@@ -820,9 +857,9 @@
               <h3 class="text-xl font-semibold mb-2">
                 <i class="fas fa-rocket text-purple-400 mr-2"></i>Startup Launchpad
               </h3>
-              <p class="text-gray-400 text-sm mb-4">Learn how to validate, build, and scale your startup idea with real
+              <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Learn how to validate, build, and scale your startup idea with real
                 examples.</p>
-              <div class="flex justify-between text-sm text-gray-400">
+              <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400">
                 <span><i class="fas fa-clock mr-1"></i> 4 Weeks</span>
                 <span><i class="fas fa-fire mr-1"></i> Beginner</span>
               </div>
@@ -830,7 +867,7 @@
           </div>
 
           <!-- Course 3 -->
-          <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-green-500/20 transition"
+          <div class="bg-gray-200 dark:bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-green-500/20 transition"
             data-aos="zoom-in" data-tilt data-tilt-axis="x">
             <img src="https://images.unsplash.com/photo-1584291527908-033f4d6542c8?q=80&w=725&auto=format&fit=crop"
               alt="Data Analytics Pro" class="w-full h-40 object-cover">
@@ -838,9 +875,9 @@
               <h3 class="text-xl font-semibold mb-2">
                 <i class="fas fa-chart-line text-green-400 mr-2"></i>Data Analytics Pro
               </h3>
-              <p class="text-gray-400 text-sm mb-4">Master Excel, SQL, Tableau, and Python for real-world data projects.
+              <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Master Excel, SQL, Tableau, and Python for real-world data projects.
               </p>
-              <div class="flex justify-between text-sm text-gray-400">
+              <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400">
                 <span><i class="fas fa-clock mr-1"></i> 5 Weeks</span>
                 <span><i class="fas fa-laptop-code mr-1"></i> Advanced</span>
               </div>
@@ -848,7 +885,7 @@
           </div>
 
           <!-- Course 4 -->
-          <div class="bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-blue-500/20 transition"
+          <div class="bg-gray-200 dark:bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-blue-500/20 transition"
             data-aos="zoom-in" data-tilt data-tilt-axis="x">
             <img
               src="https://plus.unsplash.com/premium_photo-1661782505582-07ea68e3e760?q=80&w=869&auto=format&fit=crop"
@@ -857,9 +894,9 @@
               <h3 class="text-xl font-semibold mb-2">
                 <i class="fas fa-code text-blue-400 mr-2"></i>Web for Founders
               </h3>
-              <p class="text-gray-400 text-sm mb-4">Build startup websites using HTML, Tailwind CSS, and no-code tools.
+              <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Build startup websites using HTML, Tailwind CSS, and no-code tools.
               </p>
-              <div class="flex justify-between text-sm text-gray-400">
+              <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400">
                 <span><i class="fas fa-clock mr-1"></i> 3 Weeks</span>
                 <span><i class="fas fa-paint-brush mr-1"></i> All Levels</span>
               </div>
@@ -869,7 +906,7 @@
 
         <div class="mt-12">
           <a href="#"
-            class="inline-flex items-center bg-indigo-500 hover:bg-indigo-600 text-gray-900 font-bold px-6 py-3 rounded-full text-lg transition">
+            class="inline-flex items-center bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-6 py-3 rounded-full text-lg transition">
             <i class="fas fa-sign-in-alt mr-2"></i> Enroll Now
           </a>
         </div>
@@ -880,8 +917,8 @@
   </section>
 
   <!-- Start Events -->
-  <section class="py-10 bg-gray-950">
-    <h2 class="text-center text-white text-4xl font-bold mb-10" data-aos="fade-in">
+  <section class="py-10 bg-gray-100 dark:bg-gray-950">
+    <h2 class="text-center text-4xl font-bold mb-10" data-aos="fade-in">
       <i class="fas fa-calendar-alt mr-2 text-indigo-400"></i> Upcoming Events
     </h2>
     <div class="flex flex-col md:flex-row justify-center gap-8 px-4 container mx-auto">
@@ -935,7 +972,7 @@
   <!-- End Events -->
 
   <!-- Start News  -->
-  <section class="bg-gray-900 text-white px-6 py-12">
+  <section class="bg-gray-100 dark:bg-gray-900 px-6 py-12">
     <div class="max-w-7xl mx-auto">
       <h2 class="text-4xl font-bold mb-8 text-center tracking-tight" data-aos="fade-in">📰 Latest News from Fresients
       </h2>
@@ -1023,43 +1060,43 @@
     style="display: none" data-aos="zoom-in" data-tilt data-tilt-axis="x">
     <!-- Modal -->
     <div @click.away="openLogin = false"
-      class="bg-gray-900 text-white rounded-xl shadow-xl w-full max-w-md p-6 space-y-6 border border-gray-700 relative"
+      class="bg-white dark:bg-gray-900 rounded-xl shadow-xl w-full max-w-md p-6 space-y-6 border border-gray-200 dark:border-gray-700 relative"
       x-transition>
       <!-- Close Button -->
-      <button @click="openLogin = false" class="absolute top-3 right-3 text-gray-400 hover:text-white">
+      <button @click="openLogin = false" class="absolute top-3 right-3 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
         <i class="fas fa-times"></i>
       </button>
 
       <!-- Header -->
       <div class="text-center">
         <h2 class="text-2xl font-bold mb-1">Welcome Back</h2>
-        <p class="text-sm text-gray-400">Sign in to your account</p>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Sign in to your account</p>
       </div>
 
       <!-- Login Buttons -->
       <div class="space-y-3 flex flex-col">
         <button
-          class="w-full flex items-center justify-center bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded-lg text-sm font-medium">
+          class="w-full flex items-center justify-center bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded-lg text-sm font-medium text-white">
           <i class="fab fa-facebook-f mr-2"></i> Continue with Facebook
         </button>
 
         <button
-          class="w-full flex items-center justify-center bg-white text-black hover:bg-gray-100 py-2 px-4 rounded-lg text-sm font-medium">
+          class="w-full flex items-center justify-center bg-white text-black hover:bg-gray-100 py-2 px-4 rounded-lg text-sm font-medium border border-gray-300">
           <i class="fab fa-google mr-2"></i> Continue with Google
         </button>
 
         <button
-          class="w-full flex items-center justify-center bg-black hover:bg-gray-800 py-2 px-4 rounded-lg text-sm font-medium">
+          class="w-full flex items-center justify-center bg-black hover:bg-gray-800 py-2 px-4 rounded-lg text-sm font-medium text-white">
           <i class="fab fa-apple mr-2"></i> Continue with Apple
         </button>
 
         <button
-          class="w-full flex items-center justify-center bg-gray-800 hover:bg-gray-700 py-2 px-4 rounded-lg text-sm font-medium">
+          class="w-full flex items-center justify-center bg-gray-800 hover:bg-gray-700 py-2 px-4 rounded-lg text-sm font-medium text-white">
           <i class="fab fa-github mr-2"></i> Continue with GitHub
         </button>
 
         <button
-          class="w-full flex items-center justify-center bg-blue-500 hover:bg-blue-600 py-2 px-4 rounded-lg text-sm font-medium">
+          class="w-full flex items-center justify-center bg-blue-500 hover:bg-blue-600 py-2 px-4 rounded-lg text-sm font-medium text-white">
           <i class="fab fa-microsoft mr-2"></i> Continue with Microsoft
         </button>
       </div>
@@ -1067,19 +1104,19 @@
 
       <!-- Divider -->
       <div class="flex items-center space-x-2">
-        <div class="flex-1 h-px bg-gray-700"></div>
-        <span class="text-xs text-gray-400">or</span>
-        <div class="flex-1 h-px bg-gray-700"></div>
+        <div class="flex-1 h-px bg-gray-300 dark:bg-gray-700"></div>
+        <span class="text-xs text-gray-500 dark:text-gray-400">or</span>
+        <div class="flex-1 h-px bg-gray-300 dark:bg-gray-700"></div>
       </div>
 
       <!-- Email Login Form -->
       <form class="space-y-4">
         <input type="email" placeholder="Email"
-          class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          class="w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
         <input type="password" placeholder="Password"
-          class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          class="w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
         <button type="submit"
-          class="w-full bg-indigo-600 hover:bg-indigo-700 py-2 rounded-lg font-semibold">Login</button>
+          class="w-full bg-indigo-600 hover:bg-indigo-700 py-2 rounded-lg font-semibold text-white">Login</button>
       </form>
 
       <!-- Footer -->
@@ -1095,21 +1132,21 @@
     style="display: none" data-aos="zoom-in" data-tilt data-tilt-axis="x">
 
     <!-- Modal Content -->
-    <div @click.stop x-transition class="bg-gray-900 text-white w-full max-w-md rounded-xl shadow-lg p-6 space-y-6">
+    <div @click.stop x-transition class="bg-white dark:bg-gray-900 w-full max-w-md rounded-xl shadow-lg p-6 space-y-6">
 
       <!-- Header -->
       <div class="flex justify-between items-center">
         <h2 class="text-2xl font-semibold">Register</h2>
         <button @click="openRegister = false"
-          class="text-gray-400 hover:text-white text-2xl leading-none">&times;</button>
+          class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white text-2xl leading-none">&times;</button>
       </div>
 
       <!-- Social Icons -->
       <div class="flex justify-center gap-4 text-xl">
         <button class="hover:text-blue-600"><i class="fab fa-facebook-f"></i></button>
         <button class="hover:text-red-500"><i class="fab fa-google"></i></button>
-        <button class="hover:text-gray-300"><i class="fab fa-apple"></i></button>
-        <button class="hover:text-white"><i class="fab fa-github"></i></button>
+        <button class="hover:text-gray-500 dark:hover:text-gray-300"><i class="fab fa-apple"></i></button>
+        <button class="hover:text-gray-900 dark:hover:text-white"><i class="fab fa-github"></i></button>
         <button class="hover:text-blue-500"><i class="fab fa-microsoft"></i></button>
       </div>
 
@@ -1118,25 +1155,25 @@
         <div>
           <label class="block text-sm mb-1">Name</label>
           <input type="text" required
-            class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+            class="w-full px-3 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded focus:ring-2 focus:ring-indigo-500 focus:outline-none"
             placeholder="Your Name">
         </div>
         <div>
           <label class="block text-sm mb-1">Phone Number(Starting with your country code)</label>
           <input type="text" required
-            class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+            class="w-full px-3 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded focus:ring-2 focus:ring-indigo-500 focus:outline-none"
             placeholder="Your Phone Number e.g +233">
         </div>
         <div>
           <label class="block text-sm mb-1">Email</label>
           <input type="email" required
-            class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+            class="w-full px-3 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded focus:ring-2 focus:ring-indigo-500 focus:outline-none"
             placeholder="you@example.com">
         </div>
         <div>
           <label class="block text-sm mb-1">Password</label>
           <input type="password" required
-            class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+            class="w-full px-3 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded focus:ring-2 focus:ring-indigo-500 focus:outline-none"
             placeholder="********">
         </div>
 
@@ -1153,30 +1190,30 @@
   <div x-show="openSearch" x-transition @keydown.escape.window="openSearch = false"
     class="fixed inset-0 z-[250] flex items-center justify-center bg-black/70 backdrop-blur-sm" style="display: none;"
     data-aos="zoom-in" data-tilt data-tilt-axis="x">
-    <div class="bg-gray-900 text-white w-[90%] max-w-md p-6 rounded-xl relative shadow-2xl">
+    <div class="bg-white dark:bg-gray-900 w-[90%] max-w-md p-6 rounded-xl relative shadow-2xl">
       <!-- Close Button -->
-      <button @click="openSearch = false" class="absolute top-3 right-3 text-gray-400 hover:text-white text-2xl"
+      <button @click="openSearch = false" class="absolute top-3 right-3 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white text-2xl"
         aria-label="Close">
         <i class="fas fa-times"></i>
       </button>
 
       <!-- Search Input -->
       <input type="text" placeholder="Search Fresients..."
-        class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 mt-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        class="w-full bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-2 mt-4 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500">
 
       <!-- Suggestions -->
       <ul class="mt-4 space-y-2">
-        <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">🔍 AI Startup Funding Reports</li>
-        <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">📊 Weekly AI Newsletters</li>
-        <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">🧠 Top AI Courses 2025</li>
-        <li class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">🚀 Founder Interviews</li>
+        <li class="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">🔍 AI Startup Funding Reports</li>
+        <li class="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">📊 Weekly AI Newsletters</li>
+        <li class="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">🧠 Top AI Courses 2025</li>
+        <li class="bg-.100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 px-4 py-2 rounded-md cursor-pointer">🚀 Founder Interviews</li>
       </ul>
     </div>
   </div>
 
   <!-- End Serach Bar Overlay -->
   <!-- Start Contact Us -->
-  <section class="px-4 py-4 md:py-4 bg-gray-900 text-white relative">
+  <section class="px-4 py-4 md:py-4 bg-gray-100 dark:bg-gray-900 relative">
     <form action="https://fabform.io/f/xxxxx" method="post" class="mt-8 md:mt-2">
       <div class="py-8">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -1193,7 +1230,7 @@
 
 
                   <div class="absolute left-0 right-0 bottom-0 md:bottom-10   flex items-center justify-around">
-                    <div class="bg-gray-800 rounded-lg p-6 block text-white space-y-6">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-6 block space-y-6 text-gray-900 dark:text-white">
                       <!-- Phone -->
                       <a href="tel:+233249435529" class="flex items-center">
                         <i class="fas fa-phone text-indigo-400 text-xl w-8"></i>
@@ -1225,32 +1262,32 @@
             </div>
 
             <!-- Right: Form -->
-            <div class="bg-gray-800 p-5 lg:p-11 lg:rounded-r-2xl rounded-2xl">
+            <div class="bg-white dark:bg-gray-800 p-5 lg:p-11 lg:rounded-r-2xl rounded-2xl">
               <h2 class="text-indigo-400 font-manrope text-3xl font-semibold leading-10 mb-11">Send Us A Message</h2>
 
               <!-- Inputs -->
               <input type="text" name="name"
-                class="w-full h-12 text-white placeholder-gray-400 shadow-sm bg-gray-700 text-lg font-normal leading-7 rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-4 mb-10"
+                class="w-full h-12 placeholder-gray-500 dark:placeholder-gray-400 shadow-sm bg-gray-100 dark:bg-gray-700 text-lg font-normal leading-7 rounded-full border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-4 mb-10"
                 placeholder="Name" required>
 
               <input type="email" name="email"
-                class="w-full h-12 text-white placeholder-gray-400 shadow-sm bg-gray-700 text-lg font-normal leading-7 rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-4 mb-10"
+                class="w-full h-12 placeholder-gray-500 dark:placeholder-gray-400 shadow-sm bg-gray-100 dark:bg-gray-700 text-lg font-normal leading-7 rounded-full border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-4 mb-10"
                 placeholder="Email" required>
 
               <input type="text" name="phone"
-                class="w-full h-12 text-white placeholder-gray-400 shadow-sm bg-gray-700 text-lg font-normal leading-7 rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-4 mb-10"
+                class="w-full h-12 placeholder-gray-500 dark:placeholder-gray-400 shadow-sm bg-gray-100 dark:bg-gray-700 text-lg font-normal leading-7 rounded-full border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-4 mb-10"
                 placeholder="Phone">
 
               <!-- Radio -->
               <div class="mb-10">
-                <h4 class="text-gray-400 text-lg font-normal leading-7 mb-4">Preferred method of communication</h4>
+                <h4 class="text-gray-600 dark:text-gray-400 text-lg font-normal leading-7 mb-4">Preferred method of communication</h4>
                 <div class="flex">
                   <div class="flex items-center mr-11">
                     <input id="radio-group-1" type="radio" name="communication" value="Email" class="hidden peer">
                     <label for="radio-group-1"
-                      class="flex items-center cursor-pointer text-gray-300 text-base font-normal leading-6 peer-checked:text-indigo-400">
+                      class="flex items-center cursor-pointer text-gray-700 dark:text-gray-300 text-base font-normal leading-6 peer-checked:text-indigo-400">
                       <span
-                        class="border border-gray-500 peer-checked:border-indigo-500 rounded-full mr-2 w-4 h-4 ml-2"></span>
+                        class="border border-gray-400 dark:border-gray-500 peer-checked:border-indigo-500 rounded-full mr-2 w-4 h-4 ml-2"></span>
                       Email
                     </label>
                   </div>
@@ -1258,9 +1295,9 @@
                   <div class="flex items-center">
                     <input id="radio-group-2" type="radio" name="communication" value="Phone" class="hidden peer">
                     <label for="radio-group-2"
-                      class="flex items-center cursor-pointer text-gray-300 text-base font-normal leading-6 peer-checked:text-indigo-400">
+                      class="flex items-center cursor-pointer text-gray-700 dark:text-gray-300 text-base font-normal leading-6 peer-checked:text-indigo-400">
                       <span
-                        class="border border-gray-500 peer-checked:border-indigo-500 rounded-full mr-2 w-4 h-4 ml-2"></span>
+                        class="border border-gray-400 dark:border-gray-500 peer-checked:border-indigo-500 rounded-full mr-2 w-4 h-4 ml-2"></span>
                       Phone
                     </label>
                   </div>
@@ -1269,7 +1306,7 @@
 
               <!-- Message -->
               <input type="text" name="message"
-                class="w-full h-12 text-white placeholder-gray-400 bg-gray-700 text-lg shadow-sm font-normal leading-7 rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-4 mb-10"
+                class="w-full h-12 placeholder-gray-500 dark:placeholder-gray-400 bg-gray-100 dark:bg-gray-700 text-lg shadow-sm font-normal leading-7 rounded-full border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-4 mb-10"
                 placeholder="Message">
 
               <!-- Submit -->
@@ -1286,56 +1323,56 @@
 
   <!-- End Contact Us -->
   <!-- Start Footer -->
-  <footer class="bg-gray-950 text-gray-300 py-12 px-4 sm:px-8 lg:px-16">
+  <footer class="bg-gray-200 dark:bg-gray-950 text-gray-700 dark:text-gray-300 py-12 px-4 sm:px-8 lg:px-16">
     <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
       <!-- Brand Info -->
       <div>
-        <h2 class="text-2xl font-bold text-white mb-4">Fresients</h2>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Fresients</h2>
         <p class="text-sm">Your passport to the world of Startups & AI. Stay ahead with curated insights, weekly trends,
           and future-forward innovations.</p>
         <div class="flex mt-4 space-x-4">
-          <a href="#" class="text-blue-400 hover:text-white"><i class="fab fa-twitter fa-lg"></i></a>
-          <a href="#" class="text-pink-500 hover:text-white"><i class="fab fa-instagram fa-lg"></i></a>
-          <a href="#" class="text-blue-600 hover:text-white"><i class="fab fa-facebook fa-lg"></i></a>
-          <a href="#" class="text-red-500 hover:text-white"><i class="fab fa-youtube fa-lg"></i></a>
-          <a href="#" class="text-white hover:text-yellow-400"><i class="fab fa-linkedin fa-lg"></i></a>
+          <a href="#" class="text-blue-400 hover:text-gray-900 dark:hover:text-white"><i class="fab fa-twitter fa-lg"></i></a>
+          <a href="#" class="text-pink-500 hover:text-gray-900 dark:hover:text-white"><i class="fab fa-instagram fa-lg"></i></a>
+          <a href="#" class="text-blue-600 hover:text-gray-900 dark:hover:text-white"><i class="fab fa-facebook fa-lg"></i></a>
+          <a href="#" class="text-red-500 hover:text-gray-900 dark:hover:text-white"><i class="fab fa-youtube fa-lg"></i></a>
+          <a href="#" class="text-gray-800 dark:text-white hover:text-yellow-400"><i class="fab fa-linkedin fa-lg"></i></a>
         </div>
       </div>
 
       <!-- Quick Links -->
       <div>
-        <h3 class="text-xl font-semibold text-white mb-4"><i class="fas fa-link mr-2 text-indigo-400"></i>Quick Links
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4"><i class="fas fa-link mr-2 text-indigo-400"></i>Quick Links
         </h3>
         <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:text-white"><i class="fas fa-home mr-2 text-yellow-400"></i>Home</a></li>
-          <li><a href="#" class="hover:text-white"><i class="fas fa-bolt mr-2 text-pink-400"></i>AI Insights</a></li>
-          <li><a href="#" class="hover:text-white"><i class="fas fa-play-circle mr-2 text-red-400"></i>Podcasts</a></li>
-          <li><a href="#" class="hover:text-white"><i class="fas fa-graduation-cap mr-2 text-green-400"></i>Academy</a>
+          <li><a href="#" class="hover:text-gray-900 dark:hover:text-white"><i class="fas fa-home mr-2 text-yellow-400"></i>Home</a></li>
+          <li><a href="#" class="hover:text-gray-900 dark:hover:text-white"><i class="fas fa-bolt mr-2 text-pink-400"></i>AI Insights</a></li>
+          <li><a href="#" class="hover:text-gray-900 dark:hover:text-white"><i class="fas fa-play-circle mr-2 text-red-400"></i>Podcasts</a></li>
+          <li><a href="#" class="hover:text-gray-900 dark:hover:text-white"><i class="fas fa-graduation-cap mr-2 text-green-400"></i>Academy</a>
           </li>
-          <li><a href="#" class="hover:text-white"><i
+          <li><a href="#" class="hover:text-gray-900 dark:hover:text-white"><i
                 class="fas fa-envelope-open-text mr-2 text-blue-400"></i>Newsletter</a></li>
         </ul>
       </div>
 
       <!-- Academy Courses -->
       <div>
-        <h3 class="text-xl font-semibold text-white mb-4"><i class="fas fa-laptop-code mr-2 text-indigo-400"></i>Top
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4"><i class="fas fa-laptop-code mr-2 text-indigo-400"></i>Top
           Courses</h3>
         <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:text-white"><i class="fas fa-robot mr-2 text-pink-500"></i>Intro to AI & ML</a>
+          <li><a href="#" class="hover:text-gray-900 dark:hover:text-white"><i class="fas fa-robot mr-2 text-pink-500"></i>Intro to AI & ML</a>
           </li>
-          <li><a href="#" class="hover:text-white"><i class="fas fa-brain mr-2 text-yellow-500"></i>Neural Networks
+          <li><a href="#" class="hover:text-gray-900 dark:hover:text-white"><i class="fas fa-brain mr-2 text-yellow-500"></i>Neural Networks
               101</a></li>
-          <li><a href="#" class="hover:text-white"><i class="fas fa-database mr-2 text-green-500"></i>Data Science
+          <li><a href="#" class="hover:text-gray-900 dark:hover:text-white"><i class="fas fa-database mr-2 text-green-500"></i>Data Science
               Crash</a></li>
-          <li><a href="#" class="hover:text-white"><i class="fas fa-shield-alt mr-2 text-red-400"></i>Ethics in AI</a>
+          <li><a href="#" class="hover:text-gray-900 dark:hover:text-white"><i class="fas fa-shield-alt mr-2 text-red-400"></i>Ethics in AI</a>
           </li>
         </ul>
       </div>
 
       <!-- Contact -->
       <div>
-        <h3 class="text-xl font-semibold text-white mb-4"><i class="fas fa-phone-alt mr-2 text-cyan-400"></i>Contact
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4"><i class="fas fa-phone-alt mr-2 text-cyan-400"></i>Contact
         </h3>
         <ul class="text-sm space-y-3">
           <li><i class="fas fa-envelope mr-2 text-purple-400"></i>hello@fresients.ai</li>
@@ -1345,8 +1382,8 @@
       </div>
     </div>
 
-    <div class="mt-10 border-t border-gray-700 pt-6 text-sm text-center text-gray-500">
-      &copy; 2025 Fresients. All rights reserved. Powered by <span class="text-white font-semibold">Sikanua Inc.</span>
+    <div class="mt-10 border-t border-gray-300 dark:border-gray-700 pt-6 text-sm text-center text-gray-500">
+      &copy; 2025 Fresients. All rights reserved. Powered by <span class="text-gray-900 dark:text-white font-semibold">Sikanua Inc.</span>
     </div>
   </footer>
 
