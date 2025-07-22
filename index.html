@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="">
 
 <head>
   <meta charset="UTF-8">
@@ -46,7 +46,18 @@
         }
     }
   }"
-  x-init="theme = localStorage.getItem('theme') || 'dark'"
+  
+  x-init="
+  if (theme === 'dark') {
+      document.documentElement.classList.add('dark')
+  } else {
+      document.documentElement.classList.remove('dark')
+  }
+  $watch('theme', val => {
+      localStorage.setItem('theme', val)
+      document.documentElement.classList.toggle('dark', val === 'dark')
+  })
+"
   class="prose max-w-none relative w-screen overflow-x-hidden bg-white dark:bg-gray-950 text-gray-900 dark:text-white">
   <header x-data="{ scrolled: false,mobileOpen: false}"
     x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 10)"
