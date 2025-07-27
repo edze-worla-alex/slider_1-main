@@ -29,6 +29,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.tutorialjinni.com/intl-tel-input/17.0.19/css/intlTelInput.css"/>
+<script src="https://cdn.tutorialjinni.com/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
 
   <!-- <link rel="stylesheet" href="style.css"> -->
   <link rel="stylesheet" href="styles.hero.css">
@@ -168,7 +170,7 @@
                 <video class="slide-video" autoplay muted loop playsinline>
                     <source src="videos/video1.mp4" type="video/mp4">
                 </video>
-                <div class="slide-overlay"></div>
+                <div class="slide-overlay backdrop-blur-xs"></div>
                 
                 <!-- Floating Shapes -->
                 <div class="floating-shape w-20 h-20 top-20 left-10 opacity-30" style="animation-delay: 0s;"></div>
@@ -216,7 +218,7 @@
                 <video class="slide-video" autoplay muted loop playsinline>
                     <source src="videos/video2.mp4" type="video/mp4">
                 </video>
-                <div class="slide-overlay"></div>
+                <div class="slide-overlay backdrop-blur-xs"></div>
                 
                 <!-- Floating Shapes -->
                 <div class="floating-shape w-24 h-24 top-16 right-16 opacity-25" style="animation-delay: 1s;"></div>
@@ -264,7 +266,7 @@
                 <video class="slide-video" autoplay muted loop playsinline>
                     <source src="videos/video3.mp4" type="video/mp4">
                 </video>
-                <div class="slide-overlay"></div>
+                <div class="slide-overlay backdrop-blur-xs"></div>
                 
                 <!-- Floating Shapes -->
                 <div class="floating-shape w-16 h-16 top-24 left-20 opacity-30" style="animation-delay: 0.5s;"></div>
@@ -312,7 +314,7 @@
                 <video class="slide-video" autoplay muted loop playsinline>
                     <source src="videos/video4.mp4" type="video/mp4">
                 </video>
-                <div class="slide-overlay"></div>
+                <div class="slide-overlay backdrop-blur-xs"></div>
                 
                 <!-- Floating Shapes -->
                 <div class="floating-shape w-16 h-16 top-24 left-20 opacity-30" style="animation-delay: 0.5s;"></div>
@@ -1191,7 +1193,7 @@
       </form>
 
       <!-- Footer -->
-      <p class="text-sm text-gray-500 text-center">Don't have an account? <a href="#"
+      <p class="text-sm text-gray-500 text-center">Don't have an account? <a @click="openRegister = true, openLogin = false" href="#"
           class="text-indigo-400 hover:underline">Register</a></p>
     </div>
   </div>
@@ -1230,10 +1232,10 @@
             placeholder="Your Name">
         </div>
         <div>
-          <label class="block text-sm mb-1">Phone Number(Starting with your country code)</label>
-          <input type="text" required
+          <label class="block text-sm mb-1">Phone Number</label>
+          <input name="phone" type="text" id="phone" required
             class="w-full px-3 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-            placeholder="Your Phone Number e.g +233">
+            placeholder="Your Phone Number">
         </div>
         <div>
           <label class="block text-sm mb-1">Email</label>
@@ -1257,7 +1259,7 @@
   </div>
   <!-- End Register Overlay -->
 
-  <!-- Start SerachBar Overlay -->
+  <!-- Start SearchBar Overlay -->
   <div x-show="openSearch" x-transition @keydown.escape.window="openSearch = false"
     class="fixed inset-0 z-[250] flex items-center justify-center bg-black/70 backdrop-blur-sm" style="display: none;"
     data-aos="fade-up" data-tilt data-tilt-axis="x">

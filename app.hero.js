@@ -409,3 +409,8 @@ document.documentElement.style.scrollBehavior = 'smooth';
 document.querySelectorAll('video').forEach(video => {
     video.addEventListener('contextmenu', e => e.preventDefault());
 });
+
+var input = document.querySelector("#phone");
+window.intlTelInput(input, {
+  separateDialCode: true
+});
