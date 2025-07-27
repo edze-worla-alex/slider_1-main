@@ -28,7 +28,7 @@ class CircularHeroSlider {
             },
             speed: 1200,
             autoplay: {
-                delay: 6000,
+                delay: 9000,
                 disableOnInteraction: false,
             },
             loop: true,
