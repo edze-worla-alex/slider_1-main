@@ -339,3 +339,7 @@ margin-top: -80px;
 .iti.iti--allow-dropdown{
     width: 100%;
   }
+
+  html.dark .iti__country-list{
+    background-color:#111827;
+  }
