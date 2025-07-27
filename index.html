@@ -26,8 +26,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <link rel="stylesheet" href="styles.hero.css">
 
 </head>
 
@@ -73,7 +77,7 @@
       <!-- Desktop Menu -->
       <ul class="hidden md:flex space-x-6 mt-4 menu">
         <li><a href="#">Home</a></li>
-        <li><a href="#newsletters" @click="scrollToElement('#newsletters', 10)">Newsletters</a></li>
+        <li><a href="#newsletters">Newsletters</a></li>
         <li><a href="#">Podcasts</a></li>
         <li><a href="#">Videos</a></li>
         <li><a href="#">Academy</a></li>
@@ -149,221 +153,279 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="relative">
-    <!-- carousel -->
-    <div class="carousel relative">
-
-      <!-- list item -->
-      <div class="list">
-        <div class="item relative">
-          <video muted loop autoplay>
-            <source src="videos/video1.mp4" type="video/mp4">
-          </video>
-          <div class="absolute inset-0 bg-black/50 backdrop-blur-xs w-full h-screen pointer-events-none ">
-
-          </div>
-          <div class="content">
-            <div class="author">FRESIENTS AI</div>
-            <div class="title">AI FIRST</div>
-            <div class="topic">INTELLIGENCE</div>
-            <div class="des h-1 w-3/4 bg-white">
-            </div>
-            <div class="des font-bold text-2xl ">
-              Powering Africa’s tech future with insights, automation, and predictive intelligence. Fresients AI
-              empowers decision-makers and entrepreneurs through curated data and machine learning tools.
-            </div>
-
-            <div class="buttons">
-              <input class="px-4 text-lg py-4 sm:py-4 w-full md:w-1/4 bg-indigo-500 dark:bg-indigo-600 border border-gray-300 dark:border-gray-700 rounded" type="email" placeholder="Enter your email">
-              <button>SUBSCRIBE</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item relative">
-          <video muted loop autoplay>
-            <source src="videos/video2.mp4" type="video/mp4">
-          </video>
-          <div class="absolute inset-0 bg-black/50 backdrop-blur-xs w-full h-screen pointer-events-none ">
-
-          </div>
-          <div class="content">
-            <div class="author">FRESIENTS AI</div>
-            <div class="title">WEEKLY INSIGHTS</div>
-            <div class="topic">STARTUP INTEL</div>
-            <div class="des h-1 w-3/4 bg-white">
-            </div>
-            <div class="des font-bold text-2xl">
-              Discover the hottest AI startups, funding rounds, tech founder stories, and new innovations disrupting
-              industries weekly. Stay ahead with our newsletter and YouTube briefings.
-            </div>
-            <div class="buttons">
-              <button>SEE MORE</button>
-              <button>SUBSCRIBE</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item relative">
-          <video muted loop autoplay>
-            <source src="videos/video3.mp4" type="video/mp4">
-          </video>
-          <div class="absolute inset-0 bg-black/50 backdrop-blur-xs w-full h-screen pointer-events-none ">
-
-          </div>
-          <div class="content">
-            <div class="author">FRESIENTS AI</div>
-            <div class="title">DATA ANALYTICS</div>
-            <div class="topic">PREDICTIONS</div>
-            <div class="des h-1 w-3/4 bg-white">
-            </div>
-            <div class="des font-bold text-2xl">
-              Our platform integrates AI models that forecast user behavior, personalize experiences, and offer
-              actionable insights for health, fintech, and e-commerce sectors.
-            </div>
-            <div class="buttons">
-              <button>LEARN MORE</button>
-              <button>TRY NOW</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item relative">
-          <video muted loop autoplay>
-            <source src="videos/video4.mp4" type="video/mp4">
-          </video>
-          <div class="absolute inset-0 bg-black/50 backdrop-blur-xs w-full h-screen pointer-events-none ">
-
-          </div>
-          <div class="content">
-            <div class="author">FRESIENTS AI</div>
-            <div class="title">RESEARCH + CODE</div>
-            <div class="topic">DEV TOOLS</div>
-            <div class="des h-1 w-3/4 bg-white">
-            </div>
-            <div class="des font-bold text-2xl">
-              Dive deep into trending AI research papers, datasets, APIs, and tools. Everything a developer or
-              researcher needs to experiment, build, and innovate.
-            </div>
-            <div class="buttons">
-              <button>ACCESS TOOLS</button>
-              <button>JOIN SLACK</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item relative">
-          <video muted loop autoplay>
-            <source src="videos/video5.mp4" type="video/mp4">
-          </video>
-          <div class="absolute inset-0 bg-black/50 backdrop-blur-xs w-full h-screen pointer-events-none ">
-
-          </div>
-          <div class="content">
-            <div class="author">FRESIENTS AI</div>
-            <div class="title">KNOWLEDGE QUEST</div>
-            <div class="topic">LEARN AI</div>
-            <div class="des h-1 w-3/4 bg-white">
-            </div>
-            <div class="des font-bold text-2xl   ">
-              We break down complex AI terms and systems into simple explainers. Watch our tutorials or read our
-              Knowledge Quest series to upskill fast and free.
-            </div>
-            <div class="buttons">
-              <button>START LEARNING</button>
-              <button>WATCH NOW</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item relative">
-          <video muted loop autoplay>
-            <source src="videos/video6.mp4" type="video/mp4">
-          </video>
-          <div class="absolute inset-0 bg-black/50 backdrop-blur-xs w-full h-screen pointer-events-none ">
-
-          </div>
-          <div class="content">
-            <div class="author">FRESIENTS AI</div>
-            <div class="title">BREAKTHROUGHS</div>
-            <div class="topic">EXPLORE</div>
-            <div class="des h-1 w-3/4 bg-white">
-            </div>
-            <div class="des font-bold text-2xl ">
-              We break down complex AI terms and systems into simple explainers. Watch our tutorials or read our
-              Knowledge Quest series to upskill fast and free.
-            </div>
-            <div class="buttons">
-              <button>START LEARNING</button>
-              <button>WATCH NOW</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- list thumbnail -->
-      <div class="thumbnail hidden md:grid grid-cols-3 mr-0 absolute bottom-10 right-10 :rtl">
-        <div class="item" data-tilt>
-          <img src="image/slider1.jpg">
-          <div class="content">
-            <div class="title">Future of AI</div>
-            <div class="description">Forecasting innovation</div>
-          </div>
-        </div>
-        <div class="item" data-tilt>
-          <img src="image/slider2.jpg">
-          <div class="content">
-            <div class="title">Startup Radar</div>
-            <div class="description">Weekly growth stories</div>
-          </div>
-        </div>
-        <div class="item" data-tilt>
-          <img src="image/slider3.jpg">
-          <div class="content">
-            <div class="title">AI Predictions</div>
-            <div class="description">Make data work</div>
-          </div>
-        </div>
-        <div class="item" data-tilt>
-          <img src="image/slider4.jpg">
-          <div class="content">
-            <div class="title">Dev Toolbox</div>
-            <div class="description">Power your project</div>
-          </div>
-        </div>
-        <div class="item" data-tilt>
-          <img src="image/slider5.jpg">
-          <div class="content">
-            <div class="title">AI Academy</div>
-            <div class="description">Fast-track your skills</div>
-          </div>
-        </div>
-
-        <div class="item" data-tilt>
-          <img src="image/slider6.jpg">
-          <div class="content">
-            <div class="title">AI Academy</div>
-            <div class="description">Fast-track your skills</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- next prev -->
-      <div class="arrows">
-        <button id="prev"><i class="fa-solid fa-arrow-left"></i></button>
-        <button id="next"><i class="fa-solid fa-arrow-right"></i></button>
-      </div>
-
-      <!-- time running -->
-      <div class="time"></div>
+  <section class="hero-slider relative w-full h-[100vh]">
+    <!-- Progress Bar at Top -->
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
     </div>
-  </section>
+    
+    <!-- Swiper Container -->
+    <div class="swiper heroSwiper h-[100vh]">
+        <div class="swiper-wrapper">
+            
+            <!-- Slide 1 - Startup News -->
+            <div class="swiper-slide slide-1">
+                <video class="slide-video" autoplay muted loop playsinline>
+                    <source src="videos/video1.mp4" type="video/mp4">
+                </video>
+                <div class="slide-overlay"></div>
+                
+                <!-- Floating Shapes -->
+                <div class="floating-shape w-20 h-20 top-20 left-10 opacity-30" style="animation-delay: 0s;"></div>
+                <div class="floating-shape w-16 h-16 bottom-32 right-20 opacity-20" style="animation-delay: 2s;"></div>
+                <div class="floating-shape w-12 h-12 top-1/3 right-10 opacity-25" style="animation-delay: 4s;"></div>
+                
+                <div class="slide-content">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-center h-full py-20">
+                        <div class="space-y-6 lg:space-y-8">
+                            <div class="space-y-4">
+                                <h1 class="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+                                    <span class="block">STARTUP</span>
+                                    <span class="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">INSIDER</span>
+                                </h1>
+                                <p class="text-lg sm:text-xl lg:text-2xl opacity-90 max-w-2xl">
+                                    Stay ahead with the hottest startup news, funding rounds, and breakthrough innovations shaping tomorrow's tech landscape.
+                                </p>
+                            </div>
+                            
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <button class="glass-btn px-6 py-3 sm:px-8 sm:py-4 rounded-full text-sm sm:text-lg font-semibold">
+                                    Read Latest News
+                                </button>
+                                <button class="border-2 border-white/30 px-6 py-3 sm:px-8 sm:py-4 rounded-full text-sm sm:text-lg font-semibold hover:bg-white/10 transition-all duration-300">
+                                    Subscribe Now
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-center items-center">
+                            <div class="relative">
+                                <div class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-blue-400/20 to-purple-600/30 backdrop-blur-xl border border-white/20 flex items-center justify-center floating-shape">
+                                    <div class="w-48 h-48 sm:w-60 sm:h-60 lg:w-72 lg:h-72 rounded-full bg-gradient-to-br from-white/10 to-transparent backdrop-blur-sm border border-white/30 flex items-center justify-center">
+                                        <div class="text-4xl sm:text-5xl lg:text-6xl">🚀</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 - AI Revolution -->
+            <div class="swiper-slide slide-2">
+                <video class="slide-video" autoplay muted loop playsinline>
+                    <source src="videos/video2.mp4" type="video/mp4">
+                </video>
+                <div class="slide-overlay"></div>
+                
+                <!-- Floating Shapes -->
+                <div class="floating-shape w-24 h-24 top-16 right-16 opacity-25" style="animation-delay: 1s;"></div>
+                <div class="floating-shape w-14 h-14 bottom-40 left-16 opacity-30" style="animation-delay: 3s;"></div>
+                <div class="floating-shape w-18 h-18 top-2/3 left-1/4 opacity-20" style="animation-delay: 5s;"></div>
+                
+                <div class="slide-content">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-center h-full py-20">
+                        <div class="space-y-6 lg:space-y-8">
+                            <div class="space-y-4">
+                                <h1 class="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+                                    <span class="block">AI</span>
+                                    <span class="block bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">REVOLUTION</span>
+                                </h1>
+                                <p class="text-lg sm:text-xl lg:text-2xl opacity-90 max-w-2xl">
+                                    Discover cutting-edge AI innovations, breakthrough research, and intelligent solutions transforming industries worldwide.
+                                </p>
+                            </div>
+                            
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <button class="glass-btn px-6 py-3 sm:px-8 sm:py-4 rounded-full text-sm sm:text-lg font-semibold">
+                                    Explore AI Trends
+                                </button>
+                                <button class="border-2 border-white/30 px-6 py-3 sm:px-8 sm:py-4 rounded-full text-sm sm:text-lg font-semibold hover:bg-white/10 transition-all duration-300">
+                                    AI Analysis
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-center items-center">
+                            <div class="relative">
+                                <div class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-green-400/20 to-emerald-600/30 backdrop-blur-xl border border-white/20 flex items-center justify-center floating-shape">
+                                    <div class="w-48 h-48 sm:w-60 sm:h-60 lg:w-72 lg:h-72 rounded-full bg-gradient-to-br from-white/10 to-transparent backdrop-blur-sm border border-white/30 flex items-center justify-center">
+                                        <div class="text-4xl sm:text-5xl lg:text-6xl">🤖</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 - Global Insights -->
+            <div class="swiper-slide slide-3">
+                <video class="slide-video" autoplay muted loop playsinline>
+                    <source src="videos/video3.mp4" type="video/mp4">
+                </video>
+                <div class="slide-overlay"></div>
+                
+                <!-- Floating Shapes -->
+                <div class="floating-shape w-16 h-16 top-24 left-20 opacity-30" style="animation-delay: 0.5s;"></div>
+                <div class="floating-shape w-20 h-20 bottom-20 right-12 opacity-25" style="animation-delay: 2.5s;"></div>
+                <div class="floating-shape w-12 h-12 top-1/2 right-1/3 opacity-20" style="animation-delay: 4.5s;"></div>
+                
+                <div class="slide-content">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-center h-full py-20">
+                        <div class="space-y-6 lg:space-y-8">
+                            <div class="space-y-4">
+                                <h1 class="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+                                    <span class="block">GLOBAL</span>
+                                    <span class="block bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">INSIGHTS</span>
+                                </h1>
+                                <p class="text-lg sm:text-xl lg:text-2xl opacity-90 max-w-2xl">
+                                    Access insightful analyses and comprehensive coverage of tech trends from every corner of the world.
+                                </p>
+                            </div>
+                            
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <button class="glass-btn px-6 py-3 sm:px-8 sm:py-4 rounded-full text-sm sm:text-lg font-semibold">
+                                    Get Insights
+                                </button>
+                                <button class="border-2 border-white/30 px-6 py-3 sm:px-8 sm:py-4 rounded-full text-sm sm:text-lg font-semibold hover:bg-white/10 transition-all duration-300">
+                                    View Reports
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-center items-center">
+                            <div class="relative">
+                                <div class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-red-400/20 to-orange-600/30 backdrop-blur-xl border border-white/20 flex items-center justify-center floating-shape">
+                                    <div class="w-48 h-48 sm:w-60 sm:h-60 lg:w-72 lg:h-72 rounded-full bg-gradient-to-br from-white/10 to-transparent backdrop-blur-sm border border-white/30 flex items-center justify-center">
+                                        <div class="text-4xl sm:text-5xl lg:text-6xl">🌍</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4 - Weekly Infusion -->
+            <div class="swiper-slide slide-4">
+                <video class="slide-video" autoplay muted loop playsinline>
+                    <source src="videos/video4.mp4" type="video/mp4">
+                </video>
+                <div class="slide-overlay"></div>
+                
+                <!-- Floating Shapes -->
+                <div class="floating-shape w-16 h-16 top-24 left-20 opacity-30" style="animation-delay: 0.5s;"></div>
+                <div class="floating-shape w-20 h-20 bottom-20 right-12 opacity-25" style="animation-delay: 2.5s;"></div>
+                <div class="floating-shape w-12 h-12 top-1/2 right-1/3 opacity-20" style="animation-delay: 4.5s;"></div>
+                
+                <div class="slide-content">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-center h-full py-20">
+                        <div class="space-y-6 lg:space-y-8">
+                            <div class="space-y-4">
+                                <h1 class="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+                                    <span class="block">WEEKLY</span>
+                                    <span class="block bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">INFUSION</span>
+                                </h1>
+                                <p class="text-lg sm:text-xl lg:text-2xl opacity-90 max-w-2xl">
+                                    Your weekly dose of the most important tech developments, keeping you informed and inspired wherever you are.
+                                </p>
+                            </div>
+                            
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <button class="glass-btn px-6 py-3 sm:px-8 sm:py-4 rounded-full text-sm sm:text-lg font-semibold">
+                                    Subscribe Weekly
+                                </button>
+                                <button class="border-2 border-white/30 px-6 py-3 sm:px-8 sm:py-4 rounded-full text-sm sm:text-lg font-semibold hover:bg-white/10 transition-all duration-300">
+                                    Previous Issues
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-center items-center">
+                            <div class="relative">
+                                <div class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-purple-400/20 to-pink-600/30 backdrop-blur-xl border border-white/20 flex items-center justify-center floating-shape">
+                                    <div class="w-48 h-48 sm:w-60 sm:h-60 lg:w-72 lg:h-72 rounded-full bg-gradient-to-br from-white/10 to-transparent backdrop-blur-sm border border-white/30 flex items-center justify-center">
+                                        <div class="text-4xl sm:text-5xl lg:text-6xl">📧</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Circular Preview Widgets -->
+        <div class="circular-previews grid grid-cols-2 gap-4 hidden lg:grid opacity-80" id="circularPreviews">
+            <div class="preview-circle active" data-slide="0">
+                <div class="preview-progress"></div>
+                <video class="preview-video" muted loop>
+                    <source src="videos/video1.mp4" type="video/mp4">
+                </video>
+                <div class="preview-overlay">
+                    <div class="preview-title">STARTUP<br>INSIDER</div>
+                </div>
+            </div>
+            
+            <div class="preview-circle" data-slide="1">
+                <div class="preview-progress"></div>
+                <video class="preview-video" muted loop>
+                    <source src="videos/video2.mp4" type="video/mp4">
+                </video>
+                <div class="preview-overlay">
+                    <div class="preview-title">AI<br>REVOLUTION</div>
+                </div>
+            </div>
+            
+            <div class="preview-circle" data-slide="2">
+                <div class="preview-progress"></div>
+                <video class="preview-video" muted loop>
+                    <source src="videos/video3.mp4" type="video/mp4">
+                </video>
+                <div class="preview-overlay">
+                    <div class="preview-title">GLOBAL<br>INSIGHTS</div>
+                </div>
+            </div>
+
+            <div class="preview-circle" data-slide="3">
+                <div class="preview-progress"></div>
+                <video class="preview-video" muted loop>
+                    <source src="videos/video4.mp4" type="video/mp4">
+                </video>
+                <div class="preview-overlay">
+                    <div class="preview-title">WEEKLY<br>INFUSION</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <button class="nav-btn nav-prev" id="prevBtn">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+    </button>
+    <button class="nav-btn nav-next" id="nextBtn">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+    </button>
+
+    <!-- Custom Pagination -->
+    <div class="custom-pagination z-[200]" id="customPagination">
+        <div class="pagination-dot active"></div>
+        <div class="pagination-dot"></div>
+        <div class="pagination-dot"></div>
+        <div class="pagination-dot"></div>
+    </div>
+</section>
 <!-- End Hero Background -->
   <!-- Stats & Supported Platforms -->
   <section class="bg-gray-100 dark:bg-gray-950 px-4 py-12 relative grid grid-cols-1 md:grid-cols-2 gap-1 overflow-x-hidden">
     <!-- Supported Platforms and Partners -->
 
-    <div class="w-full m-1 md:m-4 z-10 " data-aos="zoom-in" data-tilt data-tilt-axis="x">
+    <div class="w-full m-1 md:m-4 z-10 " data-aos="fade-up" data-tilt data-tilt-axis="x">
       <div class="font-bold text-4xl"><i class="fas fa-layer-group text-green-400 mr-2"></i>Supported Platforms</div>
       <ul class="mt-4 gap-4 grid grid-cols-4 md:grid-cols-8">
         <li>
@@ -414,7 +476,7 @@
     <!-- Stats Overcards -->
     <div class="w-full mt-10 ml-0 md:-ml-4 md:mt-0 grid grid-cols-1 sm:grid-cols-3 gap-4 px-4 z-10">
       <!-- Card 1 -->
-      <div class="bg-white dark:bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-200 dark:border-gray-700" data-aos="zoom-in" data-tilt
+      <div class="bg-white dark:bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-200 dark:border-gray-700" data-aos="fade-up" data-tilt
         data-tilt-axis="x">
         <div class="text-4xl mb-2">
           <i class="fas fa-newspaper text-purple-400"></i>
@@ -424,7 +486,7 @@
       </div>
 
       <!-- Card 2 -->
-      <div class="bg-white dark:bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-200 dark:border-gray-700" data-aos="zoom-in" data-tilt
+      <div class="bg-white dark:bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-200 dark:border-gray-700" data-aos="fade-up" data-tilt
         data-tilt-axis="x">
         <div class="text-4xl mb-2">
           <i class="fas fa-chart-line text-green-400"></i>
@@ -434,7 +496,7 @@
       </div>
 
       <!-- Card 3 -->
-      <div class="bg-white dark:bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-200 dark:border-gray-700" data-aos="zoom-in" data-tilt
+      <div class="bg-white dark:bg-gray-900 rounded-2xl p-5 text-center shadow-lg border border-gray-200 dark:border-gray-700" data-aos="fade-up" data-tilt
         data-tilt-axis="x">
         <div class="text-4xl mb-2">
           <i class="fas fa-users text-yellow-300"></i>
@@ -459,7 +521,7 @@
       <!-- Newsletter 1 -->
       <div
         class="relative bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-indigo-200 dark:border-indigo-400 border-t-8"
-        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        data-aos="fade-up" data-tilt data-tilt-axis="x">
         <i class="fas fa-thumbtack text-indigo-400 text-2xl absolute top-4 right-4 rotate-45"></i>
         <div class="flex items-center mb-4 text-indigo-400">
           <i class="fas fa-robot text-2xl me-3"></i>
@@ -476,7 +538,7 @@
       <!-- Newsletter 2 -->
       <div
         class="relative bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-orange-200 dark:border-orange-400 border-t-8"
-        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        data-aos="fade-up" data-tilt data-tilt-axis="x">
         <i class="fas fa-thumbtack text-orange-400 text-2xl absolute top-4 right-4 rotate-45"></i>
         <div class="flex items-center mb-4 text-orange-400">
           <i class="fas fa-lightbulb text-2xl me-3"></i>
@@ -494,7 +556,7 @@
       <!-- Newsletter 3 -->
       <div
         class="relative bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-pink-200 dark:border-pink-400 border-t-8"
-        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        data-aos="fade-up" data-tilt data-tilt-axis="x">
         <i class="fas fa-thumbtack text-pink-400 text-2xl absolute top-4 right-4 rotate-45"></i>
         <div class="flex items-center mb-4 text-pink-400">
           <i class="fas fa-brain text-2xl me-3"></i>
@@ -511,7 +573,7 @@
       <!-- Newsletter 4 -->
       <div
         class="relative bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-green-200 dark:border-green-400 border-t-8"
-        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        data-aos="fade-up" data-tilt data-tilt-axis="x">
         <i class="fas fa-thumbtack text-green-400 text-2xl absolute top-4 right-4 rotate-45"></i>
         <div class="flex items-center mb-4 text-green-400">
           <i class="fas fa-globe-africa text-2xl me-3"></i>
@@ -528,7 +590,7 @@
       <!-- Newsletter 5 -->
       <div
         class="relative bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-purple-200 dark:border-purple-400 border-t-8"
-        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        data-aos="fade-up" data-tilt data-tilt-axis="x">
         <i class="fas fa-thumbtack text-purple-400 text-2xl absolute top-4 right-4 rotate-45"></i>
         <div class="flex items-center mb-4 text-purple-400">
           <i class="fas fa-dna text-2xl me-3"></i>
@@ -546,7 +608,7 @@
       <!-- Newsletter 6 -->
       <div
         class="relative bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-red-200 dark:border-red-400 border-t-8"
-        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        data-aos="fade-up" data-tilt data-tilt-axis="x">
         <i class="fas fa-thumbtack text-red-400 text-2xl absolute top-4 right-4 rotate-45"></i>
         <div class="flex items-center mb-4 text-red-400">
           <i class="fas fa-chart-line text-2xl me-3"></i>
@@ -570,10 +632,10 @@
   <section class="bg-gray-100 dark:bg-gray-950 py-10 px-4 sm:px-6 lg:px-12 overflow-x-hidden relative w-screen">
     <h2 class="text-4xl font-extrabold text-center mb-14 tracking-tight z-10 relative" data-aos="fade-in">🎧 Featured
       Podcasts on Fresients</h2>
-    <div class="absolute z-1 left-0 -top-2 hidden sm:block" data-aos="zoom-in">
+    <div class="absolute z-1 left-0 -top-2 hidden sm:block" data-aos="fade-up">
       <img src="image/enhancements/lady_listening_to_podcast2.png" />
     </div>
-    <div class="absolute z-1 right-0 -top-2" data-aos="zoom-in">
+    <div class="absolute z-1 right-0 -top-2" data-aos="fade-up">
       <img src="image/enhancements/lady_podcast_listening.png" />
     </div>
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 container mx-auto z-10">
@@ -581,7 +643,7 @@
       <!-- Podcast 1 -->
       <div
         class="bg-white dark:bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative"
-        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        data-aos="fade-up" data-tilt data-tilt-axis="x">
         <div class="relative">
           <img
             src="https://images.unsplash.com/photo-1677212004257-103cfa6b59d0?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0"
@@ -608,7 +670,7 @@
       <!-- Podcast 2 -->
       <div
         class="bg-white dark:bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative"
-        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        data-aos="fade-up" data-tilt data-tilt-axis="x">
         <div class="relative">
           <img src="https://plus.unsplash.com/premium_photo-1700740342769-17e817ad6400?q=80&w=774&auto=format&fit=crop"
             alt="Podcast Cover" class="w-full h-48 object-cover">
@@ -634,7 +696,7 @@
       <!-- Podcast 3 -->
       <div
         class="bg-white dark:bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative"
-        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        data-aos="fade-up" data-tilt data-tilt-axis="x">
         <div class="relative">
           <img src="https://images.unsplash.com/photo-1553484771-0a615f264d58?q=80&w=870&auto=format&fit=crop"
             alt="Podcast Cover" class="w-full h-48 object-cover">
@@ -660,7 +722,7 @@
       <!-- Podcast 4 -->
       <div
         class="bg-white dark:bg-gray-900 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden relative"
-        data-aos="zoom-in" data-tilt data-tilt-axis="x">
+        data-aos="fade-up" data-tilt data-tilt-axis="x">
         <div class="relative">
           <img src="https://plus.unsplash.com/premium_photo-1684522167826-a473e63337b1?q=80&w=1032&auto=format&fit=crop"
             alt="Podcast Cover" class="w-full h-48 object-cover">
@@ -702,7 +764,7 @@
 
       <div class="grid md:grid-cols-2 gap-6 ">
         <!-- Video Card 1 -->
-        <div class="flex flex-col md:flex-row items-start gap-4 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"
+        <div class="flex flex-col md:flex-row items-start gap-4 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="fade-up"
           data-tilt data-tilt-axis="x">
           <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/Qh7Dqzm8f7Y?rel=0"
             title="YouTube video player" allowfullscreen></iframe>
@@ -731,7 +793,7 @@
         </div>
 
         <!-- Video Card 2 -->
-        <div class="flex flex-col md:flex-row items-start gap-4 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"
+        <div class="flex flex-col md:flex-row items-start gap-4 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="fade-up"
           data-tilt data-tilt-axis="x">
           <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/1Q8fG0TtVAY?rel=0"
             title="YouTube video player" allowfullscreen></iframe>
@@ -760,7 +822,7 @@
         </div>
 
         <!-- Video Card 3 -->
-        <div class="flex flex-col md:flex-row items-start gap-4 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"
+        <div class="flex flex-col md:flex-row items-start gap-4 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="fade-up"
           data-tilt data-tilt-axis="x">
           <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/Opnb2r-J0dM?rel=0"
             title="YouTube video player" allowfullscreen></iframe>
@@ -789,7 +851,7 @@
         </div>
 
         <!-- Card 4 -->
-        <div class="flex flex-col md:flex-row items-start gap-4 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="zoom-in"
+        <div class="flex flex-col md:flex-row items-start gap-4 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-lg" data-aos="fade-up"
           data-tilt data-tilt-axis="x">
           <iframe class="w-full md:w-1/2 rounded-lg h-64" src="https://www.youtube.com/embed/f7SIwZJwmzE?rel=0"
             title="YouTube video player" allowfullscreen></iframe>
@@ -841,7 +903,7 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- Course 1 -->
           <div class="bg-gray-200 dark:bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-yellow-500/20 transition"
-            data-aos="zoom-in" data-tilt data-tilt-axis="x">
+            data-aos="fade-up" data-tilt data-tilt-axis="x">
             <img src="https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=850&auto=format&fit=crop"
               alt="AI Mastery" class="w-full h-40 object-cover">
             <div class="p-5">
@@ -859,7 +921,7 @@
 
           <!-- Course 2 -->
           <div class="bg-gray-200 dark:bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-purple-500/20 transition"
-            data-aos="zoom-in" data-tilt data-tilt-axis="x">
+            data-aos="fade-up" data-tilt data-tilt-axis="x">
             <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=870&auto=format&fit=crop"
               alt="Startup Launchpad" class="w-full h-40 object-cover">
             <div class="p-5">
@@ -877,7 +939,7 @@
 
           <!-- Course 3 -->
           <div class="bg-gray-200 dark:bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-green-500/20 transition"
-            data-aos="zoom-in" data-tilt data-tilt-axis="x">
+            data-aos="fade-up" data-tilt data-tilt-axis="x">
             <img src="https://images.unsplash.com/photo-1584291527908-033f4d6542c8?q=80&w=725&auto=format&fit=crop"
               alt="Data Analytics Pro" class="w-full h-40 object-cover">
             <div class="p-5">
@@ -895,7 +957,7 @@
 
           <!-- Course 4 -->
           <div class="bg-gray-200 dark:bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-blue-500/20 transition"
-            data-aos="zoom-in" data-tilt data-tilt-axis="x">
+            data-aos="fade-up" data-tilt data-tilt-axis="x">
             <img
               src="https://plus.unsplash.com/premium_photo-1661782505582-07ea68e3e760?q=80&w=869&auto=format&fit=crop"
               alt="Web for Founders" class="w-full h-40 object-cover">
@@ -932,7 +994,7 @@
     </h2>
     <div class="flex flex-col md:flex-row justify-center gap-8 px-4 container mx-auto">
       <!-- Card 1 -->
-      <div class="relative w-72 h-72 rounded-full overflow-hidden shadow-lg group" data-aos="zoom-in" data-tilt
+      <div class="relative w-72 h-72 rounded-full overflow-hidden shadow-lg group" data-aos="fade-up" data-tilt
         data-tilt-axis="x">
         <img src="https://hightechcampus.com/storage/1963/20210922_High_Tech_Campus_009_2207.jpg" alt="Event 1"
           class="w-full h-full object-cover">
@@ -947,7 +1009,7 @@
       </div>
 
       <!-- Card 2 -->
-      <div class="relative w-72 h-72 rounded-full overflow-hidden shadow-lg group" data-aos="zoom-in" data-tilt
+      <div class="relative w-72 h-72 rounded-full overflow-hidden shadow-lg group" data-aos="fade-up" data-tilt
         data-tilt-axis="x">
         <img src="https://axiscolleges.org/wp-content/uploads/2023/04/Axis-Startup-Launchpad.webp" alt="Event 2"
           class="w-full h-full object-cover">
@@ -962,7 +1024,7 @@
       </div>
 
       <!-- Card 3 -->
-      <div class="relative w-72 h-72 rounded-full overflow-hidden shadow-lg group" data-aos="zoom-in" data-tilt
+      <div class="relative w-72 h-72 rounded-full overflow-hidden shadow-lg group" data-aos="fade-up" data-tilt
         data-tilt-axis="x">
         <img src="https://technical.ly/wp-content/uploads/2024/06/zipcodewilmington-computer.jpg" alt="Event 3"
           class="w-full h-full object-cover">
@@ -990,7 +1052,7 @@
         <!-- Blog Card -->
         <div
           class="relative group rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500"
-          data-aos="zoom-in" data-tilt data-tilt-axis="x">
+          data-aos="fade-up" data-tilt data-tilt-axis="x">
           <img
             src="https://imageio.forbes.com/specials-images/imageserve/65e4a4f2ce50e2747a4c8503/The-Future-Of-Generative-AI--6-Predictions-Everyone-Should-Know-About/960x0.jpg?format=jpg&width=960"
             alt="Blog Image" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
@@ -1014,7 +1076,7 @@
         <!-- Blog Card 2 -->
         <div
           class="relative group rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500"
-          data-aos="zoom-in" data-tilt data-tilt-axis="x">
+          data-aos="fade-up" data-tilt data-tilt-axis="x">
           <img
             src="https://aicontentblog.com/wp-content/uploads/2025/03/Top-10-AI-Tools-for-Customer-Service-Revolutionizing-Support-with-Technology.png"
             alt="Blog Image" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
@@ -1038,7 +1100,7 @@
         <!-- Blog Card 3 -->
         <div
           class="relative group rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500"
-          data-aos="zoom-in" data-tilt data-tilt-axis="x">
+          data-aos="fade-up" data-tilt data-tilt-axis="x">
           <img
             src="https://tateeda.com/wp-content/uploads/2024/01/How_to_Integrate_AI_in_Healthcare_Solutions_Examples__Services-3.jpg"
             alt="Blog Image" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
@@ -1066,7 +1128,7 @@
   <!-- Overlay -->
   <div x-show="openLogin"
     class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-[250]" x-transition
-    style="display: none" data-aos="zoom-in" data-tilt data-tilt-axis="x">
+    style="display: none" data-aos="fade-up" data-tilt data-tilt-axis="x">
     <!-- Modal -->
     <div @click.away="openLogin = false"
       class="bg-white dark:bg-gray-900 rounded-xl shadow-xl w-full max-w-md p-6 space-y-6 border border-gray-200 dark:border-gray-700 relative"
@@ -1138,7 +1200,7 @@
   <!-- Register Modal -->
   <div x-show="openRegister" x-transition.opacity @keydown.escape.window="openRegister = false"
     @click.away="openRegister = false" class="fixed inset-0 bg-black/60 z-[250] flex items-center justify-center"
-    style="display: none" data-aos="zoom-in" data-tilt data-tilt-axis="x">
+    style="display: none" data-aos="fade-up" data-tilt data-tilt-axis="x">
 
     <!-- Modal Content -->
     <div @click.stop x-transition class="bg-white dark:bg-gray-900 w-full max-w-md rounded-xl shadow-lg p-6 space-y-6">
@@ -1198,7 +1260,7 @@
   <!-- Start SerachBar Overlay -->
   <div x-show="openSearch" x-transition @keydown.escape.window="openSearch = false"
     class="fixed inset-0 z-[250] flex items-center justify-center bg-black/70 backdrop-blur-sm" style="display: none;"
-    data-aos="zoom-in" data-tilt data-tilt-axis="x">
+    data-aos="fade-up" data-tilt data-tilt-axis="x">
     <div class="bg-white dark:bg-gray-900 w-[90%] max-w-md p-6 rounded-xl relative shadow-2xl">
       <!-- Close Button -->
       <button @click="openSearch = false" class="absolute top-3 right-3 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white text-2xl"
@@ -1396,13 +1458,12 @@
     </div>
   </footer>
 
-  <script src="app.js"></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ once: true, startEvent: 'DOMContentLoaded', duration: 1500 });  
   </script>
-
+<script src="app.hero.js"></script>
 </body>
 
 </html>
