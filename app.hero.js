@@ -414,3 +414,13 @@ var input = document.querySelector("#phone");
 window.intlTelInput(input, {
   separateDialCode: true
 });
+
+window.addEventListener('load', function () {
+  const loadingScreen = document.getElementById('loading-screen');
+  if (loadingScreen) {
+    loadingScreen.classList.add('hidden'); // Hide the loading screen = 'none';
+    document.body.classList.remove('overflow-hidden');
+    const prose = document.querySelector('.app');
+    if (prose) prose.style.display = 'block';
+  }
+});
