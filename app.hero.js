@@ -385,6 +385,20 @@ class CircularHeroSlider {
 
 // Initialize slider when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    const lazyIframes = document.querySelectorAll("iframe[data-src]");
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const iframe = entry.target;
+          iframe.src = iframe.dataset.src;
+          iframe.removeAttribute('data-src');
+          obs.unobserve(iframe);
+        }
+      });
+    });
+
+    lazyIframes.forEach(iframe => observer.observe(iframe));
     const slider = new CircularHeroSlider();
     
     // Add hover pause functionality
@@ -430,3 +444,4 @@ window.addEventListener('load', function () {
     if (prose) prose.style.display = 'block';
   }
 });
+
