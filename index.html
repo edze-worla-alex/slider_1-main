@@ -31,6 +31,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <link rel="stylesheet" href="https://cdn.tutorialjinni.com/intl-tel-input/17.0.19/css/intlTelInput.css"/>
 <script src="https://cdn.tutorialjinni.com/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
+
 
   <!-- <link rel="stylesheet" href="style.css"> -->
   <link rel="stylesheet" href="styles.hero.css">
@@ -182,7 +184,13 @@
             
             <!-- Slide 1 - Startup News -->
             <div class="swiper-slide slide-1">
-                <video class="slide-video" autoplay muted loop playsinline>
+                <video 
+                class="slide-video lazyload" 
+                preload="none"
+                data-src="videos/video1.mp4"
+                poster="video-previews/video1.jpg"
+                autoplay muted loop playsinline
+                >
                     <source src="videos/video1.mp4" type="video/mp4">
                 </video>
                 <div class="slide-overlay backdrop-blur-xs"></div>
@@ -230,7 +238,11 @@
 
             <!-- Slide 2 - AI Revolution -->
             <div class="swiper-slide slide-2">
-                <video class="slide-video" autoplay muted loop playsinline>
+                <video class="slide-video lazyload" 
+                preload="none"
+                data-src="videos/video2.mp4"
+                poster="video-previews/video2.jpg" 
+                autoplay muted loop playsinline>
                     <source src="videos/video2.mp4" type="video/mp4">
                 </video>
                 <div class="slide-overlay backdrop-blur-xs"></div>
@@ -278,7 +290,11 @@
 
             <!-- Slide 3 - Global Insights -->
             <div class="swiper-slide slide-3">
-                <video class="slide-video" autoplay muted loop playsinline>
+                <video class="slide-video lazyload" 
+                preload="none"
+                data-src="videos/video3.mp4"
+                poster="video-previews/video3.jpg" 
+                autoplay muted loop playsinline>
                     <source src="videos/video3.mp4" type="video/mp4">
                 </video>
                 <div class="slide-overlay backdrop-blur-xs"></div>
@@ -326,7 +342,11 @@
 
             <!-- Slide 4 - Weekly Infusion -->
             <div class="swiper-slide slide-4">
-                <video class="slide-video" autoplay muted loop playsinline>
+                <video class="slide-video lazyload" 
+                preload="none"
+                data-src="videos/video4.mp4"
+                poster="video-previews/video4.jpg" 
+                autoplay muted loop playsinline>
                     <source src="videos/video4.mp4" type="video/mp4">
                 </video>
                 <div class="slide-overlay backdrop-blur-xs"></div>

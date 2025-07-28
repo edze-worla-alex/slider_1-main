@@ -92,6 +92,20 @@ class CircularHeroSlider {
                 },
                 
                 slideChangeTransitionEnd: (swiper) => {
+                    document.querySelectorAll('.swiper-slide video').forEach(video => {
+                        video.pause();
+                      });
+              
+                      const activeSlide = document.querySelector('.swiper-slide-active');
+                      const video = activeSlide.querySelector('video');
+                      if (video) {
+                        // Lazysizes may need a moment to load source
+                        if (video.readyState >= 3) {
+                          video.play();
+                        } else {
+                          video.addEventListener('canplay', () => video.play(), { once: true });
+                        }
+                      }
                     const bg = document.querySelector('.hero-slider');
                     gsap.to(bg, {
                         filter: 'blur(0px)',
