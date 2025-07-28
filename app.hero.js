@@ -160,14 +160,6 @@ class CircularHeroSlider {
             });
         });
 
-        // Initialize preview videos
-        this.previewVideos = document.querySelectorAll('.preview-video');
-        this.previewVideos.forEach((video, index) => {
-            video.addEventListener('loadeddata', () => {
-                video.currentTime = Math.random() * video.duration * 0.3;
-            });
-            video.play().catch(e => console.log('Preview video autoplay prevented'));
-        });
     }
 
     handleSlideChange(swiper = null) {
