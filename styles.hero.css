@@ -158,7 +158,7 @@ margin-top: -80px;
 
 
 
-.preview-video {
+.preview-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -166,8 +166,8 @@ margin-top: -80px;
     transition: filter 0.3s ease;
 }
 
-.preview-circle:hover .preview-video,
-.preview-circle.active .preview-video {
+.preview-circle:hover .preview-image,
+.preview-circle.active .preview-image {
     filter: brightness(1) saturate(1.4);
 }
 
